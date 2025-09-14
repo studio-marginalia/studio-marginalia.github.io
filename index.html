@@ -148,7 +148,7 @@ function toggleStep(header) {
       <span class="step-arrow">▼</span>
     </div>
     <div class="step-content">
-      <p>Within 15-20 days (depending on manuscript length), here's what you'll receive:</p>
+      <p>Within 12-24 days (depending on manuscript length), here's what you'll receive:</p>
       <p><b>In-line comments: </b>Your manuscript with margin notes showing my real-time thoughts and reactions as I read.</p>
       <p><b>Reader Report: </b>A comprehensive analysis with actionable feedback across seven story elements.</p>
       <p><b>Your questions answered: </b>If you've asked specific questions, I'll address each one with detailed responses based on my reading experience.</p>
@@ -175,11 +175,11 @@ This way, you know your story is getting my full focus, not squeezed between a d
   <section id="pricing">
     <h3>How much do you charge?</h3>
     <span class="image main"><img src="images/the-cost.png" alt="" /></span>
-    <div class="pricing-calculator">
+  	   <div class="pricing-calculator">
     <h4>Calculate Your Price</h4>
     <div class="calc-input">
       <label for="word-count">Word Count:</label>
-      <input type="number" id="word-count" min="0" max="500000" placeholder="Enter word count">
+      <input type="number" id="word-count" min="40000" max="500000" placeholder="Enter word count">
     </div>
     <div class="calc-result" id="price-result">
       Enter your word count above
@@ -190,29 +190,35 @@ This way, you know your story is getting my full focus, not squeezed between a d
       <table>
         <thead>
           <tr>
-            <th>Sample Edit</th>
+            <th>Short Novel</th>
             <th>Standard Novel</th>
             <th>Longer Novel</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Up to 3000 words</td>
-            <td>60, 000 - 80, 000 words</td>
-            <td>80,000+ words</td>
+            <td>40, 000 - 60, 000 words</td>
+            <td>60, 001 - 80, 000 words</td>
+            <td>80, 0001 - 100, 000 words</td>
           </tr>
           <tr>
-            <td>Free</td>
+            <td>$200</td>
             <td>$350</td>
-            <td>$350 + $0.007/word over 80k</td>
+            <td>$500</td>
           </tr>
           <tr>
-            <td>Within 2 days</td>
-            <td>Within 15 days</td>
-            <td>Within 20 days</td>
+            <td>Within 12 days</td>
+            <td>Within 18 days</td>
+            <td>Within 24 days</td>
           </tr>
         </tbody>
       </table>
+      <h4>To Note:</h4>
+      <ul>
+        <li><b>Free beta read</b> for the first 3,000 words of any manuscript</li>
+        <li><b>Over 100k manuscripts: </b>Base rate + $0.007 per additional word</li>
+        <li><b>Novellas & custom projects: </b> Contact for personalized pricing (3,000-40,000 words)</li>
+      </ul>
     </div>
 <script>
 document.getElementById('word-count').addEventListener('input', function() {
@@ -224,19 +230,25 @@ document.getElementById('word-count').addEventListener('input', function() {
     return;
   }
   
-  if (wordCount > 500000) {
-    resultDiv.textContent = 'Maximum 500,000 words';
+  if (wordCount > 200000) {
+    resultDiv.textContent = 'Maximum 200,000 words';
     return;
   }
   
   if (wordCount <= 3000) {
     resultDiv.textContent = 'Free';
-  } else if (wordCount >= 60000 && wordCount <= 80000) {
+  }else if (wordCount >= 3000 && wordCount <= 40000) {
+    resultDiv.textContent = 'Please Contact Directly for Novella Pricing';
+  } else if (wordCount >= 40000 && wordCount <= 60000) {
+    resultDiv.textContent = '$200';
+  } else if (wordCount >= 60001 && wordCount <= 80000) {
     resultDiv.textContent = '$350';
-  } else if (wordCount > 80000) {
-    const extraWords = wordCount - 80000;
+  } else if (wordCount >= 80001 && wordCount <= 100000) {
+    resultDiv.textContent = '$500';
+  } else if (wordCount > 100000) {
+    const extraWords = wordCount - 100000;
     const extraCost = extraWords * 0.007;
-    const totalCost = 350 + extraCost;
+    const totalCost = 500 + extraCost;
     resultDiv.textContent = `$${totalCost.toFixed(2)}`;
   } else {
     resultDiv.textContent = 'Please contact for custom pricing';
@@ -1056,4 +1068,5 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 	</body>
 </html>
+
 
