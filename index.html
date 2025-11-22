@@ -516,6 +516,37 @@
       </div>
     </div>
 
+<!-- Pricing Section -->
+<section id="pricing" class="py-14 bg-paper">
+  <div class="max-w-4xl mx-auto px-6">
+
+    <!-- Section Title -->
+    <div class="text-center mb-4">
+      <h2 class="font-heading text-2xl text-umber">What It Costs</h2>
+    </div>
+
+    <!-- Pricing Justification -->
+    <div class="text-center mb-8 text-olive text-sm">
+      <p>Pricing is based on word count—the more you write, the more time I spend reading and analyzing.</p>
+      <p>Use the calculator below for an exact quote.</p>
+    </div>
+
+    <!-- Pricing Calculator -->
+    <div class="text-center mb-10">
+      <div class="bg-paper rounded-xl shadow-soft p-6 md:p-10 max-w-4xl mx-auto">
+        <div class="flex flex-col items-center gap-4 max-w-xl mx-auto">
+          <label for="word-count" class="text-umber font-medium">Word Count</label>
+          <input type="number" id="word-count" min="0" max="200000" placeholder="e.g. 75,000"
+            class="rounded-lg border border-gold/20 p-3 text-olive w-full text-center focus:outline-none focus:ring-2 focus:ring-sienna/40">
+
+          <div id="price-result"
+            class="bg-paper border border-gold/20 rounded-lg py-3 px-4 text-olive font-medium text-center w-full min-h-[48px] flex items-center justify-center">
+            Enter your word count above
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Pricing Table -->
     <div class="overflow-x-auto">
       <table class="w-full rounded-lg shadow-soft text-left text-sm border border-sienna/20">
@@ -537,8 +568,8 @@
           </tr>
           <tr class="bg-parchment/5">
             <td colspan="4" class="px-4 py-4 text-olive text-sm leading-relaxed">
-              Perfect for novellas or trying the service out<br>
-              <span class="text-xs">Full credit goes towards complete manuscript</span>
+              Perfect for novellas or trying the service out.<br>
+              <span class="text-xs">Full credit applies toward a complete manuscript analysis</span>
             </td>
           </tr>
 
@@ -546,7 +577,7 @@
           <tr class="bg-parchment/70">
             <td class="px-4 py-3 font-medium text-umber">Standard Novel</td>
             <td class="px-4 py-3">30k - 60k</td>
-            <td class="px-4 py-3 font-semibold text-umber">$200 - $400</td>
+            <td class="px-4 py-3 font-semibold text-umber">$200 - $450</td>
             <td class="px-4 py-3 text-sienna font-medium">1-2 weeks</td>
           </tr>
           <tr class="bg-parchment/5">
@@ -559,7 +590,7 @@
           <tr class="bg-parchment/70">
             <td class="px-4 py-3 font-medium text-umber">Lengthy Tale</td>
             <td class="px-4 py-3">60k - 90k</td>
-            <td class="px-4 py-3 font-semibold text-umber">$400 - $700</td>
+            <td class="px-4 py-3 font-semibold text-umber">$450 - $800</td>
             <td class="px-4 py-3 text-sienna font-medium">2-3 weeks</td>
           </tr>
           <tr class="bg-parchment/5">
@@ -572,7 +603,7 @@
           <tr class="bg-parchment/70">
             <td class="px-4 py-3 font-medium text-umber">Epic Journey</td>
             <td class="px-4 py-3">90k - 120k</td>
-            <td class="px-4 py-3 font-semibold text-umber">$700 - $1,000</td>
+            <td class="px-4 py-3 font-semibold text-umber">$800 - $1,200</td>
             <td class="px-4 py-3 text-sienna font-medium">3-4 weeks</td>
           </tr>
           <tr class="bg-parchment/5">
@@ -580,85 +611,81 @@
               Epic-length novels with complex narratives
             </td>
           </tr>
+
         </tbody>
       </table>
     </div>
+
     <div class="mt-6 text-center text-sm text-olive space-y-2">
       <p><span class="font-semibold text-umber">Remember:</span> First 3,000 words read FREE</p>
       <p class="text-xs text-olive/70">Delivery times are estimates and may vary based on current workload</p>
-      <p class="text-xs text-olive/70">Manuscripts over 200,000 words require custom pricing — <a href="mailto:info.studiomarginalia@gmail.com" class="text-sienna underline">contact me</a> for a quote</p>
+      <p class="text-xs text-olive/70">Manuscripts over 120,000 words require custom pricing — <a href="mailto:info.studiomarginalia@gmail.com" class="text-sienna underline">contact me</a> for a quote</p>
     </div>
 
+  </div>
+
+  <!-- Pricing Calculator Script -->
   <script>
-    document.getElementById('word-count').addEventListener('input', function() {
-  const wordCount = parseInt(this.value);
-  const resultDiv = document.getElementById('price-result');
+  document.getElementById('word-count').addEventListener('input', function() {
+    const wordCount = parseInt(this.value);
+    const resultDiv = document.getElementById('price-result');
 
-  if (!wordCount || wordCount < 0) {
-    resultDiv.innerHTML = 'Enter your word count above';
-    resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-olive font-medium text-center w-full min-h-[48px] flex flex-col items-center justify-center';
-    return;
-  }
+    if (!wordCount || wordCount < 0) {
+      resultDiv.innerHTML = 'Enter your word count above';
+      resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-olive font-medium text-center w-full min-h-[48px] flex flex-col items-center justify-center';
+      return;
+    }
 
-  let price;
-  let delivery;
+    if (wordCount <= 3000) {
+      resultDiv.innerHTML = '<span class="text-2xl">FREE</span>';
+      resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-sienna font-bold text-center w-full min-h-[48px] flex items-center justify-center';
+      return;
+    }
 
-  if (wordCount <= 3000) {
-    resultDiv.innerHTML = '<span class="text-2xl">FREE</span>';
-    resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-sienna font-bold text-center w-full min-h-[48px] flex items-center justify-center';
-    return;
-  }
-  
-  // Over 200k - contact for pricing
-  else if (wordCount > 200000) {
+    if (wordCount > 120000) {
+      resultDiv.innerHTML = `
+        <div class="flex flex-col items-center">
+          <span class="text-lg font-semibold text-umber">Custom Pricing Required</span>
+          <span class="text-sm text-olive mt-1">Please contact for manuscripts over 120k words</span>
+        </div>
+      `;
+      resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-center w-full min-h-[48px] flex items-center justify-center';
+      return;
+    }
+
+    let price;
+    let delivery;
+
+    if (wordCount <= 30000) {
+      price = 200;
+      delivery = '~5 days';
+    } else if (wordCount <= 60000) {
+      const over = wordCount - 30000;
+      price = 200 + (over * 0.0083); // 200 → 450
+      delivery = '1-2 weeks';
+    } else if (wordCount <= 90000) {
+      const over = wordCount - 60000;
+      price = 450 + (over * 0.0117); // 450 → 800
+      delivery = '2-3 weeks';
+    } else if (wordCount <= 120000) {
+      const over = wordCount - 90000;
+      price = 800 + (over * 0.0133); // 800 → 1200
+      delivery = '3-4 weeks';
+    }
+
+    price = Math.round(price / 5) * 5;
+
     resultDiv.innerHTML = `
       <div class="flex flex-col items-center">
-        <span class="text-lg font-semibold text-umber">Custom Pricing Required</span>
-        <span class="text-sm text-olive mt-1">Please contact for manuscripts over 200k words</span>
+        <span class="text-2xl font-bold text-umber">$${price.toLocaleString()}</span>
+        <span class="text-sm text-sienna mt-1">Delivery: ${delivery}</span>
       </div>
     `;
     resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-center w-full min-h-[48px] flex items-center justify-center';
-    return;
-  }
-  
-  else if (wordCount <= 30000) {
-    price = 200;
-    delivery = '~5 days';
-  } 
-  else if (wordCount <= 60000) {
-    const overWords = wordCount - 30000;
-    price = 200 + (overWords * 0.0067);
-    delivery = '1-2 weeks';
-  } 
-  else if (wordCount <= 90000) {
-    const overWords = wordCount - 60000;
-    price = 400 + (overWords * 0.01);
-    delivery = '2-3 weeks';
-  } 
-  else if (wordCount <= 120000) {
-    const overWords = wordCount - 90000;
-    price = 700 + (overWords * 0.01);
-    delivery = '3-4 weeks';
-  } 
-  else { // 120k - 200k
-    const overWords = wordCount - 120000;
-    price = 1000 + (overWords * 0.01);
-    delivery = '4-6 weeks';
-  }
-
-  // Round to nearest $5
-  price = Math.round(price / 5) * 5;
-
-  resultDiv.innerHTML = `
-    <div class="flex flex-col items-center">
-      <span class="text-2xl font-bold text-umber">$${price.toLocaleString()}</span>
-      <span class="text-sm text-sienna mt-1">Delivery: ${delivery}</span>
-    </div>
-  `;
-  resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-center w-full min-h-[48px] flex items-center justify-center';
-});
+  });
   </script>
 </section>
+
 
   <!-- How it Works -->
   <section class="py-14">
@@ -1084,3 +1111,4 @@
 </script>
 </body>
 </html>
+
