@@ -118,59 +118,60 @@
         <p class="mt-2 text-olive text-sm">Send me a message and I'll get back to you as soon as possible.</p>
       </div>
 
-      <form id="contact-form" class="bg-paper rounded-xl shadow-soft p-6 md:p-10">
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Name -->
-      <div class="flex flex-col">
-        <label for="name" class="mb-1 text-umber font-medium">What's your name?</label>
-        <input type="text" name="name" id="name" placeholder="Your name" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
-      </div>
-
-      <!-- Email -->
-      <div class="flex flex-col">
-        <label for="email" class="mb-1 text-umber font-medium">What's your email?</label>
-        <input type="email" name="email" id="email" placeholder="you@example.com" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
-      </div>
-
-      <!-- Genre -->
-      <div class="flex flex-col">
-        <label for="genre" class="mb-1 text-umber font-medium">What's your book's genre?</label>
-        <input type="text" name="genre" id="genre" placeholder="e.g. Grimdark Fantasy, Cozy Mystery" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
-      </div>
-
-      <!-- Word Count -->
-      <div class="flex flex-col">
-        <label for="wordcount" class="mb-1 text-umber font-medium">What's your book's word count?</label>
-        <input type="text" name="wordcount" id="wordcount" placeholder="e.g. 75,000" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
-      </div>
-
-      <!-- Interested In -->
-      <div class="flex flex-col md:col-span-2">
-        <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
-        <select name="interest" id="interest" required class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
-          <option value="" disabled selected>Select an option</option>
-          <option value="purchase">Purchase of Service</option>
-          <option value="chat">Quick Chat about Service</option>
-          <option value="free-read">Free 3,000 Word Read</option>
-        </select>
-      </div>
-
-      <!-- Message -->
-      <div class="flex flex-col md:col-span-2">
-        <label for="message" class="mb-1 text-umber font-medium">Tell me something about your book…</label>
-        <textarea name="message" id="message" rows="5" placeholder="Write your message here..." required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
-      </div>
+     <form id="contact-form" method="POST" class="bg-paper rounded-xl shadow-soft p-6 md:p-10">
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Name -->
+    <div class="flex flex-col">
+      <label for="name" class="mb-1 text-umber font-medium">What's your name?</label>
+      <input type="text" name="name" id="name" placeholder="Your name" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
     </div>
 
-    <!-- Success/Error Messages -->
-    <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
-
-    <div class="mt-6 text-center">
-      <button type="submit" class="bg-sienna text-paper font-medium px-8 py-3 rounded-lg shadow-soft hover:bg-sienna/90 transition">
-        Start the Editing Process
-      </button>
+    <!-- Email -->
+    <div class="flex flex-col">
+      <label for="email" class="mb-1 text-umber font-medium">What's your email?</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
     </div>
-  </form>
+
+    <!-- Genre -->
+    <div class="flex flex-col">
+      <label for="genre" class="mb-1 text-umber font-medium">What's your book's genre?</label>
+      <input type="text" name="genre" id="genre" placeholder="e.g. Grimdark Fantasy, Cozy Mystery" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
+    </div>
+
+    <!-- Word Count -->
+    <div class="flex flex-col">
+      <label for="wordcount" class="mb-1 text-umber font-medium">What's your book's word count?</label>
+      <input type="text" name="wordcount" id="wordcount" placeholder="e.g. 75,000" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Interested In -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
+      <select name="interest" id="interest" required class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
+        <option value="" disabled selected>Select an option</option>
+        <option value="free-sample">Free 3,000 Word Sample Analysis</option>
+        <option value="purchase">Purchase Full Service</option>
+        <option value="chat">Quick Chat About Service</option>
+      </select>
+    </div>
+
+    <!-- Message -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="message" class="mb-1 text-umber font-medium">Tell me about your book…</label>
+      <textarea name="message" id="message" rows="5" placeholder="Write a brief description or short synopsis of your story." required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
+      <p class="text-xs text-olive mt-2">💡 Optional: If including a sample, add context for the scene or chapter and include a Google Docs link (up to 3,000 words). Make sure the link is set to 'Anyone with link can comment.'</p>
+    </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+
+  <div class="mt-6 text-center">
+    <button type="submit" class="bg-sienna text-paper font-medium px-8 py-3 rounded-lg shadow-soft hover:bg-sienna/90 transition">
+      Send Message
+    </button>
+  </div>
+</form>
 
   <script>
   const form = document.getElementById('contact-form');
@@ -245,4 +246,5 @@
 </script>
 </body>
 </html>
+
 
