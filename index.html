@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Studio Marginalia — Professional Manuscript Feedback</title>
+  <title>Studio Marginalia — Story Development</title>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -17,9 +17,9 @@
           colors: {
             parchment: "#F5EDE1",
             paper: "#FBF7F0",
-            ink: "#1A1A1A",      /* near-black body */
-            umber: "#1A1411",    /* deep heading anchor */
-            sienna: "#B8694D",   /* warm accent / buttons */
+            ink: "#1A1A1A",
+            umber: "#1A1411",
+            sienna: "#B8694D",
             olive: "#8A8377",
             gold: "#D1B280",
             rose: "#C97C7C"
@@ -37,7 +37,6 @@
   </script>
 
   <style>
-    /* Subtle parchment texture (pure CSS) — very light */
     .parchment {
       background:
         radial-gradient(circle at 10% 10%, rgba(208,180,130,0.03) 0 2%, transparent 2%),
@@ -45,46 +44,80 @@
         linear-gradient(180deg, #FBF7F0 0%, #F5EDE1 100%);
       background-size: 400px 400px, 600px 600px, cover;
     }
-    .highlight-underline {
-      background-image: linear-gradient(120deg, rgba(209,178,128,0.45) 0%, rgba(184,105,77,0.28) 100%);
-      background-repeat: no-repeat;
-      background-size: 100% 0.42em;
-      background-position: 0 88%;
-      padding-bottom: 0.08rem;
-    }
-
-    /* Utility for accessible focus */
     :focus {
       outline: 2px solid rgba(184,105,77,0.12);
       outline-offset: 3px;
     }
-
-    /* make links underlined on hover for better readability */
-    a:hover { text-decoration: underline; }
+    a:not(.group):hover { text-decoration: underline; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #D1B280;
+      border-radius: 0.5rem;
+      box-shadow: 0 6px 18px rgba(26,26,26,0.06);
+      z-index: 50;
+      min-width: max-content;
+    }
+    .dropdown-trigger:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #1A1411;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #F5EDE1;
+    }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+    .dropdown-menu a:hover {
+      background: #F5EDE1;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body class="parchment text-ink font-body antialiased leading-relaxed">
 
   <!-- NAV -->
 <header class="sticky top-0 z-40 bg-parchment/80 backdrop-blur-sm border-b border-gold/12">
-  <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium text-align:center">
+  <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium">
     I do not use AI for my critique service. All feedback is human and personal.
   </div>
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <a href="/" class="flex items-center gap-3">
-      <!-- small mark -->
-     <img src="logo.png" alt="Logo" width="36" height="36">
+      <img src="logo.png" alt="Logo" width="36" height="36">
       <span class="font-heading text-2xl text-umber">Studio Marginalia</span>
     </a>
 
     <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="samples.html" class="hover:text-[#B8694D]">Samples</a>
-          <a href="reviews.html" class="hover:text-[#B8694D]">Reviews</a>
-          <a href="faq.html" class="hover:text-[#B8694D]">FAQ</a>
-          <a href="contact.html" class="inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold shadow-soft hover:bg-[#a2563f]">Get Your Free Sample Analysis</a>
+      <a href="/" class="hover:text-sienna">Home</a>
+      
+      <!-- Services Dropdown -->
+      <div class="dropdown-trigger relative">
+        <button class="hover:text-sienna flex items-center gap-1">
+          Services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="beta-reading.html">Beta Reading</a>
+          <a href="developmental-editing.html">Developmental Editing</a>
+          <a href="story-development.html">Story Development</a>
+        </div>
+      </div>
+
+      <a href="about.html" class="hover:text-sienna">About</a>
+      <a href="blog.html" class="hover:text-sienna">Blog</a>
+      <a href="reviews.html" class="hover:text-sienna">Reviews</a>
+      <a href="contact.html" class="inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold shadow-soft hover:bg-[#a2563f]">Contact</a>
     </nav>
 
-    <!-- mobile toggle -->
     <div class="md:hidden">
       <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" class="p-2 rounded-md">
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -97,221 +130,157 @@
     </div>
   </div>
 
-  <!-- mobile nav -->
   <div id="mobile-nav" class="md:hidden hidden border-t border-gold/12">
     <div class="px-6 py-4 flex flex-col gap-3">
-      <a href="samples.html" class="text-umber font-medium">Samples</a>
+      <a href="/" class="text-umber font-medium">Home</a>
+      <a href="beta-reading.html" class="text-umber font-medium pl-4">— Beta Reading</a>
+      <a href="developmental-editing.html" class="text-umber font-medium pl-4">— Developmental Editing</a>
+      <a href="story-development.html" class="text-umber font-medium pl-4">— Story Development</a>
+      <a href="about.html" class="text-umber font-medium">About</a>
+      <a href="blog.html" class="text-umber font-medium">Blog</a>
       <a href="reviews.html" class="text-umber font-medium">Reviews</a>
-      <a href="faq.html" class="text-umber font-medium">FAQ</a>
-      <a href="contact.html" class="mt-2 inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold text-center">Get Your Free Sample Analysis</a>
+      <a href="contact.html" class="mt-2 inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold text-center">Contact</a>
     </div>
   </div>
 </header>
 
-  <!-- HERO -->
 <main>
-  <section class="pt-14 pb-12">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h1 class="font-heading text-4xl sm:text-5xl leading-tight text-umber">
-        Story Analysis for Fiction Writers
-        <br /> <br>
-        <span class="highlight-underline">Stop revising blind. Start revising smart.</span>
-      </h1>
 
-      <p class="mt-6 text-md text-olive max-w-prose mx-auto">
-        You've finished your draft. Now you're stuck wondering: does this story actually work? Are there plot holes you can't see? Do your characters need more depth? Should you revise this for six more months or is it ready?
-      </p>
+  <!-- HERO SECTION -->
+<section class="pt-16 pb-14 bg-paper">
+  <div class="max-w-4xl mx-auto px-6">
+    <!-- Hero box with image inside -->
+    <div class="bg-parchment rounded-lg shadow-lg overflow-hidden">
+      <!-- Even smaller image on top -->
+      <div class="w-full h-32 sm:h-40 md:h-48 bg-cover bg-center" style="background-image: url('heroimage.jpg');"></div>
 
-        <p class="mt-6 text-md text-olive max-w-prose mx-auto">
-        Here's the truth: most authors waste months revising in the wrong direction because they don't know what's actually broken.
-      </p>
+      <!-- Text content -->
+      <div class="p-8 sm:p-10 text-center">
+        <h1 class="font-heading text-4xl sm:text-5xl leading-tight text-umber">
+          <span class="highlight-underline">Deliver a Story Your Readers Can't Put Down</span>
+        </h1>
 
-        <p class="mt-6 text-md text-olive max-w-prose mx-auto">
-        I offer professional story analysis that gives you structural feedback at the stage when it matters most - early, when changes are still easy to make.
-      </p>
+        <p class="mt-5 text-lg text-olive max-w-prose mx-auto">
+          Get feedback designed around one principle: making sure your reader enjoys every page.
+          <br>
+          <b>Entertainment first.</b>
+          <br>
+          We can figure out where the commas go later.
+        </p>
 
-        <p class="mt-6 text-md text-olive max-w-prose mx-auto">
-        <b>You get clear direction. You stop guessing. Your book gets stronger.</b>
-      </p>
-
-
-      <div class="mt-8 flex flex-col sm:flex-row gap-4 items-center justify-center">
-        <a href="#contact" class="rounded-md bg-sienna text-paper px-6 py-3 font-semibold shadow-soft hover:bg-[#a2563f]">Get Your Free Sample Analysis</a>
-        <a href="#samples" class="rounded-md border border-sienna text-umber px-6 py-3 font-medium hover:bg-sienna/10">See Sample Reports</a>
+        <div class="mt-7">
+          <a href="#contact" class="inline-block rounded-md bg-sienna text-paper px-8 py-3 font-semibold shadow-soft hover:bg-[#a2563f]">
+            Get Free Sample Edit & Quote
+          </a>
+        </div>
       </div>
-
-      <p class="mt-4 text-sm text-olive">First 3,000 words analyzed absolutely free</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Explainer -->
-  <section class="bg-paper py-14">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-start">
+<!-- SERVICES SECTION -->
+  <section id="services" class="py-14">
+    <h4 class="font-heading text-xl text-umber text-center mt-12 mb-8">Here's how we work together:</h4>
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <aside class="rounded-xl bg-parchment p-6 ring-1 ring-gold/20">
-        <h2 class="font-heading text-2xl text-umber">What Is Story Analysis?</h2>
+        <!-- Beta Reading Card -->
+        <a href="beta-reading.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30 flex flex-col">
+            <div class="text-center mb-4">
+              <h3 class="font-heading text-xl text-umber group-hover:text-sienna transition">
+                Beta Reading
+              </h3>
+              
+              <span class="inline-block mt-2 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-4 py-1 text-sm font-semibold">
+                $50 per 10k words
+              </span>
+            </div>
 
-        <h3 class="mt-4 font-semibold text-sienna">
-        <i>You've Already Tried Getting Feedback. It Didn't Help.</i> </h3>
+            <p class="mt-4 text-olive text-sm flex-grow">
+              Will readers connect with your story? Get reader feedback from a professional on what works and what doesn't. I read your manuscript like your audience would and tell you exactly what I experienced, where I got hooked, where I got bored, and why.
+            </p>
 
-        <p class="mt-3 text-olive max-w-prose">
-        Sound familiar? <br> 
-          ✗ Beta readers who took forever and said "I really enjoyed it!" (but couldn't say why) <br>
-          ✗ Writing groups where feedback was all over the place <br>
-          ✗ Critique partners who focused on commas, not story structure <br>
-          ✗ Reddit threads where every comment contradicted the last <br>
-          ✗ Craft books you bought but can't figure out how to apply to your manuscript <br>
-        None of that is feedback. That's just opinion. <br>
-        </p>
-        <h3 class="mt-4 font-semibold text-sienna">
-        <i>What You Actually Need</i> </h3>
+            <div class="mt-6 text-center">
+              <span class="text-sienna font-medium text-sm">Learn More →</span>
+            </div>
+          </div>
+        </a>
 
-        <p class="mt-3 text-olive max-w-prose">
-        Someone who can tell you: <br>
-        ✓ Why readers might get confused on page 47 <br>
-        ✓ What structural issue is making your middle drag <br>
-        ✓ How to fix your protagonist's motivation without rewriting everything <br> <br> 
-      </p>
+        <!-- Developmental Editing Card -->
+        <a href="developmental-editing.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30 flex flex-col">
+            <div class="text-center mb-4">
+              <h3 class="font-heading text-xl text-umber group-hover:text-sienna transition">
+                Developmental Editing
+              </h3>
+              
+              <span class="inline-block mt-2 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-4 py-1 text-sm font-semibold">
+                $150 per 10k words
+              </span>
+            </div>
 
-        <p class="mt-3 text-olive max-w-prose"> <b>That's story analysis. </b> <br><br> 
-        I read your manuscript and diagnose what's not working.<br> <br>
-        Then I tell you exactly what to fix and why.
-        You'll understand the craft principle at play, so you can revise with confidence instead of guesswork. <br> <br> 
-        The how is up to you - you have full creative control - but you'll know exactly where to focus your revision energy.
-        No vague "this didn't work for me" feedback. You get actionable direction. </p>
+            <p class="mt-4 text-olive text-sm flex-grow">
+              Perfect for manuscripts that need both big-picture development and sentence-level refinement. I'm a reader first, noting gut reactions and explaining why they occurred and how to fix what's objectively off and cheering what's working brilliantly.
+            </p>
 
-      </aside>
+            <div class="mt-6 text-center">
+              <span class="text-sienna font-medium text-sm">Learn More →</span>
+            </div>
+          </div>
+        </a>
 
-      <aside class="rounded-xl bg-parchment p-6 ring-1 ring-gold/20">
-        <h2 class="font-heading text-2xl text-umber">What You'll Walk Away With</h2>
-        <p class="mt-3 font-semibold text-sienna">When I analyze your manuscript, you'll get:</p>
-        <ul class="mt-4 list-disc list-inside text-olive space-y-2">
-          <p> <b>✓ Big-picture Story Analysis</b> <br>
-            <ul class="list-disc pl-12 space-y-1">
-              <li>Overall Reader Experience & Impressions</li> 
-              <li>Plot Stucture and Logic</li>
-              <li>Character Work</li>
-              <li>Setting and worldbuilding</li>
-              <li>Theme (if applicable) </li>
-            </ul>
-          </p>
-          <p> <b>✓ Micro-level Story Analysis</b><br>
-            <ul class="list-disc pl-12 space-y-1"> 
-              <li>POV & Voice</li>
-              <li>Pacing & Tension</li>
-              <li>Scene & Chapter Effectiveness</li>
-              <li>Opening & Ending</li>
-            </ul>
-          </p>
-          <p><b>✓ Detailed In-line Comments</b></br>
-           Real-time reactions on your manuscript as I read: where I was engaged, confused, or losing interest. This shows you exactly what a reader experiences.
-          </p>
-          <p><b>✓ Comprehensive Story Analysis Report</b></br>
-            A thorough written analysis (8-18 pages) covering everything above, plus:
-            <ul class="list-disc pl-12 space-y-1">
-              <li>What's working really well</li>
-              <li>What needs revision and why</li>
-              <li>Multiple solution options for major issues</li>
-              <li>Answers to your specific questions</li>
-            </ul>
-          </p>
-          <p><b>✓ Hour Long Follow-up Call</b></br>
-            Discuss your revision strategy, brainstorm solutions, or get clarity on anything in the report. The time is yours to use however helps you most.
-          </p>
-        </ul>
-      </aside>
-    </div>
-  </section>
+        <!-- Story Development Card -->
+        <a href="story-development.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30 flex flex-col">
+            <div class="text-center mb-4">
+              <h3 class="font-heading text-xl text-umber group-hover:text-sienna transition">
+                Story Development
+              </h3>
+              
+              <span class="inline-block mt-2 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-4 py-1 text-sm font-semibold">
+                $1,000 (up to 10k words)
+              </span>
+            </div>
 
-  <!-- Why Get Feedback Early? -->
-  <section class="py-12">
-    <div class="max-w-5xl mx-auto px-6">
-      <h3 class="font-heading text-2xl text-umber" style="text-align: center;">Why Get Story Analysis Early?</h3>
-      <p class="mt-3 text-olive" style="text-align: center;"> Here's why you should get story analysis before anything else:</p>
-      <div class="mt-4 grid md:grid-cols-2 gap-8">
-        <div class="bg-paper rounded-lg p-6 shadow-soft">
-          <h4 class="font-heading text-lg text-umber">What Happens To Other Authors:</h4>
-          <p>
-              <ol class="mt-3 text-olive"> 
-                <li>1. Finish draft</li>
-                <li>2. Spend 2-3 months revising blindly, guessing what needs fixing </li>
-                <li>3. Hunt for beta readers (post in groups, beg friends, bribe family...)</li>
-                <li>4. Wait weeks (sometimes months) for responses</li>
-                <li>5. Get vague feedback: "I liked the main character but something felt off"</li>
-                <li>6. Get conflicting feedback: One person loved the pacing, another thought it dragged</li>
-                <li>7. Revise again based on guesses, still not sure if you're fixing the right things</li>
-                <li>8. Post on Reddit asking "Is my manuscript ready?" Get 47 different answers</li>
-                <li>9. Hire a $2,000-3,000 developmental editor out of frustration</li>
-                <li>10. Spend 4-6 months doing major structural rewrites</li>
-                <li>11. Seek more beta readers to validate changes</li>
-                <li>12. Finally move forward (exhausted, broke, and burned out)</li>
-            </ol>
-          </p>
-          <p class="mt-3 font-semibold text-sienna"> 
-          Total time: 8-12 months<br>
-          Total cost: $2,500 - 3,500+ <br>
-          Emotional toll: high
-        </p>
-        </div>
+            <p class="mt-4 text-olive text-sm flex-grow">
+              You have fragments of that one idea everywhere - Google Docs, planners, Scrivener, even that pile of copier paper your pet likes to chew on. Send it all to me, and I'll turn it into a working draft with unlimited revisions. Together, we'll nail your characters, plot, pacing, and setting so you can finally start working on your magnum opus.
+            </p>
 
-        <div class="bg-paper rounded-lg p-6 shadow-soft">
-          <h4 class="font-heading text-lg text-umber">What Happens To My Clients:</h4>
-          <p>
-              <ul class="mt-3 text-olive"> 
-              <li>1. Finish draft</li>
-              <li>2. Revision pass to tighten the story</li>
-              <li>3. Get story analysis ($200-$1000)</li>
-              <li>4. Revise once with clear structural direction</li>
-              <li>5. Send to beta readers for reader experience (knowing structure is solid)</li>
-              <li>6. Make minor tweaks based on beta input</li>
-              <li>7. Continue on to the next stage of your publishing journey</li>
-            </ul>
-          </p>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <p class="mt-3 font-semibold text-sienna"> 
-          Total time: 3-6 months<br>
-          Total cost: $200 - $1000<br>
-          Confidence level: High
-          </p>
-        </div>
+            <div class="mt-6 text-center">
+              <span class="text-sienna font-medium text-sm">Learn More →</span>
+            </div>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
 
-  <!-- Is This For You? -->
+    <!-- Is This For You? -->
   <section class="bg-paper py-12">
   <div class="max-w-6xl mx-auto px-6">
   <h3 class="font-heading text-2xl text-umber">Is This For You?</h3>
   <p class="mt-4 text-olive max-w-prose">
     <h4 class="font-heading text-lg text-umber">You're in the right place if:</h4>
       <p>
-          <ul class="list-disc mt-3 text-olive pl-12 space-y-1"> 
+        <ul class="list-disc mt-3 text-olive pl-12 space-y-1"> 
           <li>You've finished a draft but aren't sure if the story actually works</li>
           <li>You're stuck and need direction for your next revision</li>
-          <li>You’re still finding your story and looking for guidance on how to proceed</li>
-          <li>You've gotten feedback before but it was too vague to be useful</li>
-          <li>You've studied the craft but can't figure out how to apply it to YOUR story</li>
-          <li>You're preparing to self-publish or query agents and want to ensure your book is strong first</li>
+          <li>Your draft is complete but needs expert diagnosis on what's working and what could be improved</li>
+          <li>You need deep structural analysis before hitting the publish button</li>
+          <li>You have a world, characters, and a vision but can't translate it into a working draft</li>
+          <li>You're drowning in outlines and notes and need someone to synthesize it into structure you can follow</li>
         </ul>
       </p> 
       <br> 
     <h4 class="font-heading text-lg text-umber">This isn't for you if:</h4>
       <p>
-          <ul class="list-disc mt-3 text-olive pl-12 space-y-1"> 
-          <li>Your manuscript is still a rough first draft that needs basic editing before it's readable (clean it up first, then come back!)</li>
-          <li>Your manuscript needs grammar or copyediting (I focus on story, not sentences)</li>
-          <li>You want someone to rewrite your book for you (I give direction; you do the revisions)</li>
-          <li>You're not open to honest feedback about what needs improvement</li>
+        <ul class="list-disc mt-3 text-olive pl-12 space-y-1"> 
+          <li>Your manuscript isn't readable yet (I need to follow the story, not decode it)</li>
+          <li>You're looking for line editing, grammar fixes, or copyediting (I diagnose story problems, not sentence problems)</li>
+          <li>You want someone to fix your book for you (I show you what's broken and how to fix it, but you do the work)</li>
+          <li>You're not ready for honest feedback (I tell you what's not working and what you can do better, and that might sting)</li>
         </ul>
       </p>
     <div class="max-w-3xl mx-auto mt-8 bg-sienna/10 border-x-4 border-sienna text-umber rounded-xl p-5 shadow-soft">
@@ -321,24 +290,92 @@
   </div>
   </section>
 
-<!-- Too Good To Be True? -->
+    <!-- Genres SECTION -->
+  <section class="py-14 bg-paper">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber text-center mb-8">Genres I Work With</h2>
+
+      <p class="text-olive text-center mb-8 max-w-prose mx-auto">
+        I work with Middle Grade, YA, New Adult, and Adult fiction across the following genres:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="mx-auto shadow-soft text-left text-sm border border-sienna/20">
+          <thead class="bg-sienna/10 text-umber font-heading">
+            <tr>
+              <th class="px-4 py-3">Genre</th>
+              <th class="px-4 py-3">Examples</th>
+            </tr>
+          </thead>
+          <tbody class="text-olive">
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Dystopian/Post-Apocalyptic/Alternate World</td>
+              <td class="px-4 py-3">Hunger Games, Divergent, World War Z</td>
+            </tr>
+            <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Mystery/Thriller/Crime/Detective/Suspense</td>
+              <td class="px-4 py-3">Gone Girl, One of Us Is Lying, We Were Liars</td>
+            </tr>
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Concept-First Sci-Fi</td>
+              <td class="px-4 py-3"> Dune, 1984, Mickey 17</td>
+            </tr>
+            <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Adventure & Coming-of-Age</td>
+              <td class="px-4 py-3">Harry Potter, Percy Jackson, The Chronicles of Narnia</td>
+            </tr>
+              <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Animal Fiction</td>
+              <td class="px-4 py-3">Watership Down, Animal Farm, Warrior Cats, Redwall</td>
+            </tr>
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Fantasy</td>
+              <td class="px-4 py-3">Game of Thrones, The Lord of the Rings, Mistborn</td>
+            </tr>
+            <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Contemporary Fiction</td>
+              <td class="px-4 py-3">The Fault in Our Stars, Little Women, Looking for Alaska</td>
+            </tr>
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Horror</td>
+              <td class="px-4 py-3">Frankenstein, Dracula, The Shining</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 max-w-4xl mx-auto">
+        <div class="bg-sienna/10 border-l-4 border-sienna rounded-lg p-6">
+          <p class="text-olive text-sm mb-4">
+            <span class="font-semibold text-umber">A note on romance:</span> I enjoy romance as a subplot, not as a standalone title.
+          </p>
+          <p class="text-olive text-sm">
+            <span class="font-semibold text-umber">I don't work with:</span> Hard erotica or erotica as a primary genre.
+          </p>
+          <p class="text-olive text-sm mt-4">
+            Not seeing your genre? <a href="#contact" class="text-sienna font-medium">Email me</a> - I might still be a good fit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Too Good To Be True? -->
 <section class="py-12">
   <div class="max-w-5xl mx-auto px-6">
-    <h3 class="font-heading text-2xl text-umber text-center">Is This Too Good To Be True?</h3>
+    <h3 class="font-heading text-2xl text-umber text-center">Sounds Too Good To Be?</h3>
     <p class="mt-3 text-olive text-center">With everyone on the internet trying to make a quick buck off the next person, why should you trust me?</p>
-
-    <!-- GRID: two cards side by side -->
     <div class="mt-8 grid md:grid-cols-2 gap-8">
 
       <!-- Card 1 -->
       <div class="bg-paper rounded-lg p-6 shadow-soft">
         <h4 class="font-heading text-lg text-umber">I get it. You've probably seen:</h4>
         <ul class="mt-3 text-olive list-disc pl-6 space-y-2"> 
-          <li>Cheap services on Fiverr that promise professional feedback for $50</li>
+          <li>Services on Fiverr that promise professional feedback but end up delivering an AI written report</li>
+          <li>Feedback so vague it could apply to any manuscript ("the pacing needs work," "the characters need depth")</li>
           <li>Beta readers who disappeared after you sent your manuscript</li>
-          <li>Critique partners who gave feedback that made things worse</li>
         </ul>
-        <p class="mt-3 text-olive">You're wondering: <b>Is this another waste of money?</b></p>
+        <p class="mt-3 text-olive">You're wondering: <b>Is this another waste of time and money?</b></p>
       </div>
 
       <!-- Card 2 -->
@@ -347,7 +384,7 @@
         <ul class="mt-3 text-olive"> 
           <li>
             <b>1. You see my work before paying anything.</b><br>
-            Send me your trickiest chapter (up to 3,000 words). If my feedback doesn't click with you, you got free insight and lost nothing.
+            Send me your trickiest chapter/scene (up to 2,000 words). If my feedback doesn't click with you, you got free insight and lost nothing.
           </li>
           <li>
             <b>2. You see sample reports from real clients.</b><br>
@@ -364,93 +401,7 @@
   </div>
 </section>
 
-
-  <!-- Samples -->
-     <!--UNCOMMENT THIS WHEN SAMPLES ARE READY
-  <section id="samples" class="bg-paper py-14">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="font-heading text-2xl text-umber">See My Work First</h2>
-      <p class="mt-2 text-olive">Read sample reader reports to see exactly how I analyze manuscripts before you commit.</p>
-
-      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <article class="bg-paper rounded-xl p-6 shadow-soft border border-gold/12">
-          <h3 class="font-heading text-lg text-umber">Fantasy Manuscript Critique</h3>
-          <p class="mt-1 text-sienna font-medium">Fantasy</p>
-          <p class="mt-2 text-olive text-sm">Sample Report - 8 pages</p>
-          <a class="mt-4 inline-block bg-sienna text-paper px-4 py-2 rounded-md font-medium hover:bg-sienna/90" 
-            href="ADD PDF HERE" target="_blank">
-            Read Sample
-          </a>
-        </article>
-
-        <article class="bg-paper rounded-xl p-6 shadow-soft border border-gold/12">
-          <h3 class="font-heading text-lg text-umber">Contemporary Fiction Feedback</h3>
-          <p class="mt-1 text-sienna font-medium">Contemporary</p>
-          <p class="mt-2 text-olive text-sm">Sample Report - 12 pages</p>
-          <a class="mt-4 inline-block bg-sienna text-paper px-4 py-2 rounded-md font-medium hover:bg-sienna/90" 
-            href="ADD PDF HERE" target="_blank">
-            Read Sample
-          </a>
-        </article>
-
-        <article class="bg-paper rounded-xl p-6 shadow-soft border border-gold/12">
-          <h3 class="font-heading text-lg text-umber">Thriller Analysis</h3>
-          <p class="mt-1 text-sienna font-medium">Thriller/Mystery</p>
-          <p class="mt-2 text-olive text-sm">Sample Report - 10 pages</p>
-          <a class="mt-4 inline-block bg-sienna text-paper px-4 py-2 rounded-md font-medium hover:bg-sienna/90" 
-            href="ADD PDF HERE" target="_blank">
-            Read Sample
-          </a>
-        </article>
-      </div>
-
-  <p class="mt-6 text-sm text-olive">Want to see my writing too? Check out my <a href="#fiction" class="text-umber font-medium">original fiction on Substack</a></p>
-  </div>
-  </section>
--->
- <section id="samples" class="bg-paper py-14">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="font-heading text-2xl text-umber">See My Work First</h2>
-    <p class="mt-2 text-olive">Download free resources to see exactly how I analyze manuscripts before you commit.</p>
-
-    <div class="mt-8 grid sm:grid-cols-3 gap-6 items-stretch">
-
-      <!-- Left Card -->
-      <article class="bg-paper rounded-xl p-6 shadow-soft border border-gold/12 flex flex-col justify-between">
-        <h3 class="font-heading text-lg text-umber">Character Analysis Sample</h3>
-        <p class="mt-1 text-sienna font-medium">From an Alternate Dimension Fantasy Epic</p>
-        <p class="mt-2 text-olive text-sm">A section from a real report showing how I diagnose character issues and provide multiple solutions. Client permission granted.</p>
-        <a href="#" onclick="return false;" class="mt-4 inline-block bg-sienna text-paper px-4 py-2 rounded-md font-medium opacity-50 cursor-not-allowed">
-          Read Sample
-        </a>
-      </article>
-
-      <!-- Featured Middle Card -->
-      <article class="bg-paper rounded-xl p-8 shadow-lg border-2 border-gold flex flex-col justify-between transform scale-105">
-        <h3 class="font-heading text-lg text-umber">Self-Edit Checklist</h3>
-        <p class="mt-1 text-sienna font-medium">Free Resource</p>
-        <p class="mt-2 text-olive text-sm">A comprehensive checklist covering the same story elements I analyze in my reports. Designed for self-editing.</p>
-        <a href="The Self-Edit Checklist.pdf" class="mt-4 inline-block bg-gold text-paper px-4 py-2 rounded-md font-medium hover:bg-gold/90 transition" target="_blank">
-          Download Checklist
-        </a>
-      </article>
-
-      <!-- Right Card -->
-      <article class="bg-paper rounded-xl p-6 shadow-soft border border-gold/12 flex flex-col justify-between">
-        <h3 class="font-heading text-lg text-umber">Story Analysis Overview</h3>
-        <p class="mt-1 text-sienna font-medium">Contemporary Fiction</p>
-        <p class="mt-2 text-olive text-sm">A simplified overview of a full story analysis report, showing my process and feedback style.</p>
-        <a href="#" onclick="return false;" class="mt-4 inline-block bg-sienna text-paper px-4 py-2 rounded-md font-medium opacity-50 cursor-not-allowed">
-          Read Sample
-        </a>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-  <!-- Testimonials -->
+  <!-- Reviews SECTION -->
   <section id="reviews" class="bg-parchment py-14">
   <div class="max-w-6xl mx-auto px-6 text-center">
   <h2 class="font-heading text-2xl text-umber">What Authors Are Saying</h2>
@@ -466,18 +417,6 @@
     </blockquote>
 
     <blockquote class="bg-paper p-6 rounded-xl shadow-soft text-olive">
-      <p>"She was so thorough that the document she sent back rivaled mine!"</p>
-    </blockquote>
-
-    <blockquote class="bg-paper p-6 rounded-xl shadow-soft text-olive">
-      <p>"She delivered five days ahead of time... She was able to explain her thoughts and suggestions very clearly - both in the report and on call."</p>
-    </blockquote>
-
-    <blockquote class="bg-paper p-6 rounded-xl shadow-soft text-olive">
-      <p>"The best thing about this service was her little comments peppered all over my manuscript. It was such a joy reading them and seeing her gush over my characters!"</p>
-    </blockquote>
-
-    <blockquote class="bg-paper p-6 rounded-xl shadow-soft text-olive">
       <p>"I was stuck on plot and pacing issues for months. After her critique, I could see exactly what was working and what was not. Absolutely invaluable!"</p>
     </blockquote>
   </div>
@@ -488,183 +427,66 @@
   </div>
   </section>
 
-<!-- Pricing Section -->
-<section id="pricing" class="py-14 bg-paper">
-  <div class="max-w-4xl mx-auto px-6">
+ <!-- Blog SECTION
+  <section class="py-14">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber text-center mb-2">Read My Blog</h2>
+      <p class="text-olive text-center mb-10 text-sm">I analyze stories to understand craft principles. See how I read.</p>
 
-    <!-- Section Title -->
-    <div class="text-center mb-4">
-      <h2 class="font-heading text-2xl text-umber">What It Costs</h2>
-    </div>
-
-    <!-- Pricing Justification -->
-    <div class="text-center mb-8 text-olive text-sm">
-      <p>Pricing scales with word count. Longer manuscripts require more time and care to ensure the story shines.</p>
-      <p>Use the calculator below for an exact quote.</p>
-    </div>
-
-    <!-- Pricing Calculator -->
-    <div class="text-center mb-10">
-      <div class="bg-paper rounded-xl shadow-soft p-6 md:p-10 max-w-4xl mx-auto">
-        <div class="flex flex-col items-center gap-4 max-w-xl mx-auto">
-          <label for="word-count" class="text-umber font-medium">Word Count</label>
-          <input type="number" id="word-count" min="0" max="200000" placeholder="e.g. 75,000"
-            class="rounded-lg border border-gold/20 p-3 text-olive w-full text-center focus:outline-none focus:ring-2 focus:ring-sienna/40">
-
-          <div id="price-result"
-            class="bg-paper border border-gold/20 rounded-lg py-3 px-4 text-olive font-medium text-center w-full min-h-[48px] flex items-center justify-center">
-            Enter your word count above
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="blog.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30">
+            <span class="text-xs font-semibold text-sienna bg-sienna/10 px-2 py-1 rounded">TV/Series</span>
+            <h3 class="font-heading text-lg text-umber group-hover:text-sienna transition mt-3">
+              Why Stranger Things Can't Let Characters Die
+            </h3>
+            <p class="mt-3 text-olive text-sm">
+              A breakdown of how avoiding character death undermines emotional stakes and what writers can learn.
+            </p>
+            <p class="text-xs text-olive mt-4">Read on Reddit →</p>
           </div>
-        </div>
+        </a>
+
+        <a href="blog.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30">
+            <span class="text-xs font-semibold text-sienna bg-sienna/10 px-2 py-1 rounded">TV/Series</span>
+            <h3 class="font-heading text-lg text-umber group-hover:text-sienna transition mt-3">
+              How Lost Lost Its Audience
+            </h3>
+            <p class="mt-3 text-olive text-sm">
+              Why mystery-focused stories fail when they can't deliver satisfying answers to reader expectations.
+            </p>
+            <p class="text-xs text-olive mt-4">Read on Reddit →</p>
+          </div>
+        </a>
+
+        <a href="blog.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30">
+            <span class="text-xs font-semibold text-sienna bg-sienna/10 px-2 py-1 rounded">TV/Series</span>
+            <h3 class="font-heading text-lg text-umber group-hover:text-sienna transition mt-3">
+              Why Early Walking Dead Nailed Character Death
+            </h3>
+            <p class="mt-3 text-olive text-sm">
+              How the first seasons understood that deaths matter. A contrast in storytelling approaches.
+            </p>
+            <p class="text-xs text-olive mt-4">Read on Reddit →</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="blog.html" class="text-sienna font-medium">View All Posts →</a>
       </div>
     </div>
-
-    <!-- Pricing Table -->
-    <div class="overflow-x-auto">
-      <table class="w-full rounded-lg shadow-soft text-left text-sm border border-sienna/20">
-        <thead class="bg-sienna/10 text-umber font-heading">
-          <tr>
-            <th class="px-4 py-3">Tier</th>
-            <th class="px-4 py-3">Word Count</th>
-            <th class="px-4 py-3">Price Range</th>
-            <th class="px-4 py-3">Delivery</th>
-          </tr>
-        </thead>
-        <tbody class="text-olive">
-          <!-- Quick Read -->
-          <tr class="bg-parchment/70">
-            <td class="px-4 py-3 font-medium text-umber">Quick Read</td>
-            <td class="px-4 py-3">Up to 30k</td>
-            <td class="px-4 py-3 font-semibold text-umber">$200</td>
-            <td class="px-4 py-3 text-sienna font-medium">~5 days</td>
-          </tr>
-          <tr class="bg-parchment/5">
-            <td colspan="4" class="px-4 py-4 text-olive text-sm leading-relaxed">
-              Perfect for novellas or trying the service out.<br>
-              <span class="text-xs">Full credit applies toward a complete manuscript analysis</span>
-            </td>
-          </tr>
-
-          <!-- Standard Novel -->
-          <tr class="bg-parchment/70">
-            <td class="px-4 py-3 font-medium text-umber">Standard Novel</td>
-            <td class="px-4 py-3">30k - 60k</td>
-            <td class="px-4 py-3 font-semibold text-umber">$200 - $450</td>
-            <td class="px-4 py-3 text-sienna font-medium">~14 days</td>
-          </tr>
-          <tr class="bg-parchment/5">
-            <td colspan="4" class="px-4 py-4 text-olive text-sm leading-relaxed">
-              Most common novel length
-            </td>
-          </tr>
-
-          <!-- Lengthy Tale -->
-          <tr class="bg-parchment/70">
-            <td class="px-4 py-3 font-medium text-umber">Lengthy Tale</td>
-            <td class="px-4 py-3">60k - 90k</td>
-            <td class="px-4 py-3 font-semibold text-umber">$450 - $800</td>
-            <td class="px-4 py-3 text-sienna font-medium">~21 days</td>
-          </tr>
-          <tr class="bg-parchment/5">
-            <td colspan="4" class="px-4 py-4 text-olive text-sm leading-relaxed">
-              Longer manuscripts with full story depth
-            </td>
-          </tr>
-
-          <!-- Epic Journey -->
-          <tr class="bg-parchment/70">
-            <td class="px-4 py-3 font-medium text-umber">Epic Journey</td>
-            <td class="px-4 py-3">90k - 120k</td>
-            <td class="px-4 py-3 font-semibold text-umber">$800 - $1,200</td>
-            <td class="px-4 py-3 text-sienna font-medium">~28 days</td>
-          </tr>
-          <tr class="bg-parchment/5">
-            <td colspan="4" class="px-4 py-4 text-olive text-sm leading-relaxed">
-              Epic-length novels with complex narratives
-            </td>
-          </tr>
-
-        </tbody>
-      </table>
-    </div>
-
-    <div class="mt-6 text-center text-sm text-olive space-y-2">
-      <p><span class="font-semibold text-umber">Remember:</span> First 3,000 words read FREE</p>
-      <p class="text-xs text-olive/70">Delivery times are estimates and may vary based on current workload</p>
-      <p class="text-xs text-olive/70">Manuscripts over 120,000 words require custom pricing — <a href="mailto:info.studiomarginalia@gmail.com" class="text-sienna underline">contact me</a> for a quote</p>
-    </div>
-
-  </div>
-
-  <!-- Pricing Calculator Script -->
-  <script>
-  document.getElementById('word-count').addEventListener('input', function() {
-    const wordCount = parseInt(this.value);
-    const resultDiv = document.getElementById('price-result');
-
-    if (!wordCount || wordCount < 0) {
-      resultDiv.innerHTML = 'Enter your word count above';
-      resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-olive font-medium text-center w-full min-h-[48px] flex flex-col items-center justify-center';
-      return;
-    }
-
-    if (wordCount <= 3000) {
-      resultDiv.innerHTML = '<span class="text-2xl">FREE</span>';
-      resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-sienna font-bold text-center w-full min-h-[48px] flex items-center justify-center';
-      return;
-    }
-
-    if (wordCount > 120000) {
-      resultDiv.innerHTML = `
-        <div class="flex flex-col items-center">
-          <span class="text-lg font-semibold text-umber">Custom Pricing Required</span>
-          <span class="text-sm text-olive mt-1">Please contact for manuscripts over 120k words</span>
-        </div>
-      `;
-      resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-center w-full min-h-[48px] flex items-center justify-center';
-      return;
-    }
-
-    let price;
-    let delivery;
-
-    if (wordCount <= 30000) {
-      price = 200;
-      delivery = '~5 days';
-    } else if (wordCount <= 60000) {
-      const over = wordCount - 30000;
-      price = 200 + (over * 0.0083); // 200 → 450
-      delivery = '1-2 weeks';
-    } else if (wordCount <= 90000) {
-      const over = wordCount - 60000;
-      price = 450 + (over * 0.0117); // 450 → 800
-      delivery = '2-3 weeks';
-    } else if (wordCount <= 120000) {
-      const over = wordCount - 90000;
-      price = 800 + (over * 0.0133); // 800 → 1200
-      delivery = '3-4 weeks';
-    }
-
-    price = Math.round(price / 5) * 5;
-
-    resultDiv.innerHTML = `
-      <div class="flex flex-col items-center">
-        <span class="text-2xl font-bold text-umber">$${price.toLocaleString()}</span>
-        <span class="text-sm text-sienna mt-1">Delivery: ${delivery}</span>
-      </div>
-    `;
-    resultDiv.className = 'bg-paper border border-gold/20 rounded-lg py-3 px-4 text-center w-full min-h-[48px] flex items-center justify-center';
-  });
-  </script>
-</section>
-
-
+  </section>
+  -->
+  
   <!-- How it Works -->
   <section class="py-14">
   <div class="max-w-6xl mx-auto px-6">
   <h2 class="font-heading text-2xl text-umber text-center">How It Works</h2>
 
-  <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
     <div class="bg-paper p-6 rounded-lg shadow-soft">
       <div class="text-2xl font-heading text-umber">1</div>
       <h4 class="mt-2 font-heading text-lg text-umber">Free Sample (No Strings Attached)</h4>
@@ -684,7 +506,7 @@
         Everything is transparent and straightforward.
         <br>
         <br>
-        Payment is via PayPal Xoom.
+        Payment is via PayPal Xoom or Western Union.
       </p>
     </div>
 
@@ -696,258 +518,17 @@
 
     <div class="bg-paper p-6 rounded-lg shadow-soft">
       <div class="text-2xl font-heading text-umber">4</div>
-      <h4 class="mt-2 font-heading text-lg text-umber">Get Your Feedback</h4>
-      <p class="mt-2 text-olive text-sm">Within 28 days, you will receive your feedback in the form of:
-        <ul class="mt-2 text-olive text-sm list-disc pl-6 space-y-1">
-          <li>Your manuscript with detailed in-line comments</li>
-          <li>Comprehensive story analysis report (8-18 pages)</li>
-          <li>Answers to your specific questions</li>
-        </ul>
-      </p>
-    </div>
-
-    <div class="bg-paper p-6 rounded-lg shadow-soft">
-      <div class="text-2xl font-heading text-umber">5</div>
-      <h4 class="mt-2 font-heading text-lg text-umber">Follow-Up Call</h4>
-      <p class="mt-2 text-olive text-sm">Take time to digest the feedback (no rush!) then book your complimentary hour-long call.
-        <br>
-        <br>
-        We can discuss revision strategy, brainstorm solutions to story problems, talk through your characters, or address anything from the report. The time is yours to use however helps you most.</p>
-    </div>
-
-    <div class="bg-paper p-6 rounded-lg shadow-soft">
-      <div class="text-2xl font-heading text-umber">6</div>
-      <h4 class="mt-2 font-heading text-lg text-umber">Revise with Confidence</h4>
-        <p class="mt-2 text-olive text-sm"> No more guessing. No more revising in circles. You'll know exactly what's broken, why it's not working, and how to fix it.
-        <br>
-        <br>
-        When you're done revising, you can come back for a Revision Read at <b>50% off</b> the original price! I'll re-read your manuscript to ensure your changes hold up and your story is ready for the next stage.</p>
+      <h4 class="mt-2 font-heading text-lg text-umber">Get Your Feedback (Service-Dependent)</h4>
+      <p class="mt-2 text-olive text-sm">Feedback format, depth, timelines, and any follow-up options depend on the service you choose.
+      Full details are outlined on each service page.</p>
     </div>
 
   </div>
   </div>
   </section>
 
-  <!-- FAQ Accordion -->
-<section id="faq" class="py-14 bg-paper">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="font-heading text-2xl text-umber text-center">Questions You Might Have</h2>
-
-    <div class="mt-6 space-y-2">
-
-      <!-- FAQ Item 1 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          How is this different from regular beta readers?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Beta readers give opinions and emotional reactions: "I liked this," "I was confused here." Helpful for gauging reader experience, but it doesn't tell you why something isn't working or how to fix it. I give diagnostic feedback: "Your protagonist's motivation is unclear in chapter 3, which is why readers might not buy this choice. Here are three ways to fix it." Think of beta readers as test audiences. I'm the doctor diagnosing what's making your story sick.
-        </div>
-      </div>
-
-      <!-- FAQ Item 2 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          How is this different from developmental editing?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Developmental editors work on later drafts and often provide prescriptive solutions - rewriting passages, restructuring chapters, suggesting specific changes. I work on early drafts and give diagnostic feedback with multiple solution options. You maintain full creative control. Most clients find they can skip developmental editing after working with me and move straight on to the next stage of their publishing journey.
-        </div>
-      </div>
-
-      <!-- FAQ Item 3 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          Can I see examples of your feedback before I commit?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Absolutely! Three ways:
-          <ul class="list-disc ml-5 mt-2 space-y-1">
-            <li>Send me 3,000 words free — see my feedback style on YOUR manuscript with zero commitment</li>
-            <li>Download sample reports — read anonymized examples from past clients</li>
-            <li>Read my essays on Reddit — see how I think about story craft</li>
-          </ul>
-          The free sample is the best way to know if we're a good fit.
-        </div>
-      </div>
-
-      <!-- FAQ Item 4 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          Do you work with all genres?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-        I work with YA, middle grade, and adult fiction across most genres - especially narrative-heavy stories where character, plot, and worldbuilding matter. During the free sample analysis, I'll let you know if your story and genre are a good match. If we're not a fit, I'll tell you honestly.
-        </div>
-      </div>
-
-      <!-- FAQ Item 5 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          What if my manuscript isn't finished?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          I work with complete manuscripts only. Your story needs a beginning, middle, and end so I can properly assess plot structure, pacing, and whether your ending pays off the setup. Still writing or on draft one? Finish up, do a quick copy and line edit pass, and come back!
-        </div>
-      </div>
-
-      <!-- FAQ Item 6 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          What if I don't agree with your feedback?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Your story is yours. I'm here to point out blind spots and offer solutions, but you make all the final decisions. Good feedback gives you options, not orders.
-        </div>
-      </div>
-
-      <!-- FAQ Item 7 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          What if I've already gotten feedback from beta readers?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Perfect! I can help you make sense of conflicting feedback and identify the real structural issues beneath surface-level comments.
-        </div>
-      </div>
-
-      <!-- FAQ Item 8 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          Can you help if I'm planning to query agents?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Absolutely. I’ll help identify weak spots that might cause agents to pass, and make sure your opening chapters are strong.
-        </div>
-      </div>
-
-      <!-- FAQ Item 9 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          Do you also do copyediting or proofreading?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          No. I focus exclusively on story-level analysis—structure, character, pacing, plot logic. Once revised, you’ll want a copyeditor for grammar and sentence-level polish.
-        </div>
-      </div>
-
-      <!-- FAQ Item 10 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          What if I want you to read my revised manuscript after I make changes?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Perfect! That’s a Revision Read, offered at 50% off for returning clients. I’ll re-read your manuscript to make sure changes work and the story flows.
-        </div>
-      </div>
-
-      <!-- FAQ Item 11 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          How do you handle confidentiality?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Everything is covered in our contract. Your unpublished work is private and protected.
-        </div>
-      </div>
-
-      <!-- FAQ Item 12 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          What payment methods do you accept?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          I use PayPal Xoom or Western Union (buyer's choice!) for secure international payments.
-        </div>
-      </div>
-
-      <!-- FAQ Item 13 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          Do you offer payment plans?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Payment is due upfront for all tiers. For custom arrangements, email me to discuss options.
-        </div>
-      </div>
-
-      <!-- FAQ Item 14 -->
-      <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
-        <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-heading text-umber focus:outline-none">
-          How do I know you're legitimate?
-          <span x-text="open ? '-' : '+' " class="text-olive font-bold text-lg"></span>
-        </button>
-        <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
-          Download sample reports, send me 3,000 words free, read testimonials, or check my Substack and Reddit. If we're not a fit after the free sample, you got valuable feedback at zero risk.
-        </div>
-      </div>
-      <br>
-
-      <div class="mt-6 text-center">
-        <a href="mailto:info.studiomarginalia@gmail.com" class="text-umber font-medium">Have a different question? Email me →</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-  <!-- Alpine.js for dropdowns -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
-  <!-- About / Read My Fiction -->
-<section id="fiction" class="py-14 bg-parchment">
-  <div class="max-w-3xl mx-auto px-6 text-center">
-    <h2 class="font-heading text-2xl text-umber">Read My Writing. I Don't Just Analyze Stories, I Write Them</h2>
-
-    <p class="mt-4 text-olive">
-      Want to see if I understand story from the inside out? I publish in two places:
-    </p>
-
-    <!-- Craft Essays on Reddit -->
-    <div class="mt-6 bg-paper rounded-lg p-6 shadow-soft text-left">
-      <h3 class="font-semibold text-umber text-lg">Craft Essays on Reddit</h3>
-      <p class="mt-2 text-olive">
-        Mini-essays about plot, character, pacing, worldbuilding, and everything that makes fiction work. Handpicked from my personal story journal and pulled from questions I see writers asking.
-      </p>
-        <!--
-        <p class="mt-2">
-        <a href="https://www.reddit.com/r/StudioMarginalia/" target="_blank" class="text-sienna font-medium hover:underline">
-          Read My Craft Essays on r/StudioMarginalia
-        </a>
-      -->
-      </p>
-    </div>
-
-    <!-- Fiction on Substack -->
-    <div class="mt-6 bg-paper rounded-lg p-6 shadow-soft text-left">
-      <h3 class="font-semibold text-umber text-lg">Fiction on Substack</h3>
-      <p class="mt-2 text-olive">
-        Short stories, novelettes, and longer fiction showcasing character work, structure, and voice.
-      </p>
-      <!--
-      <p class="mt-2">
-        <span class="text-sienna font-medium">studiomarginalia.substack.com</span>
-      </p>
-    -->
-    </div>
-  </div>
-</section>
-
-  <!-- Contact -->
-  <section id="contact" class="py-14 bg-paper">
+  <!-- CONTACT SECTION -->
+    <section id="contact" class="py-14 bg-paper">
     <div class="max-w-4xl mx-auto px-6">
       <div class="text-center mb-8">
         <h2 class="font-heading text-2xl text-umber">Contact</h2>
@@ -986,9 +567,10 @@
       <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
       <select name="interest" id="interest" required class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
         <option value="" disabled selected>Select an option</option>
-        <option value="free-sample">Free 3,000 Word Sample Analysis</option>
-        <option value="purchase">Purchase Full Service</option>
-        <option value="chat">Quick Chat About Service</option>
+        <option value="free-sample">Free 2000 Word Sample Edit</option>
+        <option value="beta-reading">Beta Reading</option>
+        <option value="manuscript-evaluation">Developmental Editing</option>
+        <option value="plot-to-draft">Story Development</option>
       </select>
     </div>
 
@@ -996,7 +578,7 @@
     <div class="flex flex-col md:col-span-2">
       <label for="message" class="mb-1 text-umber font-medium">Tell me about your book…</label>
       <textarea name="message" id="message" rows="5" placeholder="Write a brief description or short synopsis of your story." required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
-      <p class="text-xs text-olive mt-2">💡 Optional: If including a sample, add context for the scene or chapter and include a Google Docs link (up to 3,000 words). Make sure the link is set to 'Anyone with link can comment.'</p>
+      <p class="text-xs text-olive mt-2">💡 Optional: If including a sample, add context for the scene or chapter and include a Google Docs link (up to 2,000 words). Make sure the link is set to 'Anyone with link can comment.'</p>
     </div>
   </div>
 
@@ -1009,6 +591,7 @@
     </button>
   </div>
 </form>
+  
 
   <script>
   const form = document.getElementById('contact-form');
@@ -1044,42 +627,16 @@
   </script>
   </section>
 
-  <!-- Final CTA Section -->
-<section class="py-12 bg-parchment">
-  <div class="max-w-4xl mx-auto px-6 text-center">
-    <h2 class="font-heading text-3xl text-umber mb-4">
-      Still Not Sure? Test My Feedback Risk-Free.
-    </h2>
-    <p class="text-olive text-lg mb-6">
-      Send me your trickiest chapter (up to 3,000 words). See exactly how I work. Zero commitment required.
-    </p>
-    <a href="#contact" class="inline-block rounded-md bg-sienna text-paper px-8 py-3 font-semibold shadow-soft hover:bg-[#a2563f] text-lg">
-      Request Your Free Sample Analysis
-    </a>
-    <p class="mt-4 text-sm text-olive">
-      Or <a href="#samples" class="text-umber font-medium hover:underline">download the Self-Edit Checklist</a> to start self-editing today
-    </p>
-  </div>
-</section>
-
 </main>
 
 <!-- FOOTER -->
 <footer class="bg-umber text-paper py-10">
-<div class="max-w-6xl mx-auto px-6 text-center">
-<p class="font-heading text-lg">Studio Marginalia</p>
-<p class="text-sm mt-1">Professional Manuscript Feedback</p>
-<a class="mt-3 inline-block text-gold hover:text-rose" href="mailto:info.studiomarginalia@gmail.com">info.studiomarginalia@gmail.com</a>
-
-<div class="mt-4 flex items-center justify-center gap-4 flex-wrap text-sm">
-  <a href="#samples" class="hover:underline">Samples</a>
-  <a href="#reviews" class="hover:underline">Reviews</a>
-  <a href="#faq" class="hover:underline">FAQ</a>
-   <a href="#contact" class="hover:underline">Contact</a>
-</div>
-
-<p class="mt-4 text-xs text-gold/80">All manuscripts kept confidential • Working with authors worldwide</p>
-</div>
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-heading text-lg">Studio Marginalia</p>
+    <p class="text-sm mt-1">Entertainment First. Commas Later.</p>
+    <a class="mt-3 inline-block text-gold hover:text-rose" href="mailto:info.studiomarginalia@gmail.com">info.studiomarginalia@gmail.com</a>
+    <p class="mt-4 text-xs text-gold/80">All manuscripts kept confidential • Working with authors worldwide</p>
+  </div>
 </footer>
 
 <!-- Mobile nav script -->
@@ -1099,7 +656,6 @@
     });
   })();
 </script>
+
 </body>
 </html>
-
-
