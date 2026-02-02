@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studio Marginalia — Story Development</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: "#F5EDE1",
+            paper: "#FBF7F0",
+            ink: "#1A1A1A",
+            umber: "#1A1411",
+            sienna: "#B8694D",
+            olive: "#8A8377",
+            gold: "#D1B280",
+            rose: "#C97C7C"
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['"Lora"', 'serif']
+          },
+          boxShadow: {
+            'soft': '0 6px 18px rgba(26,26,26,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .parchment {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(208,180,130,0.03) 0 2%, transparent 2%),
+        radial-gradient(circle at 90% 80%, rgba(200,120,80,0.02) 0 2%, transparent 2%),
+        linear-gradient(180deg, #FBF7F0 0%, #F5EDE1 100%);
+      background-size: 400px 400px, 600px 600px, cover;
+    }
+    :focus {
+      outline: 2px solid rgba(184,105,77,0.12);
+      outline-offset: 3px;
+    }
+    a:not(.group):hover { text-decoration: underline; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #D1B280;
+      border-radius: 0.5rem;
+      box-shadow: 0 6px 18px rgba(26,26,26,0.06);
+      z-index: 50;
+      min-width: max-content;
+    }
+    .dropdown-trigger:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #1A1411;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #F5EDE1;
+    }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+    .dropdown-menu a:hover {
+      background: #F5EDE1;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="parchment text-ink font-body antialiased leading-relaxed">
+
+  <!-- NAV -->
+<header class="sticky top-0 z-40 bg-parchment/80 backdrop-blur-sm border-b border-gold/12">
+  <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium">
+    I do not use AI for my critique service. All feedback is human and personal.
+  </div>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="logo.png" alt="Logo" width="36" height="36">
+      <span class="font-heading text-2xl text-umber">Studio Marginalia</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="/" class="hover:text-sienna">Home</a>
+      
+      <!-- Services Dropdown -->
+      <div class="dropdown-trigger relative">
+        <button class="hover:text-sienna flex items-center gap-1">
+          Services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="beta-reading.html">Beta Reading</a>
+          <a href="developmental-editing.html">Developmental Editing</a>
+          <a href="story-development.html">Story Development</a>
+        </div>
+      </div>
+
+      <a href="about.html" class="hover:text-sienna">About</a>
+      <a href="blog.html" class="hover:text-sienna">Blog</a>
+      <a href="reviews.html" class="hover:text-sienna">Reviews</a>
+      <a href="contact.html" class="inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold shadow-soft hover:bg-[#a2563f]">Contact</a>
+    </nav>
+
+    <div class="md:hidden">
+      <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" class="p-2 rounded-md">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="md:hidden hidden border-t border-gold/12">
+    <div class="px-6 py-4 flex flex-col gap-3">
+      <a href="/" class="text-umber font-medium">Home</a>
+      <a href="beta-reading.html" class="text-umber font-medium pl-4">— Beta Reading</a>
+      <a href="developmental-editing.html" class="text-umber font-medium pl-4">— Developmental Editing</a>
+      <a href="story-development.html" class="text-umber font-medium pl-4">— Story Development</a>
+      <a href="about.html" class="text-umber font-medium">About</a>
+      <a href="blog.html" class="text-umber font-medium">Blog</a>
+      <a href="reviews.html" class="text-umber font-medium">Reviews</a>
+      <a href="contact.html" class="mt-2 inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold text-center">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO SECTION -->
+<section class="pt-16 pb-14 bg-paper">
+  <div class="max-w-4xl mx-auto px-6">
+    <!-- Hero box with image inside -->
+    <div class="bg-parchment rounded-lg shadow-lg overflow-hidden">
+      <!-- Even smaller image on top -->
+      <div class="w-full h-32 sm:h-40 md:h-48 bg-cover bg-center" style="background-image: url('heroimage.jpg');"></div>
+
+      <!-- Text content -->
+      <div class="p-8 sm:p-10 text-center">
+        <h1 class="font-heading text-4xl sm:text-5xl leading-tight text-umber">
+          <span class="highlight-underline">Deliver a Story Your Readers Can't Put Down</span>
+        </h1>
+
+        <p class="mt-5 text-lg text-olive max-w-prose mx-auto">
+          Get feedback designed around one principle: making sure your reader enjoys every page.
+          <br>
+          <b>Entertainment first.</b>
+          <br>
+          We can figure out where the commas go later.
+        </p>
+
+        <div class="mt-7">
+          <a href="#contact" class="inline-block rounded-md bg-sienna text-paper px-8 py-3 font-semibold shadow-soft hover:bg-[#a2563f]">
+            Get Free Sample Edit & Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES SECTION -->
+  <section id="services" class="py-14">
+    <h4 class="font-heading text-xl text-umber text-center mt-12 mb-8">Here's how we work together:</h4>
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Beta Reading Card -->
+        <a href="beta-reading.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30 flex flex-col">
+            <div class="text-center mb-4">
+              <h3 class="font-heading text-xl text-umber group-hover:text-sienna transition">
+                Beta Reading
+              </h3>
+              
+              <span class="inline-block mt-2 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-4 py-1 text-sm font-semibold">
+                $50 per 10k words
+              </span>
+            </div>
+
+            <p class="mt-4 text-olive text-sm flex-grow">
+              Will readers connect with your story? Get reader feedback from a professional on what works and what doesn't. I read your manuscript like your audience would and tell you exactly what I experienced, where I got hooked, where I got bored, and why.
+            </p>
+
+            <div class="mt-6 text-center">
+              <span class="text-sienna font-medium text-sm">Learn More →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Developmental Editing Card -->
+        <a href="developmental-editing.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30 flex flex-col">
+            <div class="text-center mb-4">
+              <h3 class="font-heading text-xl text-umber group-hover:text-sienna transition">
+                Developmental Editing
+              </h3>
+              
+              <span class="inline-block mt-2 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-4 py-1 text-sm font-semibold">
+                $150 per 10k words
+              </span>
+            </div>
+
+            <p class="mt-4 text-olive text-sm flex-grow">
+              Perfect for manuscripts that need both big-picture development and sentence-level refinement. I'm a reader first, noting gut reactions and explaining why they occurred and how to fix what's objectively off and cheering what's working brilliantly.
+            </p>
+
+            <div class="mt-6 text-center">
+              <span class="text-sienna font-medium text-sm">Learn More →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Story Development Card -->
+        <a href="story-development.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30 flex flex-col">
+            <div class="text-center mb-4">
+              <h3 class="font-heading text-xl text-umber group-hover:text-sienna transition">
+                Story Development
+              </h3>
+              
+              <span class="inline-block mt-2 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-4 py-1 text-sm font-semibold">
+                $1,000 (up to 10k words)
+              </span>
+            </div>
+
+            <p class="mt-4 text-olive text-sm flex-grow">
+              You have fragments of that one idea everywhere - Google Docs, planners, Scrivener, even that pile of copier paper your pet likes to chew on. Send it all to me, and I'll turn it into a working draft with unlimited revisions. Together, we'll nail your characters, plot, pacing, and setting so you can finally start working on your magnum opus.
+            </p>
+
+            <div class="mt-6 text-center">
+              <span class="text-sienna font-medium text-sm">Learn More →</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+    <!-- Is This For You? -->
+  <section class="bg-paper py-12">
+  <div class="max-w-6xl mx-auto px-6">
+  <h3 class="font-heading text-2xl text-umber">Is This For You?</h3>
+  <p class="mt-4 text-olive max-w-prose">
+    <h4 class="font-heading text-lg text-umber">You're in the right place if:</h4>
+      <p>
+        <ul class="list-disc mt-3 text-olive pl-12 space-y-1"> 
+          <li>You've finished a draft but aren't sure if the story actually works</li>
+          <li>You're stuck and need direction for your next revision</li>
+          <li>Your draft is complete but needs expert diagnosis on what's working and what could be improved</li>
+          <li>You need deep structural analysis before hitting the publish button</li>
+          <li>You have a world, characters, and a vision but can't translate it into a working draft</li>
+          <li>You're drowning in outlines and notes and need someone to synthesize it into structure you can follow</li>
+        </ul>
+      </p> 
+      <br> 
+    <h4 class="font-heading text-lg text-umber">This isn't for you if:</h4>
+      <p>
+        <ul class="list-disc mt-3 text-olive pl-12 space-y-1"> 
+          <li>Your manuscript isn't readable yet (I need to follow the story, not decode it)</li>
+          <li>You're looking for line editing, grammar fixes, or copyediting (I diagnose story problems, not sentence problems)</li>
+          <li>You want someone to fix your book for you (I show you what's broken and how to fix it, but you do the work)</li>
+          <li>You're not ready for honest feedback (I tell you what's not working and what you can do better, and that might sting)</li>
+        </ul>
+      </p>
+    <div class="max-w-3xl mx-auto mt-8 bg-sienna/10 border-x-4 border-sienna text-umber rounded-xl p-5 shadow-soft">
+    <p class="text-sm text-olive md:text-base leading-relaxed">Your manuscript should be readable: clear grammar and sentence structure. I don't expect perfection, just a draft polished enough to follow. If you're still on a 'vomit draft,' take another pass to clean it up so your book feels finished, complete, and ready to stand on its own.</p>
+    </div>
+  </p>
+  </div>
+  </section>
+
+    <!-- Genres SECTION -->
+  <section class="py-14 bg-paper">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber text-center mb-8">Genres I Work With</h2>
+
+      <p class="text-olive text-center mb-8 max-w-prose mx-auto">
+        I work with Middle Grade, YA, New Adult, and Adult fiction across the following genres:
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="mx-auto shadow-soft text-left text-sm border border-sienna/20">
+          <thead class="bg-sienna/10 text-umber font-heading">
+            <tr>
+              <th class="px-4 py-3">Genre</th>
+              <th class="px-4 py-3">Examples</th>
+            </tr>
+          </thead>
+          <tbody class="text-olive">
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Dystopian/Post-Apocalyptic/Alternate World</td>
+              <td class="px-4 py-3">Hunger Games, Divergent, World War Z</td>
+            </tr>
+            <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Mystery/Thriller/Crime/Detective/Suspense</td>
+              <td class="px-4 py-3">Gone Girl, One of Us Is Lying, We Were Liars</td>
+            </tr>
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Concept-First Sci-Fi</td>
+              <td class="px-4 py-3"> Dune, 1984, Mickey 17</td>
+            </tr>
+            <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Adventure & Coming-of-Age</td>
+              <td class="px-4 py-3">Harry Potter, Percy Jackson, The Chronicles of Narnia</td>
+            </tr>
+              <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Animal Fiction</td>
+              <td class="px-4 py-3">Watership Down, Animal Farm, Warrior Cats, Redwall</td>
+            </tr>
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Fantasy</td>
+              <td class="px-4 py-3">Game of Thrones, The Lord of the Rings, Mistborn</td>
+            </tr>
+            <tr class="bg-parchment/30">
+              <td class="px-4 py-3 font-medium text-umber">Contemporary Fiction</td>
+              <td class="px-4 py-3">The Fault in Our Stars, Little Women, Looking for Alaska</td>
+            </tr>
+            <tr class="bg-parchment/70">
+              <td class="px-4 py-3 font-medium text-umber">Horror</td>
+              <td class="px-4 py-3">Frankenstein, Dracula, The Shining</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-8 max-w-4xl mx-auto">
+        <div class="bg-sienna/10 border-l-4 border-sienna rounded-lg p-6">
+          <p class="text-olive text-sm mb-4">
+            <span class="font-semibold text-umber">A note on romance:</span> I enjoy romance as a subplot, not as a standalone title.
+          </p>
+          <p class="text-olive text-sm">
+            <span class="font-semibold text-umber">I don't work with:</span> Hard erotica or erotica as a primary genre.
+          </p>
+          <p class="text-olive text-sm mt-4">
+            Not seeing your genre? <a href="#contact" class="text-sienna font-medium">Email me</a> - I might still be a good fit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Too Good To Be True? -->
+<section class="py-12">
+  <div class="max-w-5xl mx-auto px-6">
+    <h3 class="font-heading text-2xl text-umber text-center">Sounds Too Good To Be?</h3>
+    <p class="mt-3 text-olive text-center">With everyone on the internet trying to make a quick buck off the next person, why should you trust me?</p>
+    <div class="mt-8 grid md:grid-cols-2 gap-8">
+
+      <!-- Card 1 -->
+      <div class="bg-paper rounded-lg p-6 shadow-soft">
+        <h4 class="font-heading text-lg text-umber">I get it. You've probably seen:</h4>
+        <ul class="mt-3 text-olive list-disc pl-6 space-y-2"> 
+          <li>Services on Fiverr that promise professional feedback but end up delivering an AI written report</li>
+          <li>Feedback so vague it could apply to any manuscript ("the pacing needs work," "the characters need depth")</li>
+          <li>Beta readers who disappeared after you sent your manuscript</li>
+        </ul>
+        <p class="mt-3 text-olive">You're wondering: <b>Is this another waste of time and money?</b></p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-paper rounded-lg p-6 shadow-soft">
+        <h4 class="font-heading text-lg text-umber">Here's why this is different:</h4>
+        <ul class="mt-3 text-olive"> 
+          <li>
+            <b>1. You see my work before paying anything.</b><br>
+            Send me your trickiest chapter/scene (up to 2,000 words). If my feedback doesn't click with you, you got free insight and lost nothing.
+          </li>
+          <li>
+            <b>2. You see sample reports from real clients.</b><br>
+            Download them. Read them. See exactly what level of analysis you're getting.
+          </li>
+          <li>
+            <b>3. All my early clients came back for more.</b><br>
+            Either for Revision Reads or their next manuscript. That doesn't happen if the feedback doesn't deliver.
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Reviews SECTION -->
+  <section id="reviews" class="bg-parchment py-14">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+  <h2 class="font-heading text-2xl text-umber">What Authors Are Saying</h2>
+
+  <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- use the testimonials supplied -->
+    <blockquote class="bg-paper p-6 rounded-xl shadow-soft text-olive">
+      <p>"She found every flaw I didn’t see - from character inconsistencies to plot holes - and my work is so much better for it."</p>
+    </blockquote>
+
+    <blockquote class="bg-paper p-6 rounded-xl shadow-soft text-olive">
+      <p>"It was like giving me a lantern to light a dark path. Now I know where to go next and why I'm going there."</p>
+    </blockquote>
+
+    <blockquote class="bg-paper p-6 rounded-xl shadow-soft text-olive">
+      <p>"I was stuck on plot and pacing issues for months. After her critique, I could see exactly what was working and what was not. Absolutely invaluable!"</p>
+    </blockquote>
+  </div>
+
+  <div class="mt-6">
+    <a href="reviews.html" class="text-umber font-medium">See All Reviews →</a>
+  </div>
+  </div>
+  </section>
+
+ <!-- Blog SECTION
+  <section class="py-14">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber text-center mb-2">Read My Blog</h2>
+      <p class="text-olive text-center mb-10 text-sm">I analyze stories to understand craft principles. See how I read.</p>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="blog.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30">
+            <span class="text-xs font-semibold text-sienna bg-sienna/10 px-2 py-1 rounded">TV/Series</span>
+            <h3 class="font-heading text-lg text-umber group-hover:text-sienna transition mt-3">
+              Why Stranger Things Can't Let Characters Die
+            </h3>
+            <p class="mt-3 text-olive text-sm">
+              A breakdown of how avoiding character death undermines emotional stakes and what writers can learn.
+            </p>
+            <p class="text-xs text-olive mt-4">Read on Reddit →</p>
+          </div>
+        </a>
+
+        <a href="blog.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30">
+            <span class="text-xs font-semibold text-sienna bg-sienna/10 px-2 py-1 rounded">TV/Series</span>
+            <h3 class="font-heading text-lg text-umber group-hover:text-sienna transition mt-3">
+              How Lost Lost Its Audience
+            </h3>
+            <p class="mt-3 text-olive text-sm">
+              Why mystery-focused stories fail when they can't deliver satisfying answers to reader expectations.
+            </p>
+            <p class="text-xs text-olive mt-4">Read on Reddit →</p>
+          </div>
+        </a>
+
+        <a href="blog.html" class="group">
+          <div class="bg-parchment rounded-xl p-6 shadow-soft border border-gold/12 h-full transition hover:shadow-lg hover:border-sienna/30">
+            <span class="text-xs font-semibold text-sienna bg-sienna/10 px-2 py-1 rounded">TV/Series</span>
+            <h3 class="font-heading text-lg text-umber group-hover:text-sienna transition mt-3">
+              Why Early Walking Dead Nailed Character Death
+            </h3>
+            <p class="mt-3 text-olive text-sm">
+              How the first seasons understood that deaths matter. A contrast in storytelling approaches.
+            </p>
+            <p class="text-xs text-olive mt-4">Read on Reddit →</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="blog.html" class="text-sienna font-medium">View All Posts →</a>
+      </div>
+    </div>
+  </section>
+  -->
+  
+  <!-- How it Works -->
+  <section class="py-14">
+  <div class="max-w-6xl mx-auto px-6">
+  <h2 class="font-heading text-2xl text-umber text-center">How It Works</h2>
+
+  <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-2 gap-6">
+    <div class="bg-paper p-6 rounded-lg shadow-soft">
+      <div class="text-2xl font-heading text-umber">1</div>
+      <h4 class="mt-2 font-heading text-lg text-umber">Free Sample (No Strings Attached)</h4>
+      <p class="mt-2 text-olive text-sm">Send me the chapter you're most worried about. Include a few sentences of context (what happens before/after this chapter) so I understand where it fits in your story.
+        <br>
+        <br>
+        I'll analyze it completely free. You'll get a good sense of how I work. Within 48 hours, you'll know if we're a good fit.
+      </p>
+    </div>
+
+    <div class="bg-paper p-6 rounded-lg shadow-soft">
+      <div class="text-2xl font-heading text-umber">2</div>
+      <h4 class="mt-2 font-heading text-lg text-umber">We Connect</h4>
+      <p class="mt-2 text-olive text-sm">If we're both ready to move forward, we'll finalize a simple contract covering timelines, deliverables, confidentiality, and payment. 
+        <br>
+        <br>
+        Everything is transparent and straightforward.
+        <br>
+        <br>
+        Payment is via PayPal Xoom or Western Union.
+      </p>
+    </div>
+
+    <div class="bg-paper p-6 rounded-lg shadow-soft">
+      <div class="text-2xl font-heading text-umber">3</div>
+      <h4 class="mt-2 font-heading text-lg text-umber">Share Your Manuscript</h4>
+      <p class="mt-2 text-olive text-sm">Send me your full manuscript via Google Docs or Word. If you have specific questions or concerns about your story, include those too and I'll address them in your report.</p>
+    </div>
+
+    <div class="bg-paper p-6 rounded-lg shadow-soft">
+      <div class="text-2xl font-heading text-umber">4</div>
+      <h4 class="mt-2 font-heading text-lg text-umber">Get Your Feedback (Service-Dependent)</h4>
+      <p class="mt-2 text-olive text-sm">Feedback format, depth, timelines, and any follow-up options depend on the service you choose.
+      Full details are outlined on each service page.</p>
+    </div>
+
+  </div>
+  </div>
+  </section>
+
+  <!-- CONTACT SECTION -->
+    <section id="contact" class="py-14 bg-paper">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl text-umber">Contact</h2>
+        <h3 class="mt-2 text-olive text-lg font-medium">LET'S GET YOU QUOTED!</h3>
+        <p class="mt-2 text-olive text-sm">Send me a message and I'll get back to you as soon as possible.</p>
+      </div>
+
+<form id="contact-form" method="POST" class="bg-paper rounded-xl shadow-soft p-6 md:p-10">
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Name -->
+    <div class="flex flex-col">
+      <label for="name" class="mb-1 text-umber font-medium">What's your name?</label>
+      <input type="text" name="name" id="name" placeholder="Your name" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Email -->
+    <div class="flex flex-col">
+      <label for="email" class="mb-1 text-umber font-medium">What's your email?</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Genre -->
+    <div class="flex flex-col">
+      <label for="genre" class="mb-1 text-umber font-medium">What's your book's genre?</label>
+      <input type="text" name="genre" id="genre" placeholder="e.g. Grimdark Fantasy, Cozy Mystery" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
+    </div>
+
+    <!-- Word Count -->
+    <div class="flex flex-col">
+      <label for="wordcount" class="mb-1 text-umber font-medium">What's your book's word count?</label>
+      <input type="text" name="wordcount" id="wordcount" placeholder="e.g. 75,000" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Interested In -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
+      <select name="interest" id="interest" required class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
+        <option value="" disabled selected>Select an option</option>
+        <option value="free-sample">Free 2000 Word Sample Edit</option>
+        <option value="beta-reading">Beta Reading</option>
+        <option value="manuscript-evaluation">Developmental Editing</option>
+        <option value="plot-to-draft">Story Development</option>
+      </select>
+    </div>
+
+    <!-- Message -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="message" class="mb-1 text-umber font-medium">Tell me about your book…</label>
+      <textarea name="message" id="message" rows="5" placeholder="Write a brief description or short synopsis of your story." required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
+      <p class="text-xs text-olive mt-2">💡 Optional: If including a sample, add context for the scene or chapter and include a Google Docs link (up to 2,000 words). Make sure the link is set to 'Anyone with link can comment.'</p>
+    </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+
+  <div class="mt-6 text-center">
+    <button type="submit" class="bg-sienna text-paper font-medium px-8 py-3 rounded-lg shadow-soft hover:bg-sienna/90 transition">
+      Send Message
+    </button>
+  </div>
+</form>
+  
+
+  <script>
+  const form = document.getElementById('contact-form');
+  const messageDiv = document.getElementById('form-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevents default submit
+    const formData = new FormData(form);
+
+    fetch('https://formspree.io/f/xzzawyoy', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok || data.success !== false) {
+        messageDiv.textContent = "Thank you! Your message has been sent successfully. We will be in touch shortly.";
+        messageDiv.classList.remove('hidden', 'text-red-500');
+        messageDiv.classList.add('text-green-600');
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(error => {
+      messageDiv.textContent = "Oops! Something went wrong. Please try again.";
+      messageDiv.classList.remove('hidden', 'text-green-600');
+      messageDiv.classList.add('text-red-500');
+    });
+  });
+
+  </script>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-umber text-paper py-10">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-heading text-lg">Studio Marginalia</p>
+    <p class="text-sm mt-1">Entertainment First. Commas Later.</p>
+    <a class="mt-3 inline-block text-gold hover:text-rose" href="mailto:info.studiomarginalia@gmail.com">info.studiomarginalia@gmail.com</a>
+    <p class="mt-4 text-xs text-gold/80">All manuscripts kept confidential • Working with authors worldwide</p>
+  </div>
+</footer>
+
+<!-- Mobile nav script -->
+<script>
+  (function(){
+    const btn = document.getElementById('nav-toggle');
+    const mobile = document.getElementById('mobile-nav');
+    const openIcon = document.getElementById('icon-open');
+    const closeIcon = document.getElementById('icon-close');
+
+    btn.addEventListener('click', () => {
+      const isHidden = mobile.classList.toggle('hidden');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+  })();
+</script>
+
+</body>
+</html>
