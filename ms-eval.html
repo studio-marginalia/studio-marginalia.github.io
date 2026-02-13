@@ -158,7 +158,7 @@
       </h1>
       
       <span class="inline-block mt-3 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-5 py-2 text-base font-semibold">
-        $500 (50-60k words) + $70 per 10k over
+        $500 for up to 60k words, then $70 per additional 10k.
       </span>
       
       <p class="mt-6 text-base text-olive max-w-2xl mx-auto leading-relaxed">
@@ -310,17 +310,17 @@ document.getElementById('word-count').addEventListener('input', function() {
     return;
   }
   
-  if (wordCount < 50000) {
-    resultDiv.innerHTML = '<p class="text-olive text-sm">Minimum word count is 50,000 words. Please contact me directly for manuscripts under 50k.</p>';
+  if (wordCount < 40000) {
+    resultDiv.innerHTML = '<p class="text-olive text-sm">For manuscripts under 40,000 words, please contact me directly for custom pricing.</p>';
     return;
   }
   
-  if (wordCount > 200000) {
-    resultDiv.innerHTML = '<p class="text-olive text-sm">For manuscripts over 200,000 words, please contact me directly for custom pricing.</p>';
+  if (wordCount > 100000) {
+    resultDiv.innerHTML = '<p class="text-olive text-sm">For manuscripts over 100,000 words, please contact me directly for custom pricing.</p>';
     return;
   }
   
-  let totalCost = 500; // Base price for 50-60k
+  let totalCost = 500; // Base price for up to 60k
   
   if (wordCount > 60000) {
     const extraWords = wordCount - 60000;
