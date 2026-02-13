@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studio Marginalia — Manuscript evaluation</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: "#F5EDE1",
+            paper: "#FBF7F0",
+            ink: "#1A1A1A",
+            umber: "#1A1411",
+            sienna: "#B8694D", 
+            olive: "#8A8377",
+            gold: "#D1B280",
+            rose: "#C97C7C"
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['"Lora"', 'serif']
+          },
+          boxShadow: {
+            'soft': '0 6px 18px rgba(26,26,26,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .parchment {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(208,180,130,0.03) 0 2%, transparent 2%),
+        radial-gradient(circle at 90% 80%, rgba(200,120,80,0.02) 0 2%, transparent 2%),
+        linear-gradient(180deg, #FBF7F0 0%, #F5EDE1 100%);
+      background-size: 400px 400px, 600px 600px, cover;
+    }
+    .highlight-underline {
+      background-image: linear-gradient(120deg, rgba(209,178,128,0.45) 0%, rgba(184,105,77,0.28) 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 0.42em;
+      background-position: 0 88%;
+      padding-bottom: 0.08rem;
+    }
+    :focus {
+      outline: 2px solid rgba(184,105,77,0.12);
+      outline-offset: 3px;
+    }
+    a:not(.group):hover { text-decoration: underline; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #D1B280;
+      border-radius: 0.5rem;
+      box-shadow: 0 6px 18px rgba(26,26,26,0.06);
+      z-index: 50;
+      min-width: max-content;
+    }
+    .dropdown-trigger:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #1A1411;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #F5EDE1;
+    }
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+    .dropdown-menu a:hover {
+      background: #F5EDE1;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body class="parchment text-ink font-body antialiased leading-relaxed">
+
+  <!-- NAV -->
+<header class="sticky top-0 z-40 bg-parchment/80 backdrop-blur-sm border-b border-gold/12">
+  <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium">
+    I do not use AI for my critique service. All feedback is human and personal.
+  </div>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="logo.png" alt="Logo" width="36" height="36">
+      <span class="font-heading text-2xl text-umber">Studio Marginalia</span>
+    </a>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="/" class="hover:text-sienna">Home</a>
+      
+      <!-- Services Dropdown -->
+      <div class="dropdown-trigger relative">
+        <button class="hover:text-sienna flex items-center gap-1">
+          Services
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="ms-eval.html">Manuscript evaluation</a>
+          <a href="story-development.html">Story Development</a>
+        </div>
+      </div>
+
+      <a href="about.html" class="hover:text-sienna">About</a>
+      <a href="blog.html" class="hover:text-sienna">Blog</a>
+      <a href="reviews.html" class="hover:text-sienna">Reviews</a>
+      <a href="contact.html" class="inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold shadow-soft hover:bg-[#a2563f]">Contact</a>
+    </nav>
+
+    <div class="md:hidden">
+      <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" class="p-2 rounded-md">
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-nav" class="md:hidden hidden border-t border-gold/12">
+    <div class="px-6 py-4 flex flex-col gap-3">
+      <a href="/" class="text-umber font-medium">Home</a>
+      <a href="ms-eval.html" class="text-umber font-medium pl-4">— Manuscript evaluation</a>
+      <a href="story-development.html" class="text-umber font-medium pl-4">— Story Development</a>
+      <a href="about.html" class="text-umber font-medium">About</a>
+      <a href="blog.html" class="text-umber font-medium">Blog</a>
+      <a href="reviews.html" class="text-umber font-medium">Reviews</a>
+      <a href="contact.html" class="mt-2 inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold text-center">Contact</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+  <section class="pt-14 pb-12">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h1 class="font-heading text-3xl sm:text-4xl leading-tight text-umber">
+        Manuscript evaluation
+      </h1>
+      
+      <span class="inline-block mt-3 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-5 py-2 text-base font-semibold">
+        $500 (50-60k words) + $70 per 10k over
+      </span>
+      
+      <p class="mt-6 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+        You finished your draft, but something isn’t landing and you can’t quite name it. The story works in places. Other parts feel flat, rushed, or unclear. You need clarity.
+       </p>
+      <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+        I read your manuscript like a reader and analyze it like an editor to give you a clear, actionable roadmap for revision. You’ll see exactly what’s working, what’s falling flat, where readers disengage, and why.
+      </p>
+      <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+       This is a full diagnostic of your story’s structure, character development, pacing, stakes, and thematic cohesion. You’ll understand what readers are experiencing on the page and what craft choices are creating that experience.
+      </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+       You walk away knowing what to fix, what to strengthen, and what to leave alone so you can revise with direction instead of guesswork.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="py-14 bg-paper">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber mb-8">What's Included</h2>
+
+      <div class="bg-parchment rounded-xl p-6 shadow-soft mb-6">
+        <h3 class="font-semibold text-umber mb-3">Deep, multi-pass reading</h3>
+        <ul class="text-olive space-y-3">
+          <li>• A minimum of two complete read-throughs of your manuscript (and more for complex narratives)</li>
+          <li>• Comprehensive notes on pacing, character consistency, plot momentum, and story logic</li>
+          <li>• Real-time tracking of my reader experience: excitement, confusion, engagement, losing interest</li>
+        </ul>
+      </div>
+
+      <div class="bg-parchment rounded-xl p-6 shadow-soft mb-6">
+        <h3 class="font-semibold text-umber mb-3">In-line editorial comments</h3>
+        <ul class="text-olive space-y-3">
+          <li>• Detailed comments throughout your manuscript showing my genuine reader reactions</li>
+          <li>• Where I was hooked, where I got bored, where I was confused, and why</li>
+          <li>• Scene-level insight that connects reader experience to craft choices</li>
+        </ul>
+      </div>
+
+      <div class="bg-parchment rounded-xl p-6 shadow-soft mb-6">
+        <h3 class="font-semibold text-umber mb-3">Comprehensive analysis letter (8–12 pages)</h3>
+        <p class="text-olive mb-3">Your editorial letter includes:</p>
+        
+        <div class="text-olive space-y-4">
+          <div>
+            <p class="font-semibold text-umber mb-2">Overall Reader Experience</p>
+            <ul class="text-sm space-y-1 ml-4">
+              <li>• What's working especially well</li>
+              <li>• What needs revision and why</li>
+            </ul>
+          </div>
+          
+          <div>
+            <p class="font-semibold text-umber mb-2">Big-Picture Story Analysis</p>
+            <ul class="text-sm space-y-1 ml-4">
+              <li>• Plot structure and logic</li>
+              <li>• Character arcs and development</li>
+              <li>• Setting and worldbuilding</li>
+              <li>• Theme (if applicable)</li>
+            </ul>
+          </div>
+          
+          <div>
+            <p class="font-semibold text-umber mb-2">Scene- and Craft-Level Analysis</p>
+            <ul class="text-sm space-y-1 ml-4">
+              <li>• POV and narrative voice</li>
+              <li>• Pacing and tension</li>
+              <li>• Scene and chapter effectiveness</li>
+              <li>• Opening and ending impact</li>
+            </ul>
+          </div>
+          
+          <div>
+            <p class="font-semibold text-umber mb-2">Plus</p>
+            <ul class="text-sm space-y-1 ml-4">
+              <li>• Detailed answers to your specific questions</li>
+              <li>• Clear, prioritized revision guidance (so you know what to tackle first)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-parchment rounded-xl p-6 shadow-soft">
+        <h3 class="font-semibold text-umber mb-3">One-Hour Follow-Up Call</h3>
+        <p class="text-olive">
+          We'll walk through your feedback together, discuss revision strategy, brainstorm solutions, and clarify anything in the report. This time is yours to use in whatever way supports your revision process best.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE & BEST FOR -->
+  <section class="py-14">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-parchment rounded-xl p-6 shadow-soft">
+          <h3 class="font-heading text-lg text-umber mb-3">Timeline</h3>
+          <p class="text-olive font-semibold">Within 30 days</p>
+          <p class="text-olive text-sm mt-2">From manuscript delivery to feedback letter</p>
+        </div>
+
+        <div class="bg-parchment rounded-xl p-6 shadow-soft">
+          <h3 class="font-heading text-lg text-umber mb-3">Best For Authors Who:</h3>
+          <ul class="text-olive space-y-2 text-sm">
+          <li>• Have a complete draft but aren’t sure what’s working and what isn’t</li>
+          <li>• Want honest reader reactions combined with craft-based solutions</li>
+          <li>• Feel stuck in revision and need clear direction instead of guesswork</li>
+          <li>• Need a professional diagnosis before line editing, polishing, or submission</li>
+          <li>• Are ready for comprehensive feedback that will change how they approach their manuscript</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING CALCULATOR -->
+<section class="py-14">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="font-heading text-2xl text-umber mb-8 text-center">Calculate Your Price</h2>
+    
+    <div class="bg-parchment rounded-xl p-8 shadow-soft max-w-2xl mx-auto">
+      <div class="mb-6">
+        <label for="word-count" class="block mb-2 text-umber font-medium">Enter your word count:</label>
+        <input 
+          type="number" 
+          id="word-count" 
+          min="0" 
+          max="200000" 
+          placeholder="e.g., 75000"
+          class="w-full rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"
+        >
+      </div>
+      
+      <div id="price-result" class="text-center py-6 px-4 bg-paper rounded-lg border border-gold/20">
+        <p class="text-olive text-sm">Enter your word count above to see your price</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.getElementById('word-count').addEventListener('input', function() {
+  const wordCount = parseInt(this.value);
+  const resultDiv = document.getElementById('price-result');
+  
+  if (!wordCount || wordCount < 0) {
+    resultDiv.innerHTML = '<p class="text-olive text-sm">Enter your word count above to see your price</p>';
+    return;
+  }
+  
+  if (wordCount < 50000) {
+    resultDiv.innerHTML = '<p class="text-olive text-sm">Minimum word count is 50,000 words. Please contact me directly for manuscripts under 50k.</p>';
+    return;
+  }
+  
+  if (wordCount > 200000) {
+    resultDiv.innerHTML = '<p class="text-olive text-sm">For manuscripts over 200,000 words, please contact me directly for custom pricing.</p>';
+    return;
+  }
+  
+  let totalCost = 500; // Base price for 50-60k
+  
+  if (wordCount > 60000) {
+    const extraWords = wordCount - 60000;
+    const extra10kBlocks = Math.ceil(extraWords / 10000);
+    totalCost += (extra10kBlocks * 70);
+  }
+  
+  resultDiv.innerHTML = `
+    <p class="text-sienna text-3xl font-heading font-semibold mb-2">$${totalCost}</p>
+    <p class="text-olive text-sm">for ${wordCount.toLocaleString()} words</p>
+  `;
+});
+</script>
+
+  <!-- FAQ -->
+  <section class="py-14 bg-paper">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber mb-8">Frequently Asked Questions</h2>
+
+      <div class="space-y-3">
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Why do you read the manuscript twice?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Because strong developmental feedback requires both immersion and analysis. The second read allows me to assess structure, consistency, and momentum with fresh eyes.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Can I ask specific questions about my manuscript?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Yes, your questions are always welcome and addressed directly in the analysis letter.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Will you tell me how to fix everything?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            I won't rewrite your manuscript for you, but I will explain what's not working, why it matters, and offer clear options for revision.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            How long is the analysis letter?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Typically 8-12 pages, sometimes longer, depending on manuscript length and complexity.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            What happens during the follow-up call?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            We'll discuss your feedback, revision priorities, and next steps. You can ask anything/we can talk about anything. This is your hour - use it however you want!
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Can I get multiple revision passes?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Additional rounds can be booked separately once revisions are complete.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            What if I'm not ready to revise yet?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            That's okay. Many authors sit with the feedback first and return when they're ready.
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM (Footer) -->
+ <section id="contact" class="py-14 bg-paper">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl text-umber">Contact</h2>
+        <h3 class="mt-2 text-olive text-lg font-medium">Stop Revising Blind. Start Revising Smart.</h3>
+        <p class="mt-2 text-olive text-sm">Tell me about your manuscript and I’ll take it from there.</p>
+      </div>
+
+<form id="contact-form" method="POST" class="bg-paper rounded-xl shadow-soft p-6 md:p-10">
+  <div class="grid md:grid-cols-2 gap-6">
+    <!-- Name -->
+    <div class="flex flex-col">
+      <label for="name" class="mb-1 text-umber font-medium">What's your name?</label>
+      <input type="text" name="name" id="name" placeholder="Your name" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Email -->
+    <div class="flex flex-col">
+      <label for="email" class="mb-1 text-umber font-medium">What's your email?</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Genre -->
+    <div class="flex flex-col">
+      <label for="genre" class="mb-1 text-umber font-medium">What's your book's genre?</label>
+      <input type="text" name="genre" id="genre" placeholder="e.g. Grimdark Fantasy, Cozy Mystery" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
+    </div>
+
+    <!-- Word Count -->
+    <div class="flex flex-col">
+      <label for="wordcount" class="mb-1 text-umber font-medium">What's your book's word count?</label>
+      <input type="text" name="wordcount" id="wordcount" placeholder="e.g. 75,000" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+  <!-- Interested In -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
+      <!-- Hidden input ensures the value is submitted -->
+      <input type="hidden" name="interest" value="manuscript-evaluation">
+      <!-- Disabled select shows Beta Reading but cannot be changed -->
+      <select id="interest" class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40" disabled>
+        <option value="beta" selected>Manuscript evaluation</option>
+      </select>
+    </div>
+
+
+    <!-- Message -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="message" class="mb-1 text-umber font-medium">Tell me about your book…</label>
+      <textarea name="message" id="message" rows="5" placeholder="Write a brief description or short synopsis of your story." required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
+      <p class="text-xs text-olive mt-2">💡 Optional: If including a sample, add context for the scene or chapter and include a Google Docs link (up to 2,000 words). Make sure the link is set to 'Anyone with link can comment.'</p>
+    </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+
+  <div class="mt-6 text-center">
+    <button type="submit" class="bg-sienna text-paper font-medium px-8 py-3 rounded-lg shadow-soft hover:bg-sienna/90 transition">
+      Send Message
+    </button>
+  </div>
+</form>
+  
+
+  <script>
+  const form = document.getElementById('contact-form');
+  const messageDiv = document.getElementById('form-message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevents default submit
+    const formData = new FormData(form);
+
+    fetch('https://formspree.io/f/xzzawyoy', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok || data.success !== false) {
+        messageDiv.textContent = "Thank you! Your message has been sent successfully. We will be in touch shortly.";
+        messageDiv.classList.remove('hidden', 'text-red-500');
+        messageDiv.classList.add('text-green-600');
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(error => {
+      messageDiv.textContent = "Oops! Something went wrong. Please try again.";
+      messageDiv.classList.remove('hidden', 'text-green-600');
+      messageDiv.classList.add('text-red-500');
+    });
+  });
+
+  </script>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-umber text-paper py-10">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-heading text-lg">Studio Marginalia</p>
+    <p class="text-sm mt-1">Entertainment First. Commas Later.</p>
+    <a class="mt-3 inline-block text-gold hover:text-rose" href="mailto:info.studiomarginalia@gmail.com">info.studiomarginalia@gmail.com</a>
+    <p class="mt-4 text-xs text-gold/80">All manuscripts kept confidential • Working with authors worldwide</p>
+  </div>
+</footer>
+
+<!-- Alpine.js for FAQ accordion -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<!-- Mobile nav script -->
+<script>
+  (function(){
+    const btn = document.getElementById('nav-toggle');
+    const mobile = document.getElementById('mobile-nav');
+    const openIcon = document.getElementById('icon-open');
+    const closeIcon = document.getElementById('icon-close');
+
+    btn.addEventListener('click', () => {
+      const isHidden = mobile.classList.toggle('hidden');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      openIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+  })();
+</script>
+
+</body>
+</html>
