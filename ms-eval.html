@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+  <title>Studio Marginalia — Manuscript Evaluation</title>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: "#F5EDE1",
+            paper: "#FBF7F0",
+            ink: "#1A1A1A",
+            umber: "#1A1411",
+            sienna: "#B8694D",
+            olive: "#8A8377",
+            gold: "#D1B280",
+            rose: "#C97C7C"
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['"Lora"', 'serif']
+          },
+          boxShadow: {
+            'soft': '0 6px 18px rgba(26,26,26,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .parchment {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(208, 180, 130, 0.03) 0 2%, transparent 2%),
+        radial-gradient(circle at 90% 80%, rgba(200, 120, 80, 0.02) 0 2%, transparent 2%),
+        linear-gradient(180deg, #FBF7F0 0%, #F5EDE1 100%);
+      background-size: 400px 400px, 600px 600px, cover;
+    }
+
+    .highlight-underline {
+      background-image: linear-gradient(120deg, rgba(209, 178, 128, 0.45) 0%, rgba(184, 105, 77, 0.28) 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 0.42em;
+      background-position: 0 88%;
+      padding-bottom: 0.08rem;
+    }
+
+    :focus {
+      outline: 2px solid rgba(184, 105, 77, 0.12);
+      outline-offset: 3px;
+    }
+
+    a:not(.group):hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #D1B280;
+      border-radius: 0.5rem;
+      box-shadow: 0 6px 18px rgba(26, 26, 26, 0.06);
+      z-index: 50;
+      min-width: max-content;
+    }
+
+    .dropdown-trigger:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #1A1411;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #F5EDE1;
+    }
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+      background: #F5EDE1;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body class="parchment text-ink font-body antialiased leading-relaxed">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-40 bg-parchment/80 backdrop-blur-sm border-b border-gold/12">
+    <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium">
+      All feedback is 100% human. No AI. Ever.
+    </div>
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <img src="logo.png" alt="Logo" width="36" height="36">
+        <span class="font-heading text-2xl text-umber">Studio Marginalia</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/" class="hover:text-sienna">Home</a>
+        <a href="ms-eval.html" class="text-sienna">Manuscript Evaluation</a>
+        <a href="about.html" class="hover:text-sienna">About</a>
+        <a href="blog.html" class="hover:text-sienna">Blog</a>
+        <a href="reviews.html" class="hover:text-sienna">Reviews</a>
+        <a href="contact.html"
+          class="inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold shadow-soft hover:bg-[#a2563f]">Contact</a>
+      </nav>
+
+      <div class="md:hidden">
+        <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" class="p-2 rounded-md">
+          <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="md:hidden hidden border-t border-gold/12">
+      <div class="px-6 py-4 flex flex-col gap-3">
+        <a href="/" class="text-umber font-medium">Home</a>
+        <a href="ms-eval.html" class="text-sienna">Manuscript Evaluation</a>
+        <a href="about.html" class="text-umber font-medium">About</a>
+        <a href="blog.html" class="text-umber font-medium">Blog</a>
+        <a href="reviews.html" class="text-umber font-medium">Reviews</a>
+        <a href="contact.html"
+          class="mt-2 inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold text-center">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="pt-14 pb-12">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="font-heading text-3xl sm:text-4xl leading-tight text-umber">
+          Manuscript Evaluations
+        </h1>
+
+        <span
+          class="inline-block mt-3 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-5 py-2 text-base font-semibold">
+          Starting at $150 · Available in 3 tiers
+        </span>
+
+        <p class="mt-6 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          First of all, thank you for being here. Reaching out to a stranger on the internet and trusting them with
+          something you've poured yourself into is not a small thing. I don't take it lightly.
+        </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          I'm Tazia. I've been reading, imagining and writing stories my whole life and somewhere along the way I
+          realised I could do something useful with that. The opportunity to step into the mind and world of a fellow
+          writer is something I don't take lightly. It's a high honor to help shape the stories the world wants to tell.
+        </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          Am I the greatest authority on writing? No. I am a lifelong learner, but I believe I have the skills to impart
+          some knowledge, finesse and technical know-how on the writers that come across my service.
+        </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          I offer three levels of evaluation depending on where you are in your process. Each one gets my full
+          attention. The difference is in the deliverable.
+        </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          Samples available below.
+        </p>
+      </div>
+    </section>
+
+    <!-- ACCORDION -->
+    <section class="py-16 bg-paper">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-umber text-center mb-12">Choose Your Tier</h2>
+
+        <div class="space-y-6">
+
+          <!-- Story Report -->
+          <div x-data="{ open: false }"
+            class="border border-sienna/30 rounded-xl shadow-md bg-parchment/70 overflow-hidden">
+            <button @click="open = !open"
+              class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
+              <div class="text-left">
+                <span>Story Report · $150</span>
+                <p class="text-sm font-normal text-olive mt-0.5">Up to 70,000 words · $25 per 10,000 words after ·
+                  Delivered in 7 days</p>
+              </div>
+              <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
+            </button>
+            <div x-show="open" x-collapse
+              class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
+              <p>I read your entire manuscript and tell you honestly what's working, what isn't, and why I think so.
+                That's it. No suggestions, no fixes. What you do with the information is entirely your call. You're the
+                writer. I'm just the professional reader giving you an honest read.</p>
+              <p>This isn't a light skim. Every page gets my full attention. The difference between this and the other
+                tiers isn't the quality of the read, it's what you get at the end of it.</p>
+
+              <div>
+                <p class="font-semibold text-umber mb-2">What you receive:</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>A structured report covering plot, characters, pacing, worldbuilding, and overall reader
+                    experience</li>
+                  <li>What's working well and why</li>
+                  <li>What isn't working and why</li>
+                  <li>No suggestions or fixes</li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold text-umber mb-2">Best for authors who:</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Need a professional verdict before committing to a full revision</li>
+                  <li>Are working within a budget but won't compromise on quality</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Annotated Read -->
+          <div x-data="{ open: false }"
+            class="border border-sienna/30 rounded-xl shadow-md bg-parchment/50 overflow-hidden">
+            <button @click="open = !open"
+              class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
+              <div class="text-left">
+                <span>Annotated Read · $350</span>
+                <p class="text-sm font-normal text-olive mt-0.5">Up to 70,000 words · $50 per 10,000 words after ·
+                  Delivered in 14 days</p>
+              </div>
+              <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
+            </button>
+            <div x-show="open" x-collapse
+              class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
+              <p>This tier builds your report directly from inline comments made throughout your manuscript.</p>
+              <p>I leave real-time reader reactions throughout your pages as I read. Where I got hooked, where I lost
+                interest, where I got confused. The report is then built directly from those inline comments so every
+                point I make is anchored to a specific moment in your draft. You see the problem right where it happens,
+                on the page as your reader experienced it.</p>
+              <p>Still no suggestions. Still your creative call. But now you can build a plan, because the issues are
+                clear and easy to address.</p>
+
+              <div>
+                <p class="font-semibold text-umber mb-2">What you receive:</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Everything in the Story Report</li>
+                  <li>Genuine, real-time reader reactions left throughout your manuscript</li>
+                  <li>A report built directly from those comments, grounding every observation in your actual pages</li>
+                  <li>No suggestions or fixes</li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold text-umber mb-2">Best for authors who:</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Need problems shown in context, on the page where they happen</li>
+                  <li>Are ready for revision and want a plan before they start</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Evaluation -->
+          <div x-data="{ open: false }"
+            class="border border-sienna/30 rounded-xl shadow-md bg-parchment/70 overflow-hidden">
+            <button @click="open = !open"
+              class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
+              <div class="text-left">
+                <span>Full Evaluation · $650</span>
+                <p class="text-sm font-normal text-olive mt-0.5">Up to 70,000 words · $75 per 10,000 words after ·
+                  Delivered in 30 days</p>
+              </div>
+              <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
+            </button>
+            <div x-show="open" x-collapse
+              class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
+              <p>Everything in the Annotated Read, plus suggestions for every major issue identified and a call to talk through them together.</p>
+              <p>This is the only tier where I offer potential solutions for addressing the issues I've identified. The
+                editorial letter goes beyond highlighting problems by giving you options on how to solve them. Then
+                we get on a call and work through those options together. You ask questions, we debate, and you leave with decisions made.</p>
+              <p>If you'd rather find your own solutions, the Annotated Read is your tier.</p>
+
+              <div>
+                <p class="font-semibold text-umber mb-2">What you receive:</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Everything in the Annotated Read</li>
+                  <li>Specific solutions for every major issue. You decide which ones fit your story best</li>
+                  <li>A comprehensive editorial letter covering:</li>
+                  <ul class="list-disc ml-5 mt-1 space-y-1">
+                    <li><b>Overall reader experience:</b> what's working, what needs revision and why</li>
+                    <li><b>Big-picture analysis:</b> plot structure, character arcs, worldbuilding, theme</li>
+                    <li><b>Scene and craft level analysis:</b> POV, pacing, tension, opening and ending impact</li>
+                  </ul>
+                  <li>A one-hour call to discuss options</li>
+                  <li>Three months of email support as you work through your revision</li>
+                </ul>
+              </div>
+
+              <div>
+                <p class="font-semibold text-umber mb-2">Best for authors who:</p>
+                <ul class="list-disc ml-5 space-y-1">
+                  <li>Want professional guidance on which solutions fit their story best</li>
+                  <li>Want insight on which changes will have the biggest impact</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-14 pb-12">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          It's my goal to offer outstanding work at manageable price points and teach my clients to look at their own
+          work critically, with the hope that they improve their skills enough to not need outside assistance to publish
+          a final draft.
+        </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          I recognize that you, as the writer, have full creative liberty. I can point out the blindspots and help you
+          course-correct, but this is your project. My job is to help in a way that never undermines your ideas, only
+          sharpens them.
+        </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          I aim to improve your manuscript, not turn it into a bastardized version of what it once was.
+        </p>
+        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+          My feedback is specific to your book and nobody else's. 100% human. No AI, no templates, no report that could
+          have been written about any manuscript.
+        </p>
+      </div>
+    </section>
+  </main>
+  <!-- Alpine.js for collapse functionality -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- PRICING CALCULATOR -->
+  <section class="bg-paper py-14">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber mb-8 text-center">Calculate Your Price</h2>
+
+      <div class="bg-parchment rounded-xl p-8 shadow-soft max-w-2xl mx-auto">
+
+        <!-- Tier Select -->
+        <div class="mb-6">
+          <label for="tier-select" class="block mb-2 text-umber font-medium">Choose Your Tier:</label>
+          <select id="tier-select"
+            class="w-full rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
+            <option value="" disabled selected>Select a tier</option>
+            <option value="story">Story Report · $150</option>
+            <option value="annotated">Annotated Read · $350</option>
+            <option value="full">Full Evaluation · $650</option>
+          </select>
+        </div>
+
+        <!-- Word Count Input -->
+        <div class="mb-6">
+          <label for="word-count" class="block mb-2 text-umber font-medium">Enter your word count:</label>
+          <input type="number" id="word-count" min="0" placeholder="e.g., 75,000"
+            class="w-full rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
+        </div>
+
+        <!-- Result -->
+        <div id="price-result" class="text-center py-6 px-4 bg-paper rounded-lg border border-gold/20">
+          <p class="text-olive text-sm">Select a tier and enter your word count to see your price</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const tierData = {
+      story: { base: 150, per10k: 30 },
+      annotated: { base: 350, per10k: 50 },
+      full: { base: 650, per10k: 70 }
+    };
+    const baseWords = 70000;
+
+    function calculatePrice() {
+      const tierSelect = document.getElementById('tier-select');
+      const wordInput = document.getElementById('word-count');
+      const resultDiv = document.getElementById('price-result');
+
+      const tier = tierSelect.value;
+      const wordCount = parseInt(wordInput.value.replace(/,/g, ''));
+
+      if (!tier) {
+        resultDiv.innerHTML = '<p class="text-olive text-sm">Select a tier to calculate your price</p>';
+        return;
+      }
+
+      if (!wordCount || wordCount < 0) {
+        resultDiv.innerHTML = '<p class="text-olive text-sm">Enter a valid word count</p>';
+        return;
+      }
+
+      if (wordCount > 150000) {
+        resultDiv.innerHTML = '<p class="text-olive text-sm">For manuscripts over 150,000 words, please contact me directly for custom pricing.</p>';
+        return;
+      }
+
+      let totalCost = tierData[tier].base;
+      let extraWords = 0;
+      let chunks = 0;
+      let extraCost = 0;
+
+      if (wordCount > baseWords) {
+        extraWords = wordCount - baseWords;
+        chunks = Math.ceil(extraWords / 10000);
+        extraCost = chunks * tierData[tier].per10k;
+        totalCost += extraCost;
+      }
+
+      // Format the breakdown
+      let breakdown = `
+    <ul class="text-left list-disc list-inside text-olive text-sm max-w-md mx-auto">
+      <li>Base price: $${tierData[tier].base}</li>
+  `;
+      if (extraWords > 0) {
+        breakdown += `
+      <li>${wordCount.toLocaleString()} - ${baseWords.toLocaleString()} = ${extraWords.toLocaleString()} extra words</li>
+      <li>${chunks} × $${tierData[tier].per10k} = $${extraCost}</li>
+    `;
+      }
+      breakdown += `<li>Total: $${tierData[tier].base} + $${extraCost} = $${totalCost}</li></ul>`;
+
+      // Display the result (without tier repeat)
+      resultDiv.innerHTML = `
+    <p class="text-sienna text-3xl font-heading font-semibold mb-2">${totalCost}</p>
+    ${breakdown}
+  `;
+    }
+
+    // Event listeners
+    document.getElementById('tier-select').addEventListener('change', calculatePrice);
+    document.getElementById('word-count').addEventListener('input', calculatePrice);
+  </script>
+
+  <!-- Specifics -->
+  <section class="bg-paper py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <h3 class="font-heading text-4xl text-center text-umber">SPECIFICS</h3>
+      <p class="mt-4 text-olive max-w-prose">
+      <h4 class="font-heading text-lg text-umber"><u><i>NO AI. EVER.</i></u></h4>
+      <p class="text-olive">
+        I do not use AI at any point in my service: to read the manuscript, to write the report, or to assist in writing
+        the report. If you suspect AI use, you are well within your rights to request proof of actual human work, which
+        will be provided. Studio Marginalia is built for humans, by a human.
+      </p>
+      <br>
+      <h4 class="font-heading text-lg text-umber"><u><i>Payments:</i></u></h4>
+      <p class="text-olive">
+        All services and payments will be agreed upon in advance and paid in USD. Payments are processed through PayPal
+        Xoom or Western Union.
+      </p>
+      <br>
+      <h4 class="font-heading text-lg text-umber"><u><i>Refunds:</i></u></h4>
+      <p class="text-olive">
+        Clients may request a refund within 3 days of payment and manuscript receipt.If I am unable to complete the service after receiving payment, the client will receive a full refund.
+      </p>
+      <br>
+      <h4 class="font-heading text-lg text-umber"><u><i>Timeline:</i></u></h4>
+      <p class="text-olive">
+        After the 3-day refund window passes, I will notify you that I have begun working on your manuscript via your preferred channel (email or Reddit) and the official timeline starts at that point.
+      </p>
+      <br>
+      <h4 class="font-heading text-lg text-umber"><u><i>Communication:</i></u></h4>
+      <p class="text-olive">
+        You may contact me at any time while I have your manuscript, via email or my Reddit account. I respond within 24
+        hours.
+      </p>
+      <br>
+      <h4 class="font-heading text-lg text-umber"><u><i>Word Count Minimum/Maximum:</i></u></h4>
+      <p class="text-olive">
+        There is no minimum word count, provided you are willing to pay the base price of your chosen tier. The maximum
+        word count is 150,000 words. I am open to working with manuscripts over this limit, but you must contact me
+        beforehand to discuss.
+      </p>
+      <br>
+      <h4 class="font-heading text-lg text-umber"><u><i>Confidentiality:</i></u></h4>
+      <p class="text-olive">
+        Upon request, I will sign any Non-Disclosure Agreement (NDA) or similar document, or provide my own contract.
+      </p>
+      </p>
+    </div>
+  </section>
+
+
+  <!-- FAQ
+  <section class="py-14 bg-paper">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="font-heading text-2xl text-umber mb-8">Frequently Asked Questions</h2>
+
+      <div class="space-y-3">
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Why do you read the manuscript twice?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Because strong developmental feedback requires both immersion and analysis. The second read allows me to assess structure, consistency, and momentum with fresh eyes.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Can I ask specific questions about my manuscript?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Yes, your questions are always welcome and addressed directly in the analysis letter.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Will you tell me how to fix everything?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            I won't rewrite your manuscript for you, but I will explain what's not working, why it matters, and offer clear options for revision.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            How long is the analysis letter?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Typically 8-12 pages, sometimes longer, depending on manuscript length and complexity.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            What happens during the follow-up call?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            We'll discuss your feedback, revision priorities, and next steps. You can ask anything/we can talk about anything. This is your hour - use it however you want!
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            Can I get multiple revision passes?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            Additional rounds can be booked separately once revisions are complete.
+          </div>
+        </div>
+
+        <div x-data="{ open: false }" class="bg-parchment rounded-lg shadow-soft">
+          <button @click="open = !open" class="w-full px-6 py-4 text-left flex justify-between items-center font-semibold text-umber focus:outline-none">
+            What if I'm not ready to revise yet?
+            <span x-text="open ? '−' : '+'" class="text-sienna text-lg"></span>
+          </button>
+          <div x-show="open" x-transition class="px-6 pb-4 text-olive text-sm">
+            That's okay. Many authors sit with the feedback first and return when they're ready.
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </section>
+  -->
+
+  <!-- CONTACT FORM (Footer) -->
+  <section id="contact" class="py-14">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-8">
+        <h2 class="font-heading text-2xl text-umber">Contact</h2>
+        <h3 class="mt-2 text-olive text-lg font-medium">Stop Revising Blind. Start Revising Smart.</h3>
+        <p class="mt-2 text-olive text-sm">Tell me about your manuscript and I’ll take it from there.</p>
+      </div>
+
+      <form id="contact-form" method="POST" class="bg-paper rounded-xl shadow-soft p-6 md:p-10">
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Name -->
+          <div class="flex flex-col">
+            <label for="name" class="mb-1 text-umber font-medium">What's your name?</label>
+            <input type="text" name="name" id="name" placeholder="Your name" required
+              class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col">
+            <label for="email" class="mb-1 text-umber font-medium">What's your email?</label>
+            <input type="email" name="email" id="email" placeholder="you@example.com" required
+              class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+          </div>
+
+          <!-- Genre -->
+          <div class="flex flex-col">
+            <label for="genre" class="mb-1 text-umber font-medium">What's your book's genre?</label>
+            <input type="text" name="genre" id="genre" placeholder="e.g. Grimdark Fantasy, Cozy Mystery" required
+              class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
+          </div>
+
+          <!-- Word Count -->
+          <div class="flex flex-col">
+            <label for="wordcount" class="mb-1 text-umber font-medium">What's your book's word count?</label>
+            <input type="text" name="wordcount" id="wordcount" placeholder="e.g. 75,000" required
+              class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+          </div>
+
+          <!-- Interested In -->
+          <div class="flex flex-col md:col-span-2">
+            <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
+            <select name="interest" id="interest" required
+              class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
+              <option value="" disabled selected>Select an option</option>
+              <option value="free-sample">Free 2000 Word Sample Edit</option>
+              <option value="beta-reading">Story Report | $150</option>
+              <option value="manuscript-evaluation">Annotated Report | $350</option>
+              <option value="plot-to-draft">Full Evaluation | $650</option>
+            </select>
+          </div>
+
+          <!-- Message -->
+          <div class="flex flex-col md:col-span-2">
+            <label for="message" class="mb-1 text-umber font-medium">Tell me about your book…</label>
+            <textarea name="message" id="message" rows="5"
+              placeholder="Write a brief description or short synopsis of your story." required
+              class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
+            <p class="text-xs text-olive mt-2">💡 Optional: If including a sample, add context for the scene or chapter
+              and include a Google Docs link (up to 2,000 words). Make sure the link is set to 'Anyone with link can
+              comment.'</p>
+          </div>
+        </div>
+
+        <!-- Success/Error Messages -->
+        <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+
+        <div class="mt-6 text-center">
+          <button type="submit"
+            class="bg-sienna text-paper font-medium px-8 py-3 rounded-lg shadow-soft hover:bg-sienna/90 transition">
+            Send Message
+          </button>
+        </div>
+      </form>
+
+
+      <script>
+        const form = document.getElementById('contact-form');
+        const messageDiv = document.getElementById('form-message');
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault(); // prevents default submit
+          const formData = new FormData(form);
+
+          fetch('https://formspree.io/f/xzzawyoy', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          })
+            .then(response => response.json())
+            .then(data => {
+              if (data.ok || data.success !== false) {
+                messageDiv.textContent = "Thank you! Your message has been sent successfully. We will be in touch shortly.";
+                messageDiv.classList.remove('hidden', 'text-red-500');
+                messageDiv.classList.add('text-green-600');
+                form.reset();
+              } else {
+                throw new Error('Form submission failed');
+              }
+            })
+            .catch(error => {
+              messageDiv.textContent = "Oops! Something went wrong. Please try again.";
+              messageDiv.classList.remove('hidden', 'text-green-600');
+              messageDiv.classList.add('text-red-500');
+            });
+        });
+
+      </script>
+  </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-umber text-paper py-10">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="font-heading text-lg">Studio Marginalia</p>
+      <p class="text-sm mt-1">Real Reader. Real Feedback.</p>
+      <a class="mt-3 inline-block text-gold hover:text-rose"
+        href="mailto:info.studiomarginalia@gmail.com">info.studiomarginalia@gmail.com</a>
+      <p class="mt-4 text-xs text-gold/80">All manuscripts kept confidential • Working with authors worldwide</p>
+    </div>
+  </footer>
+
+  <!-- Alpine.js for FAQ accordion -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- Mobile nav script -->
+  <script>
+    (function () {
+      const btn = document.getElementById('nav-toggle');
+      const mobile = document.getElementById('mobile-nav');
+      const openIcon = document.getElementById('icon-open');
+      const closeIcon = document.getElementById('icon-close');
+
+      btn.addEventListener('click', () => {
+        const isHidden = mobile.classList.toggle('hidden');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    })();
+  </script>
+
+</body>
+
+</html>
