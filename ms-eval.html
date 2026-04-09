@@ -152,211 +152,222 @@
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="pt-14 pb-12">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <h1 class="font-heading text-3xl sm:text-4xl leading-tight text-umber">
-          Manuscript Evaluations
-        </h1>
+<main>
+  <!-- HERO -->
+  <section class="pt-14 pb-12">
+    <div class="max-w-4xl mx-auto px-6 text-center">
 
-        <span
-          class="inline-block mt-3 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-5 py-2 text-base font-semibold">
-          Starting at $150 · Available in 3 tiers
-        </span>
+      <!-- Title -->
+      <h1 class="font-heading text-3xl sm:text-4xl leading-tight text-umber">
+        Manuscript Evaluations
+      </h1>
 
-        <p class="mt-6 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          First of all, thank you for being here. Reaching out to a stranger on the internet and trusting them with
-          something you've poured yourself into is not a small thing. I don't take it lightly.
-        </p>
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          I'm Tazia. I've been reading, imagining and writing stories my whole life and somewhere along the way I
-          realised I could do something useful with that. The opportunity to step into the mind and world of a fellow
-          writer is something I don't take lightly. It's a high honor to help shape the stories the world wants to tell.
-        </p>
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          Am I the greatest authority on writing? No. I am a lifelong learner, but I believe I have the skills to impart
-          some knowledge, finesse and technical know-how on the writers that come across my service.
-        </p>
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          I offer three levels of evaluation depending on where you are in your process. Each one gets my full
-          attention. The difference is in the deliverable.
-        </p>
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          Samples available below.
-        </p>
-      </div>
-    </section>
+      <!-- Badge -->
+      <span class="inline-block mt-3 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-5 py-2 text-base font-semibold">
+        Available in 3 tiers
+      </span>
 
-    <!-- ACCORDION -->
-    <section class="py-16 bg-paper">
-      <div class="max-w-4xl mx-auto px-6">
-        <h2 class="text-3xl font-bold text-umber text-center mb-12">Choose Your Tier</h2>
+      <!-- Intro (always visible) -->
+      <p class="mt-6 text-base text-olive max-w-2xl mx-auto leading-relaxed">
+        First of all, thank you for reaching out! Trusting a stranger on the internet with
+        something you've poured yourself into is not a small thing. I am honored to help shape the story you want to tell.
+      </p>
 
-        <div class="space-y-6">
+      <!-- Toggle Wrapper -->
+      <div x-data="{ open: false }" class="mt-8 max-w-2xl mx-auto relative">
 
-          <!-- Story Report -->
-          <div x-data="{ open: false }"
-            class="border border-sienna/30 rounded-xl shadow-md bg-parchment/70 overflow-hidden">
-            <button @click="open = !open"
-              class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
-              <div class="text-left">
-                <span>Story Report · $150</span>
-                <p class="text-sm font-normal text-olive mt-0.5">Up to 70,000 words · $25 per 10,000 words after ·
-                  Delivered in 7 days</p>
-              </div>
-              <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
-            </button>
-            <div x-show="open" x-collapse
-              class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
-              <p>I read your entire manuscript and tell you honestly what's working, what isn't, and why I think so.
-                That's it. No suggestions, no fixes. What you do with the information is entirely your call. You're the
-                writer. I'm just the professional reader giving you an honest read.</p>
-              <p>This isn't a light skim. Every page gets my full attention. The difference between this and the other
-                tiers isn't the quality of the read, it's what you get at the end of it.</p>
+        <!-- Toggle Button -->
+        <button 
+          @click="open = !open"
+          class="w-full relative px-5 py-3 rounded-lg bg-sienna/10 border border-sienna/30 text-sienna font-medium text-sm hover:bg-sienna/20 transition"
+        >
+          <!-- Centered Text -->
+          <span class="block w-full text-center">How I work</span>
 
-              <div>
-                <p class="font-semibold text-umber mb-2">What you receive:</p>
-                <ul class="list-disc ml-5 space-y-1">
-                  <li>A structured report covering plot, characters, pacing, worldbuilding, and overall reader
-                    experience</li>
-                  <li>What's working well and why</li>
-                  <li>What isn't working and why</li>
-                  <li>No suggestions or fixes</li>
-                </ul>
-              </div>
+          <!-- Icon (absolute right) -->
+          <svg 
+            class="w-4 h-4 absolute right-5 top-1/2 -translate-y-1/2 transform transition-transform duration-300"
+            :class="open ? 'rotate-180' : ''"
+            fill="none" stroke="currentColor" stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
 
-              <div>
-                <p class="font-semibold text-umber mb-2">Best for authors who:</p>
-                <ul class="list-disc ml-5 space-y-1">
-                  <li>Need a professional verdict before committing to a full revision</li>
-                  <li>Are working within a budget but won't compromise on quality</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <!-- Collapsible Content -->
+        <div 
+          x-show="open" 
+          x-collapse
+          class="mt-6 space-y-4 text-base text-olive leading-relaxed text-center"
+        >
+          <p>
+            <b><u>Here's how I approach critiques:</u></b><br><br>
+            I offer three levels of evaluation depending on where you are in your process. Each one gets my full attention, and the difference is in the deliverable.
+          </p>
 
-          <!-- Annotated Read -->
-          <div x-data="{ open: false }"
-            class="border border-sienna/30 rounded-xl shadow-md bg-parchment/50 overflow-hidden">
-            <button @click="open = !open"
-              class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
-              <div class="text-left">
-                <span>Annotated Read · $350</span>
-                <p class="text-sm font-normal text-olive mt-0.5">Up to 70,000 words · $50 per 10,000 words after ·
-                  Delivered in 14 days</p>
-              </div>
-              <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
-            </button>
-            <div x-show="open" x-collapse
-              class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
-              <p>This tier builds your report directly from inline comments made throughout your manuscript.</p>
-              <p>I leave real-time reader reactions throughout your pages as I read. Where I got hooked, where I lost
-                interest, where I got confused. The report is then built directly from those inline comments so every
-                point I make is anchored to a specific moment in your draft. You see the problem right where it happens,
-                on the page as your reader experienced it.</p>
-              <p>Still no suggestions. Still your creative call. But now you can build a plan, because the issues are
-                clear and easy to address.</p>
+          <p>
+            Across all three, my feedback is specific to your book and nobody else's. I recognize that you, as the writer, have full creative liberty. I can point out the blindspots and help you course-correct, but this is your project.
+          </p>
 
-              <div>
-                <p class="font-semibold text-umber mb-2">What you receive:</p>
-                <ul class="list-disc ml-5 space-y-1">
-                  <li>Everything in the Story Report</li>
-                  <li>Genuine, real-time reader reactions left throughout your manuscript</li>
-                  <li>A report built directly from those comments, grounding every observation in your actual pages</li>
-                  <li>No suggestions or fixes</li>
-                </ul>
-              </div>
+          <p>
+            In practice, this is providing guidance in a manner that never undermines your ideas, only sharpens them.
+          </p>
 
-              <div>
-                <p class="font-semibold text-umber mb-2">Best for authors who:</p>
-                <ul class="list-disc ml-5 space-y-1">
-                  <li>Need problems shown in context, on the page where they happen</li>
-                  <li>Are ready for revision and want a plan before they start</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Full Evaluation -->
-          <div x-data="{ open: false }"
-            class="border border-sienna/30 rounded-xl shadow-md bg-parchment/70 overflow-hidden">
-            <button @click="open = !open"
-              class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
-              <div class="text-left">
-                <span>Full Evaluation · $650</span>
-                <p class="text-sm font-normal text-olive mt-0.5">Up to 70,000 words · $75 per 10,000 words after ·
-                  Delivered in 30 days</p>
-              </div>
-              <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
-            </button>
-            <div x-show="open" x-collapse
-              class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
-              <p>Everything in the Annotated Read, plus suggestions for every major issue identified and a call to talk through them together.</p>
-              <p>This is the only tier where I offer potential solutions for addressing the issues I've identified. The
-                editorial letter goes beyond highlighting problems by giving you options on how to solve them. Then
-                we get on a call and work through those options together. You ask questions, we debate, and you leave with decisions made.</p>
-              <p>If you'd rather find your own solutions, the Annotated Read is your tier.</p>
-
-              <div>
-                <p class="font-semibold text-umber mb-2">What you receive:</p>
-                <ul class="list-disc ml-5 space-y-1">
-                  <li>Everything in the Annotated Read</li>
-                  <li>Specific solutions for every major issue. You decide which ones fit your story best</li>
-                  <li>A comprehensive editorial letter covering:</li>
-                  <ul class="list-disc ml-5 mt-1 space-y-1">
-                    <li><b>Overall reader experience:</b> what's working, what needs revision and why</li>
-                    <li><b>Big-picture analysis:</b> plot structure, character arcs, worldbuilding, theme</li>
-                    <li><b>Scene and craft level analysis:</b> POV, pacing, tension, opening and ending impact</li>
-                  </ul>
-                  <li>A one-hour call to discuss options</li>
-                  <li>Three months of email support as you work through your revision</li>
-                </ul>
-              </div>
-
-              <div>
-                <p class="font-semibold text-umber mb-2">Best for authors who:</p>
-                <ul class="list-disc ml-5 space-y-1">
-                  <li>Want professional guidance on which solutions fit their story best</li>
-                  <li>Want insight on which changes will have the biggest impact</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
+          <p>
+            Ultimately, I aim to improve your manuscript, not turn it into a bastardized version of what it once was. It's my goal to offer outstanding work at manageable price points and teach my clients to look at their own work critically, with the hope that they improve their skills enough to not need outside assistance to publish a final draft.
+          </p>
         </div>
       </div>
-    </section>
 
-    <section class="pt-14 pb-12">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          It's my goal to offer outstanding work at manageable price points and teach my clients to look at their own
-          work critically, with the hope that they improve their skills enough to not need outside assistance to publish
-          a final draft.
-        </p>
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          I recognize that you, as the writer, have full creative liberty. I can point out the blindspots and help you
-          course-correct, but this is your project. My job is to help in a way that never undermines your ideas, only
-          sharpens them.
-        </p>
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          I aim to improve your manuscript, not turn it into a bastardized version of what it once was.
-        </p>
-        <p class="mt-4 text-base text-olive max-w-2xl mx-auto leading-relaxed">
-          My feedback is specific to your book and nobody else's. 100% human. No AI, no templates, no report that could
-          have been written about any manuscript.
-        </p>
+    </div>
+  </section>
+
+  <!-- ACCORDION -->
+  <section class="py-16 bg-paper">
+<div class="max-w-4xl mx-auto px-6">
+  <h2 class="text-3xl font-bold text-umber text-center mb-2">Choose Your Tier</h2>
+  <p class="text-center text-sm italic text-olive mb-12">Minimum manuscript length: 35,000 words</p>
+
+  <div class="space-y-6">
+
+    <!-- Story Report -->
+    <div x-data="{ open: false }"
+      class="border border-sienna/30 rounded-xl shadow-md bg-parchment/70 overflow-hidden">
+      <button @click="open = !open"
+        class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
+        <div class="text-left">
+          <span>Story Report · $40 per 10,000 words</span>
+          <p class="text-sm font-normal text-olive mt-0.5">Up to 100,000 words · Delivered in 7 days</p>
+        </div>
+        <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
+      </button>
+      <div x-show="open" x-collapse
+        class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
+        <p>I read your entire manuscript and tell you honestly what's working, what isn't, and why I think so.
+          No suggestions or fixes.</p>
+        <p>This isn't a light skim. Every page gets my full attention. The difference between this and the other
+          tiers isn't the quality of the read, it's what you get at the end of it.</p>
+
+        <div>
+          <p class="font-semibold text-umber mb-2">What you receive:</p>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>A structured report covering plot, characters, pacing, worldbuilding, and overall reader
+              experience</li>
+            <li>What's working well and why</li>
+            <li>What isn't working and why</li>
+            <li>No suggestions or fixes</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold text-umber mb-2">Best for authors who:</p>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>Need a professional verdict before committing to a full revision</li>
+            <li>Are working within a budget but won't compromise on quality</li>
+          </ul>
+        </div>
       </div>
-    </section>
-  </main>
+    </div>
+
+    <!-- Annotated Report -->
+    <div x-data="{ open: false }"
+      class="border border-sienna/30 rounded-xl shadow-md bg-parchment/50 overflow-hidden">
+      <button @click="open = !open"
+        class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
+        <div class="text-left">
+          <span>Annotated Report · $80 per 10,000 words</span>
+          <p class="text-sm font-normal text-olive mt-0.5">Up to 100,000 words · Delivered in 14 days</p>
+        </div>
+        <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
+      </button>
+      <div x-show="open" x-collapse
+        class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
+        <p>This tier builds your report directly from inline comments made throughout your manuscript.</p>
+        <p>I leave real-time reader reactions throughout your pages as I read. Where I got hooked, where I lost
+          interest, where I got confused. The report is then built directly from those inline comments so every
+          point I make is anchored to a specific moment in your draft. You see the problem right where it happens,
+          on the page as your reader experienced it.</p>
+        <p>This tier makes it easy to build a revision plan, because the issues are
+          clear and easy to address.</p>
+
+        <div>
+          <p class="font-semibold text-umber mb-2">What you receive:</p>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>Everything in the Story Report</li>
+            <li>Genuine, real-time reader reactions left throughout your manuscript</li>
+            <li>A report built directly from those comments, grounding every observation in your actual pages</li>
+            <li>No suggestions or fixes</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold text-umber mb-2">Best for authors who:</p>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>Need problems shown in context, on the page where they happen</li>
+            <li>Are ready for revision and want a plan before they start</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Full Evaluation -->
+    <div x-data="{ open: false }"
+      class="border border-sienna/30 rounded-xl shadow-md bg-parchment/70 overflow-hidden">
+      <button @click="open = !open"
+        class="w-full px-6 py-4 flex justify-between items-center font-semibold text-umber text-lg hover:text-sienna transition-colors bg-transparent">
+        <div class="text-left">
+          <span>Full Evaluation · $120 per 10,000 words</span>
+          <p class="text-sm font-normal text-olive mt-0.5">Up to 100,000 words · Delivered in 30 days</p>
+        </div>
+        <span class="ml-2 text-xl font-bold flex-shrink-0" x-text="open ? '−' : '+'"></span>
+      </button>
+      <div x-show="open" x-collapse
+        class="px-6 py-4 text-olive text-base space-y-4 bg-transparent border-t border-sienna/20">
+        <p>Everything in the Annotated Report, plus suggestions for every major issue identified and a call to talk through them together.</p>
+        <p>This is the only tier where I offer potential solutions for addressing the issues I've identified. The
+          editorial letter goes beyond highlighting problems by giving you options on how to solve them. Then
+          we get on a call and work through those options together. You ask questions, we debate, and you leave with decisions made.</p>
+        <p>If you'd rather find your own solutions, the Annotated Report is your tier.</p>
+
+        <div>
+          <p class="font-semibold text-umber mb-2">What you receive:</p>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>Everything in the Annotated Report</li>
+            <li>Specific solutions for every major issue. You decide which ones fit your story best</li>
+            <li>A comprehensive editorial letter covering:</li>
+            <ul class="list-disc ml-5 mt-1 space-y-1">
+              <li><b>Overall reader experience:</b> what's working, what needs revision and why</li>
+              <li><b>Big-picture analysis:</b> plot structure, character arcs, worldbuilding, theme</li>
+              <li><b>Scene and craft level analysis:</b> POV, pacing, tension, opening and ending impact</li>
+            </ul>
+            <li>A one-hour call to discuss options</li>
+            <li>Three months of email support as you work through your revision</li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="font-semibold text-umber mb-2">Best for authors who:</p>
+          <ul class="list-disc ml-5 space-y-1">
+            <li>Want professional guidance on which solutions fit their story best</li>
+            <li>Want insight on which changes will have the biggest impact</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+  </section>
+
   <!-- Alpine.js for collapse functionality -->
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
   <!-- PRICING CALCULATOR -->
   <section class="bg-paper py-14">
     <div class="max-w-4xl mx-auto px-6">
-      <h2 class="font-heading text-2xl text-umber mb-8 text-center">Calculate Your Price</h2>
+      <h2 class="font-heading text-2xl text-umber mb-2 text-center">Calculate Your Price</h2>
+      <p class="text-sm text-olive italic text-center mb-8">Minimum manuscript length: 35,000 words</p>
 
       <div class="bg-parchment rounded-xl p-8 shadow-soft max-w-2xl mx-auto">
 
@@ -366,9 +377,9 @@
           <select id="tier-select"
             class="w-full rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
             <option value="" disabled selected>Select a tier</option>
-            <option value="story">Story Report · $150</option>
-            <option value="annotated">Annotated Read · $350</option>
-            <option value="full">Full Evaluation · $650</option>
+            <option value="story">Story Report · $40/10k</option>
+            <option value="annotated">Annotated Report · $80/10k</option>
+            <option value="full">Full Evaluation · $120/10k</option>
           </select>
         </div>
 
@@ -389,11 +400,13 @@
 
   <script>
     const tierData = {
-      story: { base: 150, per10k: 30 },
-      annotated: { base: 350, per10k: 50 },
-      full: { base: 650, per10k: 70 }
+      story: { per10k: 40 },
+      annotated: { per10k: 80 },
+      full: { per10k: 120 }
     };
-    const baseWords = 70000;
+
+    const minWords = 35000; // minimum
+    const chunkSize = 10000; // per 10k words
 
     function calculatePrice() {
       const tierSelect = document.getElementById('tier-select');
@@ -408,46 +421,27 @@
         return;
       }
 
-      if (!wordCount || wordCount < 0) {
-        resultDiv.innerHTML = '<p class="text-olive text-sm">Enter a valid word count</p>';
+      if (!wordCount || wordCount < minWords) {
+        resultDiv.innerHTML = `<p class="text-olive text-sm">Minimum manuscript length is ${minWords.toLocaleString()} words</p>`;
         return;
       }
 
-      if (wordCount > 150000) {
-        resultDiv.innerHTML = '<p class="text-olive text-sm">For manuscripts over 150,000 words, please contact me directly for custom pricing.</p>';
+      if (wordCount > 100000) {
+        resultDiv.innerHTML = '<p class="text-olive text-sm">For manuscripts over 100,000 words, please contact me directly for custom pricing.</p>';
         return;
       }
 
-      let totalCost = tierData[tier].base;
-      let extraWords = 0;
-      let chunks = 0;
-      let extraCost = 0;
+      // Calculate chunks: minimum 35k counts as 1 chunk
+      const chunks = Math.ceil(wordCount / chunkSize);
+      const totalCost = chunks * tierData[tier].per10k;
 
-      if (wordCount > baseWords) {
-        extraWords = wordCount - baseWords;
-        chunks = Math.ceil(extraWords / 10000);
-        extraCost = chunks * tierData[tier].per10k;
-        totalCost += extraCost;
-      }
-
-      // Format the breakdown
-      let breakdown = `
-    <ul class="text-left list-disc list-inside text-olive text-sm max-w-md mx-auto">
-      <li>Base price: $${tierData[tier].base}</li>
-  `;
-      if (extraWords > 0) {
-        breakdown += `
-      <li>${wordCount.toLocaleString()} - ${baseWords.toLocaleString()} = ${extraWords.toLocaleString()} extra words</li>
-      <li>${chunks} × $${tierData[tier].per10k} = $${extraCost}</li>
-    `;
-      }
-      breakdown += `<li>Total: $${tierData[tier].base} + $${extraCost} = $${totalCost}</li></ul>`;
-
-      // Display the result (without tier repeat)
+      // Display result in clean summary card
       resultDiv.innerHTML = `
-    <p class="text-sienna text-3xl font-heading font-semibold mb-2">${totalCost}</p>
-    ${breakdown}
-  `;
+        <div class="max-w-sm mx-auto bg-sienna/10 border border-sienna/30 rounded-xl p-5 text-center">
+          <p class="text-olive mb-2">${wordCount.toLocaleString()} words → ${chunks} × $${tierData[tier].per10k}</p>
+          <p class="text-sienna text-2xl font-heading font-bold">$${totalCost}</p>
+        </div>
+      `;
     }
 
     // Event listeners
@@ -492,7 +486,7 @@
       <h4 class="font-heading text-lg text-umber"><u><i>Word Count Minimum/Maximum:</i></u></h4>
       <p class="text-olive">
         There is no minimum word count, provided you are willing to pay the base price of your chosen tier. The maximum
-        word count is 150,000 words. I am open to working with manuscripts over this limit, but you must contact me
+        word count is 100,000 words. I am open to working with manuscripts over this limit, but you must contact me
         beforehand to discuss.
       </p>
       <br>
@@ -633,9 +627,9 @@
               class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
               <option value="" disabled selected>Select an option</option>
               <option value="free-sample">Free 2000 Word Sample Edit</option>
-              <option value="beta-reading">Story Report | $150</option>
-              <option value="manuscript-evaluation">Annotated Report | $350</option>
-              <option value="plot-to-draft">Full Evaluation | $650</option>
+              <option value="beta-reading">Story Report · $40 per 10k</option>
+              <option value="manuscript-evaluation">Annotated Report · $80 per 10k</option>
+              <option value="plot-to-draft">Full Evaluation · $120 per 10k</option>
             </select>
           </div>
 
@@ -697,7 +691,7 @@
       </script>
   </section>
 
-  </main>
+</main>
 
   <!-- FOOTER -->
   <footer class="bg-umber text-paper py-10">
