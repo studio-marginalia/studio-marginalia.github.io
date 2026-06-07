@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+  <title>Skilled Beta Reading | Studio Marginalia</title>
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            parchment: "#F5EDE1",
+            paper: "#FBF7F0",
+            ink: "#1A1A1A",
+            umber: "#1A1411",
+            sienna: "#B8694D",
+            olive: "#8A8377",
+            gold: "#D1B280",
+            rose: "#C97C7C"
+          },
+          fontFamily: {
+            heading: ['"Playfair Display"', 'serif'],
+            body: ['"Lora"', 'serif']
+          },
+          boxShadow: {
+            'soft': '0 6px 18px rgba(26,26,26,0.06)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .parchment {
+      background:
+        radial-gradient(circle at 10% 10%, rgba(208, 180, 130, 0.03) 0 2%, transparent 2%),
+        radial-gradient(circle at 90% 80%, rgba(200, 120, 80, 0.02) 0 2%, transparent 2%),
+        linear-gradient(180deg, #FBF7F0 0%, #F5EDE1 100%);
+      background-size: 400px 400px, 600px 600px, cover;
+    }
+
+    .highlight-underline {
+      background-image: linear-gradient(120deg, rgba(209, 178, 128, 0.45) 0%, rgba(184, 105, 77, 0.28) 100%);
+      background-repeat: no-repeat;
+      background-size: 100% 0.42em;
+      background-position: 0 88%;
+      padding-bottom: 0.08rem;
+    }
+
+    :focus {
+      outline: 2px solid rgba(184, 105, 77, 0.12);
+      outline-offset: 3px;
+    }
+
+    a:not(.group):hover {
+      text-decoration: underline;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      border: 1px solid #D1B280;
+      border-radius: 0.5rem;
+      box-shadow: 0 6px 18px rgba(26, 26, 26, 0.06);
+      z-index: 50;
+      min-width: max-content;
+    }
+
+    .dropdown-trigger:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: #1A1411;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #F5EDE1;
+    }
+
+    .dropdown-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu a:hover {
+      background: #F5EDE1;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body class="parchment text-ink font-body antialiased leading-relaxed">
+
+<!-- NAV -->
+<header class="sticky top-0 z-40 bg-parchment/80 backdrop-blur-sm border-b border-gold/12">
+  <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium"> All feedback is 100% human. </div>
+
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 no-underline">
+      <img src="logo.png" alt="Logo" width="36" height="36">
+      <span class="font-heading text-2xl text-umber">Studio Marginalia</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="/" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline">Home</a>
+      <a href="beta-read.html" class="nav-link bg-sienna/15 text-paper px-4 py-2 rounded-full text-sm transition-colors duration-200 hover:bg-sienna/90 no-underline">Skilled Beta Reading </a>
+      <a href="about.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna hover:no-underline">About</a>
+      <a href="blog.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline">Blog</a>
+      <a href="reviews.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline">Reviews</a>
+      <a href="contact.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline"> Contact </a>
+    </nav>
+
+    <!-- Mobile Toggle -->
+    <div class="md:hidden">
+      <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" class="p-2 rounded-md">
+        <!-- Hamburger -->
+        <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <!-- Close -->
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+
+    <!-- Mobile Nav -->
+  <div id="mobile-nav" class="md:hidden border-t border-gold/12">
+    <div class="px-6 py-4 flex flex-col gap-3">
+
+      <a href="/" class="text-umber font-medium hover:text-sienna no-underline">
+        Home
+      </a>
+
+      <a href="beta-read.html" class="text-sienna font-medium hover:text-sienna no-underline">
+        Skilled Beta Reading
+      </a>
+
+      <a href="about.html" class="text-umber font-medium hover:text-sienna no-underline">
+        About
+      </a>
+
+      <a href="blog.html" class="text-umber font-medium hover:text-sienna no-underline">
+        Blog
+      </a>
+
+      <a href="reviews.html" class="text-umber font-medium hover:text-sienna no-underline">
+        Reviews
+      </a>
+
+      <a href="contact.html" class="text-umber font-medium hover:text-sienna no-underline">
+        Contact
+      </a>
+
+    </div>
+  </div>
+
+</header>
+
+<main>
+<!-- HERO -->
+<section class="pt-14 pb-12">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+
+    <!-- Title -->
+    <h1 class="font-heading text-3xl sm:text-4xl leading-tight text-umber">
+      Skilled Beta Reading
+    </h1>
+
+    <!-- Badge -->
+    <span class="inline-block mt-3 bg-sienna/10 text-sienna border border-sienna/30 rounded-full px-5 py-2 text-base font-semibold">
+      $80 per 10,000 words
+    </span>
+    <br>
+    <br>
+    <br>
+    <p class="text-center text-sm italic text-sienna mb-16 tracking-wide">
+    Feedback delivered within 25 business days.
+    </p>
+    
+  </div>
+
+<!-- EXPLAINER -->
+<div class="max-w-4xl mx-auto px-6">
+<div class="border border-sienna/20 rounded-3xl shadow-soft bg-parchment/70 overflow-hidden backdrop-blur-sm">
+
+    <!-- BODY -->
+  <div class="px-6 md:px-10 py-14 text-olive leading-relaxed space-y-20">
+
+      <!-- INTRO CARD -->
+      <div class="bg-parchment/80 rounded-2xl p-8 border border-sienna/15 shadow-soft">
+        <p class="text-[1.05rem] leading-8 text-center max-w-3xl mx-auto">
+          This service offers honest reader-focused feedback on your manuscript. I read as your stand-in audience, leave inline comments with my real-time reactions, and provide a detailed letter breaking down what worked, what fell short and why, and actionable suggestions to strengthen your story.
+        </p>
+      </div>
+
+      <div class="flex justify-center mb-12">
+      <div class="inline-flex items-center gap-3 rounded-full bg-sienna/10 border border-sienna/20 px-6 py-3 shadow-soft">
+      <span class="text-sienna font-semibold tracking-wide text-sm uppercase">
+        What You Receive
+      </span>
+      </div>
+      </div>
+
+      <!-- INLINE COMMENTS -->
+      <div class="space-y-6">
+
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-10 rounded-full bg-sienna"></div>
+
+          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
+            In-line Comments
+          </p>
+        </div>
+
+        <p class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
+          Light in-line comments giving you an insider view into my thoughts and emotions as I read your story. You'll see my real-time reactions (predictions, questions, excitement, frustration, confusion) across various story elements (character actions, plot direction, internal monologues, etc).
+        </p>
+
+
+
+      </div>
+
+      <!-- READER REPORT -->
+      <div class="space-y-10">
+
+        <div class="space-y-5">
+
+          <div class="flex items-center gap-4">
+            <div class="w-1 h-10 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
+              Detailed Reader Report
+            </p>
+          </div>
+
+          <div class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
+            <p>The Reader Report is a letter focusing on:</p>
+
+            <ul class="list-disc ml-5 space-y-3 marker:text-sienna text-[0.98rem] leading-7 mt-3">
+              <li>
+                <strong>Plot</strong>
+                <p class="text-[0.98rem] mt-1">If the story moves logically, has sufficient conflict, tension, and lands emotionally.</p>
+              </li>
+              <li>
+                <strong>Characters</strong>
+                <p class="text-[0.98rem] mt-1">Whether they feel believable, their motivations make sense, if they serve the story, and whether I connected with them.</p>
+              </li>
+              <li>
+                <strong>Setting/Worldbuilding</strong>
+                <p class="text-[0.98rem] mt-1">If the world feels immersive, consistent, and enhances (or detracts from) the story.</p>
+              </li>
+              <li>
+                <strong>Theme</strong>
+                <p class="text-[0.98rem] mt-1">Whether the story's message or central idea comes through clearly and feels earned.</p>
+              </li>
+              <li>
+                <strong>Pacing</strong>
+                <p class="text-[0.98rem] mt-1">How quickly or slowly the story moves and whether it keeps me engaged or loses momentum.</p>
+              </li>
+              <li>
+                <strong>Readability and Flow</strong>
+                <p class="text-[0.98rem] mt-1">How smoothly the prose reads and whether scenes transition naturally.</p>
+              </li>
+              <li>
+                <strong>Overall Reader Experience</strong>
+                <p class="text-[0.98rem] mt-1">How it all comes together and what stays with me as a complete story.</p>
+              </li>
+            </ul>
+          </div>
+
+        <p class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
+        My feedback on each element is broken down into two sections:
+        </p>
+
+        </div>
+
+        <div class="grid md:grid-cols-1 gap-8 items-stretch">
+          <div class="space-y-10">
+          <div class="space-y-5">
+
+            <div class="grid md:grid-cols-2 gap-8 items-stretch">
+
+            <!-- STRENGTHS -->
+            <div class="bg-parchment/80 rounded-2xl p-8 border border-sienna/15 shadow-soft space-y-5 h-full hover:border-sienna/30 transition-colors duration-300">
+
+              <div class="flex items-center gap-3">
+                <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+                <p class="font-semibold text-sienna text-[1.2rem] leading-none">
+                  What's Working
+                </p>
+              </div>
+
+              <p class="text-[0.98rem] leading-7">
+               What resonates with me as a reader and why you managed to pull it off so well.
+              </p>
+
+            </div>
+
+            <!-- WEAKNESSES -->
+            <div class="bg-parchment/80 rounded-2xl p-8 border border-sienna/15 shadow-soft h-full space-y-5 hover:border-sienna/30 transition-colors duration-300">
+
+              <div class="flex items-center gap-3">
+                <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+                <p class="font-semibold text-sienna text-[1.2rem] leading-none">
+                  Notes on Improvement
+                </p>
+              </div>
+
+              <p class="text-[0.98rem] leading-7">
+                Constructive feedback on what isn't working, why it affects the reading experience, and how you can strengthen it.
+              </p>
+            </div>
+
+            </div>
+            </div>
+
+        </div>
+        </div>
+
+      </div>
+
+      <!-- SUPPORT -->
+      <div class="space-y-10">
+
+        <div class="space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-1 h-10 rounded-full bg-sienna"></div>
+            <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
+              Communication
+            </p>
+          </div>
+
+          <p class="pl-5 text-[1.05rem] leading-8 text-olive max-w-3xl">
+            This is a hybrid email-call service designed to be flexible and low-pressure. Email is my primary channel, but I recommend a follow-up call after your feedback to maximize the value you gain.
+          </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8 items-stretch">
+
+          <!-- BEFORE -->
+          <div class="bg-parchment/80 rounded-2xl p-8 border border-sienna/15 shadow-soft h-full space-y-7">
+
+            <div class="flex items-center gap-3">
+              <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+              <p class="font-semibold text-sienna text-[1.25rem] leading-tight">
+                Before Your Beta Read
+              </p>
+            </div>
+            <div class="pt-2 space-y-3">
+
+              <p class="text-[0.97rem] leading-7 text-olive">
+                You're welcome to email:
+              </p>
+
+              <ul class="list-disc ml-5 space-y-2 marker:text-sienna text-[0.97rem] leading-7 text-olive">
+                <li>Your goals for the manuscript</li>
+                <li>Concerns or revision struggles</li>
+                <li>Specific areas you'd like extra attention on</li>
+                <li>Questions you want answered from a reader perspective</li>
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- AFTER -->
+          <div class="bg-parchment/80 rounded-2xl p-8 border border-sienna/15 shadow-soft h-full space-y-7">
+
+            <div class="flex items-center gap-3">
+              <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+              <p class="font-semibold text-sienna text-[1.25rem] leading-tight">
+                After Your Beta Read
+              </p>
+            </div>
+            <div class="pt-2 space-y-3">
+
+              <p class="text-[0.97rem] leading-7 text-olive">
+                One follow-up call (no time limit), where you can:
+              </p>
+
+              <ul class="list-disc ml-5 space-y-2 marker:text-sienna text-[0.97rem] leading-7 text-olive">
+                <li>Ask questions about the feedback</li>
+                <li>Clarify points of confusion</li>
+                <li>Brainstorm revision approaches</li>
+                <li>Discuss your manuscript in depth</li>
+              </ul>
+
+              <p class="text-[0.95rem] leading-7 text-olive italic pt-3">
+                Scheduled at a time convenient for both of us.
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- REVISION SUPPORT -->
+      <div class="space-y-6">
+
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-10 rounded-full bg-sienna"></div>
+
+          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
+            Unlimited Email Support (60 days)
+          </p>
+        </div>
+
+        <p class="pl-5 text-[1.05rem] leading-8 text-olive max-w-3xl">
+            You have unlimited email support for 60 days after your call for revision questions and guidance. I'll get back to you within 72 hours.
+        </p>
+  
+      </div>
+
+      <!-- QUESTIONS -->
+      <div class="space-y-6">
+
+        <div class="flex items-center gap-4">
+          <div class="w-1 h-10 rounded-full bg-sienna"></div>
+
+          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
+            Questions?
+          </p>
+        </div>
+
+        <p class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
+          If you’re unsure whether this service is the right fit for your manuscript’s current stage, feel free to reach out. I’m happy to help you figure out what kind of feedback would best support your revision goals.
+        </p>
+
+      </div>
+  </div>
+
+</div>
+
+</section> 
+
+<!-- PRICING CALCULATOR -->
+<section class="bg-paper py-16">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <div class="text-center mb-10 space-y-4">
+      <h2 class="font-heading text-4xl text-umber tracking-tight">
+        Pricing Calculator
+      </h2>
+    </div>
+
+    <div class="bg-parchment/80 border border-sienna/15 rounded-3xl shadow-soft p-8 md:p-10 max-w-3xl mx-auto">
+      <p class="text-olive text-[1rem] leading-relaxed max-w-2xl mx-auto"> Pricing is set at <span class="text-sienna font-semibold">$80 per 10,000 words</span>.</p> <br>
+      <p class="text-olive text-[1rem] leading-relaxed max-w-2xl mx-auto">There are no hidden costs or additional fees. Your estimate covers all consultation, feedback, and revision support.
+      </p>
+      <br>
+
+      <!-- INPUT -->
+      <div class="space-y-5">
+
+        <label class="block text-sienna font-semibold text-lg">
+          Manuscript Word Count
+        </label>
+
+        <input
+          type="number"
+          id="word-count"
+          min="0"
+          placeholder="e.g. 75,000"
+          class="w-full rounded-2xl border border-sienna/20 bg-paper/80 px-6 py-5 text-lg text-olive placeholder:text-olive/50 focus:outline-none focus:ring-2 focus:ring-sienna/30 transition-all duration-300"
+        >
+      </div>
+
+      <!-- RESULT -->
+      <div
+        id="price-result"
+        class="mt-8 rounded-2xl border border-sienna/15 bg-paper/70 px-8 py-8 text-center shadow-soft"
+      >
+        <p class="text-olive text-base">
+          Enter your manuscript’s total word count to receive an instant estimate
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  const ratePer10k = 80;
+  const minWords = 1000;
+  const maxWords = 100000;
+
+  const input = document.getElementById('word-count');
+  const resultDiv = document.getElementById('price-result');
+
+  function calculatePrice() {
+    const wordCount = parseInt(input.value.replace(/,/g, ''));
+
+    // EMPTY INPUT
+    if (!wordCount) {
+      resultDiv.innerHTML = `
+        <p class="text-olive text-base">
+          Enter your manuscript’s total word count to receive an instant estimate
+        </p>
+      `;
+      return;
+    }
+
+    // BELOW MINIMUM
+    if (wordCount < minWords) {
+      resultDiv.innerHTML = `
+        <div class="space-y-2">
+          <p class="text-sienna text-xl font-semibold">
+            Minimum: ${minWords.toLocaleString()} words
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    // ABOVE MAXIMUM
+    if (wordCount > maxWords) {
+      resultDiv.innerHTML = `
+        <div class="space-y-2">
+          <p class="text-sienna text-xl font-semibold">
+            Over ${maxWords.toLocaleString()} words
+          </p>
+
+          <p class="text-olive text-sm">
+            I am open to reading your manuscript but please email me first to confirm availability
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    // NORMAL CALCULATION
+    const totalCost = Math.round((wordCount / 10000) * ratePer10k);
+
+    const deposit = Math.ceil(totalCost / 2);
+    const finalPayment = totalCost - deposit;
+
+    resultDiv.innerHTML = `
+      <div class="space-y-3">
+
+        <p class="text-olive text-base tracking-wide">
+          ${wordCount.toLocaleString()} words
+        </p>
+
+        <p class="text-sienna text-4xl font-heading">
+          $${totalCost}
+        </p>
+
+        <p class="text-olive text-sm leading-relaxed">
+          $${deposit} deposit · $${finalPayment} before delivery
+        </p>
+
+      </div>
+    `;
+  }
+
+  input.addEventListener('input', calculatePrice);
+  </script>
+
+</section>
+
+<!-- SPECIFICS -->
+<section class="bg-paper py-24">
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- SECTION HEADER -->
+    <div class="text-center space-y-5 mb-20">
+
+      <p class="font-heading text-5xl text-umber tracking-tight">
+        Specifics
+      </p>
+
+      <p class="text-[1.05rem] leading-8 text-olive max-w-2xl mx-auto">
+        Clear expectations, transparent policies, and a straightforward working process from start to finish.
+      </p>
+
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="bg-parchment/70 rounded-3xl border border-sienna/15 shadow-soft overflow-hidden">
+
+      <div class="px-8 md:px-12 py-12 divide-y divide-sienna/10">
+
+        <!-- NO AI -->
+        <div class="py-10 first:pt-0">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-10 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.5rem] tracking-tight">
+              NO AI. EVER.
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            I do not use AI at any point in my service: to read your manuscript, write your report, or assist in writing the report. If you suspect AI use, you are well within your rights to request proof of actual human work, which will be provided. Studio Marginalia is built for humans, by a human.
+          </p>
+
+        </div>
+
+        <!-- PAYMENTS -->
+        <div class="py-10">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
+              Payments
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            All services and payments will be agreed upon in advance and paid in USD. Payments are processed through PayPal Xoom or Western Union.
+          </p>
+
+        </div>
+
+        <!-- PAYMENT STRUCTURE -->
+        <div class="py-10">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
+              Payment Structure
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            All services are confirmed with a 50% deposit to secure the booking and begin the project. The remaining 50% balance is due upon completion of the service and before delivery of final materials (your Reader Report and annotated manuscript). Final deliverables are released once the remaining balance has been received.
+          </p>
+
+        </div>
+
+        <!-- REFUNDS -->
+        <div class="py-10">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
+              Refunds
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            Clients may request a refund within 3 days of manuscript submission and payment receipt. After this window closes, the project is locked in. If I am unable to complete the service after receiving payment, the client will receive a full refund.
+          </p>
+
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="py-10">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
+              Timeline
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            After the 3-day refund window closes, I will notify you via email that I've begun working on your manuscript, and the official timeline starts at that point.
+          </p>
+
+        </div>
+
+        <!-- COMMUNICATION -->
+        <div class="py-10">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
+              Communication
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            You may contact me at any time via email while I have your manuscript. I respond within 24 hours.
+          </p>
+
+        </div>
+
+        <!-- WORD COUNT -->
+        <div class="py-10">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
+              Word Count Minimum / Maximum
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            The minimum word count is 1,000 words. The maximum word count is 100,000 words. I am open to working with manuscripts over this limit, but you must contact me beforehand to discuss.
+          </p>
+
+        </div>
+
+        <!-- CONFIDENTIALITY -->
+        <div class="py-10 last:pb-0">
+
+          <div class="flex items-center gap-4 mb-5">
+            <div class="w-1 h-8 rounded-full bg-sienna"></div>
+
+            <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
+              Confidentiality
+            </p>
+          </div>
+
+          <p class="text-[1rem] leading-8 text-olive pl-5 max-w-3xl">
+            Upon request, I will sign any Non-Disclosure Agreement (NDA) or similar document, or provide my own contract.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT-->
+<section id="Contact" class="py-14">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-8">
+      <h2 class="font-heading text-2xl text-umber">Contact</h2>
+      <h3 class="mt-2 text-olive text-lg font-medium">Stop Revising Blind. Start Revising Smart.</h3>
+      <p class="mt-2 text-olive text-sm">Tell me about your manuscript and I’ll get back to you within 48 hours.</p>
+    </div>
+
+  <form id="Contact-form" method="POST" class="bg-paper rounded-xl shadow-soft p-6 md:p-10">
+    <div class="grid md:grid-cols-2 gap-6">
+    <!-- Name -->
+    <div class="flex flex-col">
+      <label for="name" class="mb-1 text-umber font-medium">What's your name?</label>
+      <input type="text" name="name" id="name" placeholder="Your name" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Email -->
+    <div class="flex flex-col">
+      <label for="email" class="mb-1 text-umber font-medium">What's your email?</label>
+      <input type="email" name="email" id="email" placeholder="you@example.com" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Genre -->
+    <div class="flex flex-col">
+      <label for="genre" class="mb-1 text-umber font-medium">What's your book's genre?</label>
+      <input type="text" name="genre" id="genre" placeholder="e.g. Grimdark Fantasy, Cozy Mystery" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
+    </div>
+
+    <!-- Word Count -->
+    <div class="flex flex-col">
+      <label for="wordcount" class="mb-1 text-umber font-medium">What's your book's word count?</label>
+      <input type="text" name="wordcount" id="wordcount" placeholder="e.g. 75,000" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
+    </div>
+
+    <!-- Interested In -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
+      <select name="interest" id="interest" required class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
+        <option value="" disabled selected>Select an option</option>
+        <option value="free-sample">Free 2000 Word Sample Edit</option>
+        <option value="beta-reading">Skilled Beta Reading</option>
+      </select>
+    </div>
+
+  <!-- Message -->
+  <div class="flex flex-col md:col-span-2">
+    <label for="message" class="mb-1 text-umber font-medium">Tell me about your book…</label>
+    <textarea name="message" id="message" rows="5" placeholder="Write a brief description or short synopsis of your story." required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
+    <p class="text-xs text-olive mt-2">💡 Feel free to add anything else you might want me to know.</p>
+  </div>
+  </div>
+
+  <!-- Success/Error Messages -->
+  <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+
+  <div class="mt-6 text-center">
+    <button type="submit" class="bg-sienna text-paper font-medium px-8 py-3 rounded-lg shadow-soft hover:bg-sienna/90 transition">
+      Send Message
+    </button>
+  </div>
+  </form>
+
+
+    <script>
+      const form = document.getElementById('Contact-form');
+      const messageDiv = document.getElementById('form-message');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); // prevents default submit
+        const formData = new FormData(form);
+
+        fetch('https://formspree.io/f/xzzawyoy', {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(response => response.json())
+          .then(data => {
+            if (data.ok || data.success !== false) {
+              messageDiv.textContent = "Thank you! Your message has been sent successfully. I will be in touch shortly.";
+              messageDiv.classList.remove('hidden', 'text-red-500');
+              messageDiv.classList.add('text-green-600');
+              form.reset();
+            } else {
+              throw new Error('Form submission failed');
+            }
+          })
+          .catch(error => {
+            messageDiv.textContent = "Oops! Something went wrong. Please try again.";
+            messageDiv.classList.remove('hidden', 'text-green-600');
+            messageDiv.classList.add('text-red-500');
+          });
+      });
+
+    </script>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-umber text-paper py-10">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="font-heading text-lg">Studio Marginalia</p>
+    <p class="text-sm mt-1">Real Reader. Real Feedback.</p>
+    <a class="mt-3 inline-block text-gold hover:text-rose"
+      href="mailto:info.studiomarginalia@gmail.com">info.studiomarginalia@gmail.com</a>
+    <p class="mt-4 text-xs text-gold/80">All manuscripts kept confidential • Working with authors worldwide</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<!-- Mobile nav script -->
+<script>
+(function () {
+
+  // -------------------------
+  // MOBILE NAV TOGGLE
+  // -------------------------
+  const btn = document.getElementById('nav-toggle');
+  const mobile = document.getElementById('mobile-nav');
+  const openIcon = document.getElementById('icon-open');
+  const closeIcon = document.getElementById('icon-close');
+
+  function openNav() {
+    mobile.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    openIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+  }
+
+  function closeNav() {
+    mobile.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+    openIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+  }
+
+  // START CLOSED (important fix)
+  closeNav();
+
+  if (btn) {
+    btn.addEventListener('click', () => {
+      const isOpen = !mobile.classList.contains('hidden');
+      isOpen ? closeNav() : openNav();
+    });
+  }
+
+  // -------------------------
+  // CLOSE MOBILE NAV ON LINK CLICK
+  // -------------------------
+  document.querySelectorAll('#mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeNav();
+    });
+  });
+
+  // -------------------------
+  // ACTIVE PAGE HIGHLIGHT (DESKTOP + MOBILE)
+  // -------------------------
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+  document.querySelectorAll('.nav-link, #mobile-nav a').forEach(link => {
+    const href = link.getAttribute('href');
+
+    const isActive =
+      href === currentPage ||
+      (currentPage === '' && href === '/') ||
+      (currentPage === 'index.html' && href === '/');
+
+    if (isActive) {
+      link.classList.add('text-sienna');
+      link.classList.remove('text-umber');
+    } else {
+      link.classList.remove('text-sienna');
+      link.classList.add('text-umber');
+    }
+  });
+
+})();
+</script>
+
+</body>
+
+</html>
