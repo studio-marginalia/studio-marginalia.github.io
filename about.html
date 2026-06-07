@@ -92,48 +92,73 @@
 </head>
 <body class="parchment text-ink font-body antialiased leading-relaxed">
 
-  <!-- NAV -->
+<!-- NAV -->
 <header class="sticky top-0 z-40 bg-parchment/80 backdrop-blur-sm border-b border-gold/12">
-  <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium">
-    All feedback is 100% human.
-  </div>
+  <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium"> All feedback is 100% human. </div>
+
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="/" class="flex items-center gap-3">
+    <a href="/" class="flex items-center gap-3 no-underline">
       <img src="logo.png" alt="Logo" width="36" height="36">
       <span class="font-heading text-2xl text-umber">Studio Marginalia</span>
     </a>
 
+    <!-- Desktop Nav -->
     <nav class="hidden md:flex items-center gap-6 text-sm">
-      <a href="/" class="hover:text-sienna">Home</a>
-      <a href="ms-eval.html" class="text-sienna">Manuscript Evaluation</a>
-      <a href="about.html" class="hover:text-sienna">About</a>
-      <a href="blog.html" class="hover:text-sienna">Blog</a>
-      <a href="reviews.html" class="hover:text-sienna">Reviews</a>
-      <a href="contact.html" class="inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold shadow-soft hover:bg-[#a2563f]">Contact</a>
+      <a href="/" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline">Home</a>
+      <a href="beta-read.html" class="nav-link bg-sienna/15 text-paper px-4 py-2 rounded-full text-sm transition-colors duration-200 hover:bg-sienna/90 no-underline">Skilled Beta Reading </a>
+      <a href="about.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna hover:no-underline">About</a>
+      <a href="blog.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline">Blog</a>
+      <a href="reviews.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline">Reviews</a>
+      <a href="contact.html" class="nav-link text-umber transition-colors duration-200 hover:text-sienna no-underline"> Contact </a>
     </nav>
 
+    <!-- Mobile Toggle -->
     <div class="md:hidden">
       <button id="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" class="p-2 rounded-md">
+        <!-- Hamburger -->
         <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
+        <!-- Close -->
         <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
     </div>
+
   </div>
 
-  <div id="mobile-nav" class="md:hidden hidden border-t border-gold/12">
+    <!-- Mobile Nav -->
+  <div id="mobile-nav" class="md:hidden border-t border-gold/12">
     <div class="px-6 py-4 flex flex-col gap-3">
-      <a href="/" class="text-umber font-medium">Home</a>
-      <a href="ms-eval.html" class="text-sienna">Manuscript Evaluation</a>
-      <a href="about.html" class="text-umber font-medium">About</a>
-      <a href="blog.html" class="text-umber font-medium">Blog</a>
-      <a href="reviews.html" class="text-umber font-medium">Reviews</a>
-      <a href="contact.html" class="mt-2 inline-block rounded-md bg-sienna text-paper px-4 py-2 font-semibold text-center">Contact</a>
+
+      <a href="/" class="text-umber font-medium hover:text-sienna no-underline">
+        Home
+      </a>
+
+      <a href="beta-read.html" class="text-sienna font-medium hover:text-sienna no-underline">
+        Skilled Beta Reading
+      </a>
+
+      <a href="about.html" class="text-umber font-medium hover:text-sienna no-underline">
+        About
+      </a>
+
+      <a href="blog.html" class="text-umber font-medium hover:text-sienna no-underline">
+        Blog
+      </a>
+
+      <a href="reviews.html" class="text-umber font-medium hover:text-sienna no-underline">
+        Reviews
+      </a>
+
+      <a href="contact.html" class="text-umber font-medium hover:text-sienna no-underline">
+        Contact
+      </a>
+
     </div>
   </div>
+
 </header>
 
 <main>
@@ -144,22 +169,21 @@
         <div class="bg-paper border border-sienna/20 rounded-xl p-8 w-full md:w-2xl">
           <!-- Title -->
           <h3 class="font-heading text-2xl text-umber mb-8 text-center md:text-center">Hi, I'm Hope</h3>
-          
-          <div class="flex flex-col md:flex-row gap-8 items-start">
-            <!-- Image -->
-            <img src="pic.png" alt="Hope" class="w-full md:w-64 object-cover rounded-lg flex-shrink-0">
+
+         <div class="flex flex-col md:flex-row gap-8 items-start">
+          <!-- Image -->
+          <img src="pic.png" alt="Hope" class="w-full md:w-64 object-cover rounded-lg flex-shrink-0">
 
             <div class="flex flex-col gap-3 flex-1">
-              <p class="font-semibold text-umber text-sm">Some Quick Facts:</p>
-              <p class="text-olive text-sm">✓ BA in English and Philosophy</p>
-              <p class="text-olive text-sm">✓ Former Top Rated Screenwriter on Fiverr (3 years)</p>
-              <p class="text-olive text-sm">✓ Ghostwrote 5 novels in a 13-book slasher series</p>
-              <p class="text-olive text-sm">✓ Sold a spec script for $7,000</p>
+              <p class="font-semibold text-umber">Some Quick Facts:</p>
+              <p class="text-olive">✓ Top Rated Fiverr Freelancer for 3 years (May 2020 - November 2023)</p>
+              <p class="text-olive ml-6">✓ Beta Reading (200+ 5-star reviews)</p>
+              <p class="text-olive ml-6">✓ Ghostwriting (63 5-star reviews)</p>
 
-              <p class="font-semibold text-umber text-sm mt-4">Currently:</p>
-              <p class="text-olive text-sm">✓ Part-time Paralegal</p>
-              <p class="text-olive text-sm">✓ Manuscript evaluations at Studio Marginalia</p>
-              <p class="text-olive text-sm">✓ Based in East Africa</p>
+              <p class="font-semibold text-umber mt-4">Currently:</p>
+              <p class="text-olive">✓ Technical Writer in the cybersecurity space</p>
+              <p class="text-olive">✓ Managing Studio Marginalia</p>
+              <p class="text-olive">✓ Based in East Africa</p>
             </div>
           </div>
         </div>
@@ -191,20 +215,72 @@
 
 <!-- Mobile nav script -->
 <script>
-  (function(){
-    const btn = document.getElementById('nav-toggle');
-    const mobile = document.getElementById('mobile-nav');
-    const openIcon = document.getElementById('icon-open');
-    const closeIcon = document.getElementById('icon-close');
+(function () {
 
+  // -------------------------
+  // MOBILE NAV TOGGLE
+  // -------------------------
+  const btn = document.getElementById('nav-toggle');
+  const mobile = document.getElementById('mobile-nav');
+  const openIcon = document.getElementById('icon-open');
+  const closeIcon = document.getElementById('icon-close');
+
+  function openNav() {
+    mobile.classList.remove('hidden');
+    btn.setAttribute('aria-expanded', 'true');
+    openIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+  }
+
+  function closeNav() {
+    mobile.classList.add('hidden');
+    btn.setAttribute('aria-expanded', 'false');
+    openIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+  }
+
+  // START CLOSED (important fix)
+  closeNav();
+
+  if (btn) {
     btn.addEventListener('click', () => {
-      const isHidden = mobile.classList.toggle('hidden');
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', !expanded);
-      openIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
+      const isOpen = !mobile.classList.contains('hidden');
+      isOpen ? closeNav() : openNav();
     });
-  })();
+  }
+
+  // -------------------------
+  // CLOSE MOBILE NAV ON LINK CLICK
+  // -------------------------
+  document.querySelectorAll('#mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      closeNav();
+    });
+  });
+
+  // -------------------------
+  // ACTIVE PAGE HIGHLIGHT (DESKTOP + MOBILE)
+  // -------------------------
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+
+  document.querySelectorAll('.nav-link, #mobile-nav a').forEach(link => {
+    const href = link.getAttribute('href');
+
+    const isActive =
+      href === currentPage ||
+      (currentPage === '' && href === '/') ||
+      (currentPage === 'index.html' && href === '/');
+
+    if (isActive) {
+      link.classList.add('text-sienna');
+      link.classList.remove('text-umber');
+    } else {
+      link.classList.remove('text-sienna');
+      link.classList.add('text-umber');
+    }
+  });
+
+})();
 </script>
 
 </body>
