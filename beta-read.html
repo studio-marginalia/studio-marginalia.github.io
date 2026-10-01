@@ -15,6 +15,7 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -107,7 +108,6 @@
 
 <body class="parchment text-ink font-body antialiased leading-relaxed">
 
-
 <!-- NAV -->
 <header class="sticky top-0 z-40 bg-parchment/80 backdrop-blur-sm border-b border-gold/12">
   <div class="sticky top-0 z-50 w-full bg-sienna text-paper text-center py-2 text-sm font-medium"> All feedback is 100% human. </div>
@@ -129,7 +129,7 @@
         </button>
         <div class="absolute left-0 top-full pt-2 w-56">
           <div class="bg-parchment border border-gold/20 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
-            <a href="ms-crit.html" class="nav-link block px-4 py-2 text-umber transition-colors duration-200 hover:text-sienna hover:bg-gold/10 no-underline"> Manuscript Critique </a>
+            <a href="ms-analysis.html" class="nav-link block px-4 py-2 text-umber transition-colors duration-200 hover:text-sienna hover:bg-gold/10 no-underline"> Manuscript Analysis </a>
             <a href="beta-read.html" class="nav-link block px-4 py-2 text-umber transition-colors duration-200 hover:text-sienna hover:bg-gold/10 no-underline"> Beta Reading </a>
          
           </div>
@@ -174,8 +174,8 @@
 
       <div class="pl-4 flex flex-col gap-2 border-l border-gold/20">
 
-        <a href="ms-crit.html" class="text-umber hover:text-sienna no-underline">
-          Manuscript Critique
+        <a href="ms-analysis.html" class="text-umber hover:text-sienna no-underline">
+          Manuscript Analysis
         </a>
 
         <a href="beta-read.html" class="text-umber hover:text-sienna no-underline">
@@ -204,587 +204,1490 @@
 </div>
 </header>
 
-<!-- TITLE -->
-<section class="relative w-full h-[40vh] bg-cover bg-center" style="background-image: url('1.jpg');">
+<main>
 
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20"></div>
+<!-- HERO -->
+<section
+class="relative w-full min-h-[60vh] bg-cover bg-center"
+style="background-image: url('1.jpg');"
+>
+<div class="absolute inset-0 bg-black/50"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/50 to-black/30"></div>
 
-  <!-- Content -->
-  <div class="relative h-full flex items-center justify-center px-6">
-    <div class="text-center max-w-3xl space-y-5">
+<div class="relative flex min-h-[60vh] items-center justify-center px-6 py-16 sm:px-8 sm:py-20">
+  <div class="w-full max-w-4xl">
 
-      <!-- Badge -->
-      <span class="inline-block bg-sienna text-paper border border-sienna/30 rounded-full px-5 py-2 text-sm font-semibold shadow-md">
+    <div class="mb-6 text-center">
+      <span class="inline-block rounded-full border border-sienna/30 bg-sienna px-5 py-2 text-sm font-semibold text-paper shadow-md">
         Delivered Within 15 Business Days
       </span>
-
-      <!-- Title -->
-      <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl leading-tight text-paper">
-        Beta Reading
-      </h1>
-
-      <!-- Service Blurb -->
-      <p class="text-lg md:text-xl leading-relaxed text-paper/90 max-w-xl mx-auto">
-          Reader-perspective feedback that shows you where your story hooks, drags, and falls flat
-      </p>
-
     </div>
+
+    <h1 class="text-center font-heading text-4xl leading-tight text-paper sm:text-5xl md:text-6xl">
+      Beta Reading
+    </h1>
+
+    <div class="mx-auto mt-8 max-w-3xl rounded-2xl border border-paper/15 bg-black/20 px-6 py-6 backdrop-blur-[2px] sm:px-8 sm:py-7">
+      <div class="space-y-4 text-base leading-7 text-paper sm:text-lg sm:leading-8">
+
+        <p>
+          Beta reading is a read-through of your finished manuscript by an outside perspective. This is done before publishing, querying or hiring an editor.
+        </p>  
+          
+         <p>
+          Its value lies in understanding the <i>experience</i> of reading your story, from the eyes of your potential audience.
+        </p>
+
+        <p>
+          Good beta reading gives you a map of your work by providing honest feedback on story elements such as plot, pacing and character development; as well as breaking down its strengths and weaknesses, and where potential readers would get confused.
+        </p>
+
+      </div>
+    </div>
+
   </div>
-
-</section>
-
-<main>
-<!-- HERO -->
-<section class="pt-14 pb-12">
-
-<!-- EXPLAINER -->
-<div class="max-w-4xl mx-auto px-6">
-<div class="border border-sienna/20 rounded-3xl shadow-soft bg-parchment/70 overflow-hidden backdrop-blur-sm">
-
-    <!-- BODY -->
-  <div class="px-6 md:px-10 py-14 text-olive leading-relaxed space-y-20">
-
-      <!-- INTRO CARD -->
-      <div class="bg-parchment/80 rounded-2xl p-8 border border-sienna/15 shadow-soft">
-        <p class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
-          Before you begin your next round of revisions, it's worth knowing how your story lands with a fresh set of eyes.
-          <br><br>
-
-          A beta read tests the reading experience before your manuscript reaches the audience you're writing it for. I read your story as an engaged first-time reader, documenting my thoughts and reactions as they naturally unfold. Rather than analysing every storytelling decision, I focus on the experience of reading the manuscript itself: where I became invested, where my attention drifted, what surprised me, and what stayed with me after the final page.
-          <br><br>
-        </p>
-      </div>
-
-      <!-- IS THIS FOR YOU? -->
-      <div class="space-y-6">
-        <div class="flex items-center gap-4">
-          <div class="w-1 h-10 rounded-full bg-sienna"></div>
-
-          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
-            Who This Service Is For
-          </p>
-        </div>
-
-         <p class="text-[1.05rem] leading-7 text-olive">
-          A beta read is ideal if:
-          </p>
-          <ul class="list-disc ml-5 space-y-2 marker:text-sienna text-[0.97rem] leading-7 text-olive">
-              <li>You've completed a draft and want an honest reader-first perspective</li>
-              <li>You want to know whether your story delivers on its promise before investing in deeper editorial work</li>
-              <li>You're looking for genuine reader reactions rather than an editorial critique</li>
-              <li>You're preparing to query, self-publish, or move on to professional editing</li>
-            </ul>
-
-      </div>
-
-      <div class="flex justify-center mb-12">
-      <div class="inline-flex items-center gap-3 rounded-full bg-sienna/10 border border-sienna/20 px-6 py-3 shadow-soft">
-      <span class="text-sienna font-semibold tracking-wide text-sm uppercase">
-        What You Receive
-      </span>
-      </div>
-      </div>
-
-      <!-- INLINE COMMENTS -->
-      <div class="space-y-6">
-
-        <div class="flex items-center gap-4">
-          <div class="w-1 h-10 rounded-full bg-sienna"></div>
-
-          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
-            In-line Comments
-          </p>
-        </div>
-
-        <p class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
-          For beta reading, the comments are the experience. They capture my real-time reactions as I read: excitement, confusion, curiosity, predictions, and questions. You'll see exactly how individual scenes and story beats land with a reader.
-        </p>
-
-      </div>
-
-      <!-- READER REPORT -->
-      <div class="space-y-10">
-
-        <div class="space-y-5">
-
-          <div class="flex items-center gap-4">
-            <div class="w-1 h-10 rounded-full bg-sienna"></div>
-
-            <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
-              Detailed Reader Report
-            </p>
-          </div>
-
-          <div class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
-            <p>After finishing your manuscript, you'll receive a concise report covering my overall reading experience, including:</p>
-
-            <ul class="list-disc ml-5 space-y-3 marker:text-sienna text-[0.98rem] leading-7 mt-3">
-              <li>
-                <strong>Plot</strong>
-                <p class="text-[0.98rem] mt-1">Whether the story remained engaging, coherent, and satisfying from beginning to end.</p>
-              </li>
-              <li>
-                <strong>Characters</strong>
-                <p class="text-[0.98rem] mt-1">Which characters I connected with most, whose motivations felt believable, and who left the strongest impression.</p>
-              </li>
-              <li>
-                <strong>Setting/Worldbuilding</strong>
-                <p class="text-[0.98rem] mt-1">Whether the world felt immersive, consistent, and easy to visualise.</p>
-              </li>
-              <li>
-                <strong>Pacing</strong>
-                <p class="text-[0.98rem] mt-1">Where the story maintained momentum, where it slowed, and where my attention began to drift.</p>
-              </li>
-              <li>
-                <strong>Emotional Impact</strong>
-                <p class="text-[0.98rem] mt-1">Which moments resonated most strongly, what surprised me, and whether the emotional beats landed as intended.</p>
-              </li>
-              <li>
-                <strong>Overall Reader Experience</strong>
-                <p class="text-[0.98rem] mt-1">My overall impressions after reaching the final page, including what stayed with me and what readers are most likely to remember.</p>
-              </li>
-              <li>
-                <strong>Genre & Reader Expectations</strong>
-                <p class="text-[0.98rem] mt-1">Whether the manuscript delivered the experience I expected from its genre and who I believe it will resonate with most.</p>
-              </li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- BEFORE SUBMISSION -->
-      <div class="space-y-6">
-
-        <div class="flex items-center gap-4">
-          <div class="w-1 h-10 rounded-full bg-sienna"></div>
-
-          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
-            Before You Submit
-          </p>
-        </div>
-
-        <p class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
-          If there are particular questions you'd like answered while I read, you're welcome to include them with your manuscript. Whether you're concerned about a character arc, a subplot, your ending, or anything else, I'll keep those questions in mind throughout the read.
-        </p>
-
-      </div>
-
-       <!-- THIS ISN'T -->
-      <div class="space-y-6">
-        <div class="flex items-center gap-4">
-          <div class="w-1 h-10 rounded-full bg-sienna"></div>
-
-          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
-            What This Service Doesn't Include
-          </p>
-        </div>
-
-         <p class="text-[1.05rem] leading-7 text-olive">
-          Beta Reading is designed to evaluate the reading experience, not provide editorial analysis. As such, this service does not include:
-          </p>
-          <ul class="list-disc ml-5 space-y-2 marker:text-sienna text-[0.97rem] leading-7 text-olive">
-              <li>Developmental editing</li>
-              <li>Line editing or copyediting</li>
-              <li>Proofreading for grammar, spelling, or punctuation</li>
-              <li>Detailed craft analysis or a structured revision plan.</li>
-            </ul>
-          <p class="text-[1.05rem] leading-7 text-olive">
-          If you're looking for in-depth editorial guidance and actionable revision advice, the Manuscript Critique is likely the better fit.
-          </p>
-
-      </div>
-
-      <!-- COMMUNICATION -->
-      <div class="space-y-10">
-
-        <div class="space-y-4">
-          <div class="flex items-center gap-4">
-            <div class="w-1 h-10 rounded-full bg-sienna"></div>
-            <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
-              Communication
-            </p>
-          </div>
-
-          <p class="pl-5 text-[1.05rem] leading-8 text-olive max-w-3xl">
-            Beta Reading is an email-only service.
-            <br><br>
-            Once your beta read is complete, you'll receive your annotated manuscript and Beta Reading Report by email. If you have any questions about the report afterwards, you're welcome to send one follow-up email for clarification.
-          </p>
-
-        </div>
-      </div>
-
-      <!-- QUESTIONS -->
-      <div class="space-y-6">
-
-        <div class="flex items-center gap-4">
-          <div class="w-1 h-10 rounded-full bg-sienna"></div>
-
-          <p class="font-semibold text-sienna text-[1.6rem] tracking-tight leading-none">
-            Questions?
-          </p>
-        </div>
-
-        <p class="pl-5 text-[1.02rem] leading-8 max-w-3xl">
-          If you’re unsure whether this service is the right fit for your manuscript’s current stage, feel free to get in touch. I’m happy to help you figure out what kind of feedback would best support your revision goals.
-        </p>
-
-      </div>
-  </div>
-
 </div>
-
 </section>
 
-<!-- PRICING -->
-<section class="bg-paper py-16">
-  <div class="max-w-5xl mx-auto px-6">
+<!-- SERVICE DELIVERABLES -->
+<section id="deliverables" class="scroll-mt-16 bg-paper py-12 md:py-16">
+  <div class="mx-auto max-w-5xl px-6">
 
-    <div class="text-center mb-10 space-y-4">
-      <h2 class="font-heading text-4xl text-umber tracking-tight">
+    <!-- Header -->
+    <div class="mx-auto mb-9 max-w-3xl text-center">
+      <div class="mb-4 flex justify-center">
+        <div class="inline-flex items-center rounded-full border border-sienna/20 bg-sienna/10 px-5 py-2">
+          <span class="text-sm font-semibold uppercase tracking-wide text-sienna">
+            Service Deliverables
+          </span>
+        </div>
+      </div>
+
+      <h2 class="font-heading text-4xl tracking-tight text-umber md:text-5xl">
+        What you receive:
+      </h2>
+    </div>
+
+    <!-- What You Receive -->
+    <div class="rounded-3xl border border-sienna/15 bg-parchment/70 p-6 shadow-soft sm:p-8 md:p-10">
+      <div class="grid gap-x-10 md:grid-cols-2">
+
+        <!-- One Read -->
+        <div class="border-b border-sienna/10 py-8 md:pb-8 md:pt-0">
+          <div class="mb-4 flex items-center gap-4">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4.5 w-4.5"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+              </svg>
+            </div>
+
+            <h3 class="text-[1.05rem] font-semibold text-sienna">
+              One Thorough Read
+            </h3>
+          </div>
+
+          <p class="text-[0.94rem] leading-6 text-olive">
+            No skimming, no DNF-ing halfway. I'm in it for the entire ride.
+          </p>
+        </div>
+
+        <!-- In-line Comments -->
+        <div class="border-b border-sienna/10 py-8 md:pb-8 md:pt-0">
+          <div class="mb-4 flex items-center gap-4">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4.5 w-4.5"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+
+            <h3 class="text-[1.05rem] font-semibold text-sienna">
+              In-line Comments
+            </h3>
+          </div>
+
+          <p class="text-[0.94rem] leading-6 text-olive">
+            The occasional comment, right where a reaction happened.
+          </p>
+        </div>
+
+        <!-- Reader Report -->
+        <div class="border-b border-sienna/10 py-8 md:pb-8 md:pt-8">
+          <div class="mb-4 flex items-center gap-4">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4.5 w-4.5"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6"/>
+                <path d="M9 15h6"/>
+                <path d="M9 11h6"/>
+              </svg>
+            </div>
+
+            <h3 class="text-[1.05rem] font-semibold text-sienna">
+              Reader Report
+            </h3>
+          </div>
+
+          <p class="text-[0.94rem] leading-6 text-olive">
+            A (subjective) report summarizing the book's main strengths and weaknesses.
+          </p>
+        </div>
+
+        <!-- Email Follow-up -->
+        <div class="border-b border-sienna/10 py-8 md:border-b-0 md:pb-0 md:pt-8">
+          <div class="mb-4 flex items-center gap-4">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4.5 w-4.5"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            </div>
+
+            <h3 class="text-[1.05rem] font-semibold text-sienna">
+              Email Follow-up
+            </h3>
+          </div>
+
+          <p class="text-[0.94rem] leading-6 text-olive">
+            Have some questions about the Reader Report? Start an email thread!
+          </p>
+        </div>
+
+         <!-- Reader Report Alt. -->
+        <div class="py-8 md:pb-0 md:pt-8">
+          <div class="mb-4 flex items-center gap-4">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4.5 w-4.5"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="12" y1="5" x2="12" y2="13"/>
+              <circle cx="12" cy="18" r="1"/>
+            </svg>
+            </div>
+
+            <h3 class="text-[1.05rem] font-semibold text-sienna">
+              Reader Report Alternative
+            </h3>
+          </div>
+
+          <p class="text-[0.94rem] leading-6 text-olive">
+            Prefer targeted feedback? Send me a list of questions before the read, and I'll answer them instead of the standard Reader Report.
+          </p>
+        </div>
+
+        <!-- No AI, Ever -->
+        <div class="py-8 md:pb-0 md:pt-8">
+          <div class="mb-4 flex items-center gap-4">
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4.5 w-4.5"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
+
+            <h3 class="text-[1.05rem] font-semibold text-sienna">
+              No AI, ever
+            </h3>
+          </div>
+
+          <p class="text-[0.94rem] leading-6 text-olive">
+            This service is carried out by a human, for humans. No AI has ever been, or ever will be, used in this process.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Deliverables Explained -->
+    <div id="deliverables" class="mx-auto mt-8 max-w-3xl">
+
+    <!-- Accordion Content -->
+        <button
+          type="button"
+          id="deliverables-toggle"
+          class="group flex w-full items-center justify-between rounded-2xl border border-sienna/15 bg-parchment/50 px-6 py-5 text-left shadow-soft transition hover:border-sienna/30 hover:bg-parchment/70 sm:px-8"
+          aria-expanded="false"
+          aria-controls="deliverables-content"
+        >
+          <div class="flex items-center gap-4">
+            <div class="h-9 w-1 rounded-full bg-sienna"></div>
+
+            <div>
+              <span class="block text-xs font-bold uppercase tracking-wide text-sienna">
+                Learn more
+              </span>
+
+              <span class="mt-1 block font-heading text-2xl tracking-tight text-umber md:text-3xl">
+                Deliverables Explained
+              </span>
+            </div>
+          </div>
+
+          <svg
+            id="deliverables-arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="ml-4 shrink-0 text-sienna transition-transform duration-300"
+            aria-hidden="true"
+          >
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </button>
+    <div
+      id="deliverables-content"
+      class="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-in-out"
+      aria-hidden="true"
+      >
+
+      <div class="overflow-hidden pt-6">
+
+        <!-- Main Deliverables Box -->
+        <div class="overflow-hidden rounded-3xl border border-sienna/15 bg-paper shadow-soft">
+
+          <!-- One Read -->
+          <div class="p-6 sm:p-8 md:p-10">
+
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </div>
+
+              <h4 class="font-heading text-2xl text-umber md:text-3xl">
+                One Thorough Read
+              </h4>
+            </div>
+
+            <p class="text-[1rem] leading-7 text-olive md:text-[1.02rem] md:leading-8">
+              I read your book once, front to back, the same way I read any novel I've picked up for myself: carefully, with a pen in hand and a notebook nearby. No skimming, no DNF-ing halfway.
+            </p>
+
+          </div>
+
+          <!-- In-line Comments -->
+          <div class="border-t border-sienna/15 p-6 sm:p-8 md:p-10">
+
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                </svg>
+              </div>
+
+              <h4 class="font-heading text-2xl text-umber md:text-3xl">
+                In-line Comments
+              </h4>
+            </div>
+
+            <p class="text-[1rem] leading-7 text-olive md:text-[1.02rem] md:leading-8">
+              When I read my own books, I write in the margins. For yours, I do the same thing digitally: I import your manuscript into Google Docs and leave comments right where a reaction happened.
+            </p>
+
+          </div>
+
+          <!-- Reader Report -->
+          <div class="border-t border-sienna/15 p-6 sm:p-8 md:p-10">
+
+            <div class="mb-7 flex items-center gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <path d="M14 2v6h6"/>
+                  <path d="M9 15h6"/>
+                  <path d="M9 11h6"/>
+                </svg>
+              </div>
+
+              <h4 class="font-heading text-2xl text-umber md:text-3xl">
+                The Reader Report
+              </h4>
+            </div>
+
+            <p class="text-[1rem] leading-7 text-olive md:text-[1.02rem] md:leading-8">
+              A structured summary of the read-through, built from my notebook. There is no guessing, no reconstruction from memory. I was meticulous as I read, and this is typically what I consider:
+            </p>
+
+              <!-- Review Criteria -->
+              <div class="mt-8">
+              
+                <div class="divide-y divide-sienna/15 border-y border-sienna/15">
+
+                  <!-- 01 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          01
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          First impression
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        What I thought in the first 10 pages, and what hook (if any) pulled me in.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 02 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          02
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          What worked
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        Specific scenes, characters, or turns that just <i>work</i>. 
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 03 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          03
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          What didn't work
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        Where the story lost me. Pacing slumps, character decisions that felt off, and moments where I drifted or disengaged. 
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 04 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          04
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          Character notes
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        Who I connected with, who felt flat, and where motivations became (or failed to become) clear.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 05 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          05
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          Pacing
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        A rough sense of the book's rhythm. Where it rushed, dragged, or found its groove.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 06 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          06
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          Confusion points
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        Specific moments where I had to re-read, guess, or put the book down to figure out what was happening, plus any contradictions or continuity slips I caught.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 07 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          07
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          Audience fit
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        Who I think this book is for, based on what I read.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 08 -->
+                  <div class="group py-7 transition-colors duration-300 hover:bg-parchment/30">
+                    <div class="grid gap-3 md:grid-cols-[220px_1fr] md:gap-10">
+                      <div class="flex items-baseline gap-4">
+                        <span class="text-xs font-semibold tracking-[0.16em] text-sienna">
+                          08
+                        </span>
+
+                        <h6 class="text-sm font-semibold tracking-wide text-umber">
+                          Final impression
+                        </h6>
+                      </div>
+
+                      <p class="text-[0.92rem] leading-6 text-olive">
+                        The last thing I thought when I closed the book.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <p class="mt-4 text-[0.85rem] italic leading-6 text-olive md:text-[0.9rem] md:leading-7">
+                  Also woven throughout: plot, setting, dialogue, consistency, and emotional impact, wherever they helped or hurt the read.
+                </p>
+
+                <!-- Author Qns -->
+                <div class="mt-4 group relative rounded-2xl border border-gold/40 bg-parchment/50 p-6 ring-1 ring-sienna/10 transition duration-300 hover:border-gold/60 hover:bg-parchment/70 md:col-span-2">
+                  <div class="mb-4 flex items-center justify-between">
+                    <div class="h-px w-10 bg-gold/40 transition-all duration-300 group-hover:w-16 group-hover:bg-gold/60"></div>
+                  </div>
+
+                  <span class="inline-flex rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-[0.7rem] font-bold uppercase tracking-[0.14em] text-sienna">
+                    You can send in your own questions!
+                  </span>
+
+                  <h6 class="mt-4 font-heading text-xl tracking-tight text-umber">
+                    Reader Report Alternative
+                  </h6>
+
+                  <p class="mt-2 max-w-3xl text-[0.92rem] leading-6 text-olive">
+                    If you'd rather have targeted feedback, send me a list of questions before the read begins. I'll answer them in place of the standard Reader Report. You get the same depth, the same paragraph, page or chapter references. This works well if you already know what you're uncertain about and want to skip the general overview.
+                  </p>
+                </div>
+
+              </div>
+          </div>
+
+          <!-- Email Follow-up -->
+          <div class="border-t border-sienna/15 p-6 sm:p-8 md:p-10">
+
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4.5 w-4.5"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              </div>
+
+              <h4 class="font-heading text-2xl text-umber md:text-3xl">
+                Email Follow-up
+              </h4>
+            </div>
+
+             <p class="text-[1rem] leading-7 text-olive md:text-[1.02rem] md:leading-8">
+              After you've read the report and still want some clarification, send me an email. I'll answer them in a back-and-forth thread. This is for clarifying what I meant, digging into a specific point, or asking me to elaborate on a section. It's not a second report or a revision review. It also caps out after 5 responses.
+            </p>
+
+          </div>
+
+          <!-- No AI -->
+          <div class="border-t border-sienna/15 p-6 sm:p-8 md:p-10">
+
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4.5 w-4.5"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+
+              <h4 class="font-heading text-2xl text-umber md:text-3xl">
+                No AI, Ever
+              </h4>
+            </div>
+
+            <p class="text-[1rem] leading-7 text-olive md:text-[1.02rem] md:leading-8">
+              Studio Marginalia is a service built for humans, by a human. Every word is read by me, every word is written by me, every recommendation is considered by me. No AI will ever be part of this service. Not now, not ever.
+            </p>
+          </div>
+
+          <!-- One-Man Team -->
+          <div class="border-t border-sienna/15 p-6 sm:p-8 md:p-10">
+
+            <div class="mb-4 flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-sienna/10 text-sienna">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4.5 w-4.5"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 17c2-3 3-5 5-5 1.5 0 1 4 2.5 4 1.5 0 2.5-5 4-5 1.5 0 1.5 3 3 3s2.5-2 3.5-2"/>
+                <path d="M4 20h16"/>
+              </svg>
+              </div>
+
+              <h4 class="font-heading text-2xl text-umber md:text-3xl">
+                One Person, Start to Finish
+              </h4>
+            </div>
+
+            <p class="text-[1rem] leading-7 text-olive md:text-[1.02rem] md:leading-8">
+              The work is carried out personally by me. Studio Marginalia is a one-woman team. You are not passed to anyone else. 
+            </p>
+          </div>
+
+        </div> 
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section id="investment" class="scroll-mt-5 bg-paper py-5 md:py-5">
+
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="font-heading text-4xl tracking-tight text-umber md:text-5xl">
         Investment
       </h2>
 
-      <p class="text-olive text-[1rem] leading-relaxed max-w-2xl mx-auto">
-        Pricing is based on your manuscript's total word count.
+      <p class="mx-auto mt-3 max-w-2xl text-[1rem] leading-7 text-olive md:text-[1.05rem]">
+        This price covers the complete Beta Reading service. There are no hidden fees.
       </p>
     </div>
 
-    <div class="bg-parchment/80 border border-sienna/15 rounded-3xl shadow-soft overflow-hidden max-w-3xl mx-auto">
+    <!-- Pricing Table -->
+    <div class="mx-auto mt-8 max-w-3xl overflow-hidden rounded-3xl border border-sienna/15 bg-parchment/70 shadow-soft">
 
-      <table class="w-full">
+      <!-- Mobile -->
+      <div class="divide-y divide-sienna/10 sm:hidden">
+        <div class="bg-sienna/10 px-6 py-3">
+          <span class="text-xs font-semibold uppercase tracking-wide text-sienna">
+            Pricing
+          </span>
+        </div>
 
-        <thead class="bg-sienna/10">
-          <tr>
-            <th class="px-8 py-5 text-left text-sienna font-semibold tracking-wide">
-              Manuscript Length
-            </th>
+        <div class="flex items-center justify-between px-6 py-4">
+          <span class="text-olive">Up to 70,000 words</span>
+          <span class="font-semibold text-sienna">$400</span>
+        </div>
 
-            <th class="px-8 py-5 text-right text-sienna font-semibold tracking-wide">
-              Price (USD)
-            </th>
-          </tr>
-        </thead>
+        <div class="flex items-center justify-between px-6 py-4">
+          <span class="text-olive">Every additional 5,000 words (partial blocks billed in full)</span>
+          <span class="font-semibold text-sienna">+$75</span>
+        </div>
 
-        <tbody class="divide-y divide-sienna/10">
-          <tr class="hover:bg-paper/40 transition">
-            <td class="px-8 py-5 text-olive">
-              1,000 – 20,000 words
-            </td>
-            <td class="px-8 py-5 text-right font-semibold text-sienna">
-              $100
-            </td>
-          </tr>
+        <div class="bg-sienna/5 px-6 py-4 text-center text-sm font-semibold leading-6 text-sienna">
+          For manuscripts over 120,000 words, please reach out for a personalized quote.
+        </div>
+      </div>
 
-          <tr class="hover:bg-paper/40 transition">
-            <td class="px-8 py-5 text-olive">
-              20,001 – 40,000 words
-            </td>
-            <td class="px-8 py-5 text-right font-semibold text-sienna">
-              $200
-            </td>
-          </tr>
+      <!-- Desktop / Tablet -->
+      <div class="hidden sm:block">
+        <table class="w-full">
+          <thead class="bg-sienna/10">
+            <tr>
+              <th class="px-6 py-4 text-left font-semibold tracking-wide text-sienna md:px-8">
+                Manuscript Length
+              </th>
+              <th class="px-6 py-4 text-right font-semibold tracking-wide text-sienna md:px-8">
+                Price (USD)
+              </th>
+            </tr>
+          </thead>
 
-          <tr class="hover:bg-paper/40 transition">
-            <td class="px-8 py-5 text-olive">
-              40,001 – 60,000 words
-            </td>
-            <td class="px-8 py-5 text-right font-semibold text-sienna">
-              $300
-            </td>
-          </tr>
+          <tbody>
+            <tr class="border-t border-sienna/10">
+              <td class="px-6 py-5 text-olive md:px-8">
+                Up to 70,000 words
+              </td>
+              <td class="px-6 py-5 text-right font-semibold text-sienna md:px-8">
+                $400
+              </td>
+            </tr>
 
-          <tr class="hover:bg-paper/40 transition">
-            <td class="px-8 py-5 text-olive">
-              60,001 – 80,000 words
-            </td>
-            <td class="px-8 py-5 text-right font-semibold text-sienna">
-              $400
-            </td>
-          </tr>
+            <tr class="border-t border-sienna/10">
+              <td class="px-6 py-5 text-olive md:px-8">
+                Every additional 5,000 words (partial blocks billed in full)
+              </td>
+              <td class="px-6 py-5 text-right font-semibold text-sienna md:px-8">
+                +$50
+              </td>
+            </tr>
 
-          <tr class="hover:bg-paper/40 transition">
-            <td class="px-8 py-5 text-olive">
-              80,001 – 100,000 words
-            </td>
-            <td class="px-8 py-5 text-right font-semibold text-sienna">
-              $500
-            </td>
-          </tr>
+            <tr class="border-t border-sienna/10">
+              <td colspan="2" class="bg-sienna/5 px-6 py-4 text-center text-sm font-semibold leading-6 text-sienna md:px-8">
+                For manuscripts over 120,000 words, please reach out for a personalized quote.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-          <tr class="hover:bg-paper/40 transition">
-            <td class="px-8 py-5 text-olive">
-              100,001 – 120,000 words
-            </td>
-            <td class="px-8 py-5 text-right font-semibold text-sienna">
-              $600
-            </td>
-          </tr>
+      <!-- Payment Notes -->
+      <div class="border-t border-sienna/10 bg-paper/40 px-6 py-5 md:px-8">
+        <p class="text-sm leading-6 text-olive">
+          A <span class="font-semibold text-sienna">50% deposit</span> secures your booking; balance due before I deliver your feedback.
+        </p>
 
-          <tr class="hover:bg-paper/40 transition">
-            <td class="px-8 py-5 text-olive">
-              120,000+ words
-            </td>
-            <td class="px-8 py-5 text-right font-semibold text-sienna">
-              Custom Quote
-            </td>
-          </tr>
+          <p class="text-sm leading-6 text-olive">
+          Full terms are in my
+          <a href="policy.html#payment-policy" class="font-semibold text-sienna">Policies</a>.
+          </p>
 
-        </tbody>
-
-      </table>
-
-      <div class="border-t border-sienna/10 px-8 py-6 bg-paper/40">
-        <p class="text-sm text-olive leading-relaxed">
-          A <span class="font-semibold text-sienna">50% deposit</span> is required to secure your booking, with the remaining balance due before your beta reading report is delivered. Manuscripts exceeding 120,000 words are priced individually based on length and complexity.
+        <p class="mt-3 text-sm leading-6 text-olive">
+          
         </p>
       </div>
-
     </div>
 
-  </div>
+    <!-- Pricing Calculator -->
+    <div class="mx-auto mt-8 max-w-2xl">
+      <div class="rounded-3xl border border-sienna/15 bg-parchment/70 p-6 shadow-soft sm:p-8 md:p-9">
+
+        <div class="text-center">
+          <h3 class="font-heading text-3xl text-umber">
+            See your price instantly
+          </h3>
+
+          <p class="mx-auto mt-2 max-w-lg text-sm leading-6 text-olive">
+            Enter your word count to see your price.
+          </p>
+        </div>
+
+        <div class="mt-6">
+          <label for="word-count-calculator" class="mb-2 block text-sm font-semibold text-umber">
+            Manuscript word count
+          </label>
+
+          <input
+            id="word-count-calculator"
+            type="text"
+            inputmode="numeric"
+            placeholder="e.g. 77500"
+            class="w-full rounded-xl border border-gold/20 bg-paper p-4 text-umber focus:outline-none focus:ring-2 focus:ring-sienna/40"
+          />
+        </div>
+
+        <div id="price-result" class="mt-5 hidden rounded-2xl border border-sienna/15 bg-sienna/10 p-5 sm:p-6">
+          <div class="text-center">
+            <p id="price-label" class="text-sm text-olive"></p>
+            <p id="price-total" class="mt-2 font-heading text-4xl text-sienna"></p>
+          </div>
+
+          <div id="price-breakdown" class="mt-5 border-t border-sienna/15 pt-5"></div>
+
+          <p id="price-note" class="mt-5 text-center text-xs leading-5 text-olive"></p>
+        </div>
+
+        <p id="calculator-error" class="mt-4 hidden text-center text-sm font-medium text-red-600">
+          Please enter a valid manuscript word count.
+        </p>
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a
+        href="#contact"
+        class="inline-flex w-full items-center justify-center rounded-xl border border-umber/20 px-8 py-3.5 text-base font-semibold text-umber transition hover:border-sienna/40 hover:text-sienna sm:w-auto"
+      >
+        Get Started
+      </a>
+
+      <a
+        href="#keep-reading"
+        class="group inline-flex w-full items-center justify-center rounded-xl bg-sienna px-8 py-3.5 text-base font-semibold text-white transition hover:bg-sienna/90 sm:w-auto"
+      >
+        Keep Reading
+
+        <span class="ml-2 inline-block text-lg leading-none animate-bounce" aria-hidden="true">
+          ↓
+        </span>
+      </a>
+    </div>
+
 </section>
 
-<!-- POLICIES -->
-<section class="bg-paper py-24">
-  <div class="max-w-4xl mx-auto px-6">
+<!-- KNOW YOUR EDITOR + PROCESS -->
+<section class="bg-paper py-12 md:py-16">
 
-    <!-- SECTION HEADER -->
-    <div class="text-center space-y-5 mb-20">
+  <div class="mx-auto max-w-5xl px-6">
 
-      <p class="font-heading text-5xl text-umber tracking-tight">
-        My Policies
-      </p>
+    <div class="mx-auto max-w-3xl">
 
-      <p class="text-[1.05rem] leading-8 text-olive max-w-2xl mx-auto">
-        Everything you need to know before you book.
-      </p>
+      <!-- KNOW YOUR READER -->
+      <div id="editor" class="scroll-mt-16">
 
-    </div>
+        <div class="mb-5 flex items-center gap-4">
+          <div class="h-9 w-1 rounded-full bg-sienna"></div>
 
-    <!-- MAIN CONTAINER -->
-    <div class="bg-parchment/70 rounded-3xl border border-sienna/15 shadow-soft overflow-hidden">
+          <h2 class="font-heading text-3xl tracking-tight text-umber md:text-4xl">
+            Know Your Reader
+          </h2>
+        </div>
+        
+        <!-- MAIN COPY -->
+        <div class="space-y-4 text-[1rem] leading-7 text-olive md:text-[1.02rem] md:leading-8">
 
-      <div class="px-8 md:px-12 py-4 divide-y divide-sienna/10">
-
-        <!-- NO AI -->
-        <details class="group py-6" open>
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="w-1 h-10 rounded-full bg-sienna"></div>
-              <p class="font-semibold text-umber text-[1.5rem] tracking-tight">
-                NO AI. EVER.
-              </p>
-            </div>
-            <span class="text-sienna text-2xl transition-transform group-open:rotate-45 shrink-0">+</span>
-          </summary>
-          <p class="text-[1rem] leading-8 text-olive pl-5 mt-4">
-            I do not use AI at any point in my service: to read your manuscript, write your letter, or assist in writing the letter. If you suspect AI use, you are well within your rights to request proof of actual human work, which will be provided. Studio Marginalia is built for humans, by a human.
+          <p>
+            <strong><i>
+              I'm Hope, the reader behind Studio Marginalia.
+            </strong></i>
           </p>
-        </details>
 
-        <!-- PAYMENT -->
-        <details class="group py-6">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="w-1 h-8 rounded-full bg-sienna"></div>
-              <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
-                Payment
-              </p>
-            </div>
-            <span class="text-sienna text-2xl transition-transform group-open:rotate-45 shrink-0">+</span>
-          </summary>
-          <p class="text-[1rem] leading-8 text-olive pl-5 mt-4">
-            All services and payments are agreed upon in advance and paid in USD. All services are confirmed with a 50% deposit to secure the booking and begin the project. The remaining 50% balance is due upon completion of the service and before delivery of final materials (your Critique Letter and the Annotated Manuscript). Final deliverables are released once the remaining balance has been received.
+          <p>
+            Before this, I was a ghostwriter for genre fiction. I started on Fiverr, and my 8th client pulled me off the platform. We ended up writing 43 books together over four and a half years.
           </p>
-        </details>
 
-        <!-- REFUNDS -->
-        <details class="group py-6">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="w-1 h-8 rounded-full bg-sienna"></div>
-              <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
-                Refunds
-              </p>
-            </div>
-            <span class="text-sienna text-2xl transition-transform group-open:rotate-45 shrink-0">+</span>
-          </summary>
-          <p class="text-[1rem] leading-8 text-olive pl-5 mt-4">
-            Clients may request a full refund at any time before I send my start-of-work confirmation email. Once that email is sent, the project is locked in and no refunds will be issued. If I am unable to complete the service after receiving payment, the client will receive a full refund.
+          <p>
+            My only quality control was my client. There were no beta readers or editors following up behind me. So I learned to write from the other side of the page.
           </p>
-        </details>
 
-        <!-- COMMUNICATION -->
-        <details class="group py-6">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="w-1 h-8 rounded-full bg-sienna"></div>
-              <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
-                Communication
-              </p>
-            </div>
-            <span class="text-sienna text-2xl transition-transform group-open:rotate-45 shrink-0">+</span>
-          </summary>
-          <p class="text-[1rem] leading-8 text-olive pl-5 mt-4">
-            You may contact me at any time via email while I have your manuscript, and I respond within 24 hours. After delivery, communication follows the revision support terms outlined in your specific service.
+          <p>
+            Every pacing choice, every character beat, every "will they keep reading" moment had to be written from inside a reader's head, anticipating how it would feel when a choice worked.
           </p>
-        </details>
 
-        <!-- WORD COUNT -->
-        <details class="group py-6">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="w-1 h-8 rounded-full bg-sienna"></div>
-              <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
-                Word Count Minimum / Maximum
-              </p>
-            </div>
-            <span class="text-sienna text-2xl transition-transform group-open:rotate-45 shrink-0">+</span>
-          </summary>
-          <p class="text-[1rem] leading-8 text-olive pl-5 mt-4">
-            The minimum word count is 1,000 words. The maximum word count is 120,000 words. I am open to working with manuscripts over this limit, but you must contact me beforehand to discuss.
+          <p>
+            After dozens of books written from that angle, you understand what a scene should make a reader feel, and you notice when it doesn't.
           </p>
-        </details>
 
-        <!-- CONFIDENTIALITY -->
-        <details class="group py-6">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="w-1 h-8 rounded-full bg-sienna"></div>
-              <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
-                Confidentiality
-              </p>
-            </div>
-            <span class="text-sienna text-2xl transition-transform group-open:rotate-45 shrink-0">+</span>
-          </summary>
-          <p class="text-[1rem] leading-8 text-olive pl-5 mt-4">
-            Your manuscript and any feedback shared are treated as confidential by default. I will never share, publish, or discuss your work without your permission. I provide my own contract for all projects, but I'm also happy to sign a Non-Disclosure Agreement (NDA) or use your contract upon request.
+          <p>  
+             That skill, honed over years, is what I bring to this service.
           </p>
-        </details>
 
-        <!-- RIGHT TO DECLINE -->
-        <details class="group py-6">
-          <summary class="flex items-center justify-between gap-4 cursor-pointer list-none">
-            <div class="flex items-center gap-4">
-              <div class="w-1 h-8 rounded-full bg-sienna"></div>
-              <p class="font-semibold text-umber text-[1.3rem] tracking-tight">
-                Right to Decline
-              </p>
+        </div>
+
+      </div>
+
+      <!-- PROCESS -->
+      <div id="process" class="mt-12 scroll-mt-16 border-t border-sienna/15 pt-10">
+
+        <div class="mb-8 flex items-center gap-4">
+          <div class="h-9 w-1 rounded-full bg-sienna"></div>
+
+          <h2 class="font-heading text-3xl tracking-tight text-umber md:text-4xl">
+            How the Process Works
+          </h2>
+        </div>
+
+        <div class="relative ml-2">
+
+          <!-- TIMELINE LINE -->
+          <div class="absolute bottom-6 left-[1.1rem] top-6 w-px bg-sienna/20"></div>
+
+          <div class="space-y-8">
+
+            <!-- 01 -->
+            <div class="relative flex gap-5">
+
+              <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sienna/25 bg-paper text-xs font-bold tracking-wide text-sienna shadow-sm">
+                01
+              </div>
+
+              <div class="pt-0.5">
+
+                <h3 class="font-heading text-xl tracking-tight text-umber">
+                  Book your read.
+                </h3>
+
+                <p class="mt-1.5 text-[0.95rem] leading-6 text-olive">
+                  Your booking is secured with the required deposit. If you'd like the Reader Report Alternative, send me your list of questions now, before the read begins.
+                </p>
+
+              </div>
+
             </div>
-            <span class="text-sienna text-2xl transition-transform group-open:rotate-45 shrink-0">+</span>
-          </summary>
-          <p class="text-[1rem] leading-8 text-olive pl-5 mt-4">
-            I reserve the right to decline a manuscript if it isn't a good fit for my services or expertise. If this happens, you will be notified before any deposit is charged, and no payment will be required.
-          </p>
-        </details>
+
+
+            <!-- 02 -->
+            <div class="relative flex gap-5">
+
+              <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sienna/25 bg-paper text-xs font-bold tracking-wide text-sienna shadow-sm">
+                02
+              </div>
+
+              <div class="pt-0.5">
+
+                <h3 class="font-heading text-xl tracking-tight text-umber">
+                  The read begins.
+                </h3>
+
+                <p class="mt-1.5 text-[0.95rem] leading-6 text-olive">
+                  Your story gets the full, undivided attention it deserves. Delivered within 15 business days.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <!-- 03 -->
+            <div class="relative flex gap-5">
+
+              <div class="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-sienna/25 bg-paper text-xs font-bold tracking-wide text-sienna shadow-sm">
+                03
+              </div>
+
+              <div class="pt-0.5">
+
+                <h3 class="font-heading text-xl tracking-tight text-umber">
+                  Receive your feedback.
+                </h3>
+
+                <p class="mt-1.5 text-[0.95rem] leading-6 text-olive">
+                  You'll get your manuscript back with in-line comments, the Reader Report (or answers to your your questions), and an email follow-up thread.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
 
       </div>
 
     </div>
 
   </div>
+
 </section>
 
-<!-- CONTACT-->
-<section id="Contact" class="py-14">
-  <div class="max-w-4xl mx-auto px-6">
-    <div class="text-center mb-8">
-      <h2 class="font-heading text-2xl text-umber">Contact</h2>
-      <h3 class="mt-2 text-olive text-lg font-medium">Stop Revising Blind. Start Revising Smart.</h3>
-      <p class="mt-2 text-olive text-sm">Tell me about your manuscript and I’ll get back to you within 48 hours.</p>
+<!-- BEFORE YOU GO -->
+<section class="bg-parchment py-12 md:py-16">
+
+  <div class="mx-auto max-w-5xl px-6">
+
+    <div class="mx-auto max-w-3xl">
+
+      <div class="mb-6 flex items-center gap-4">
+
+        <div class="h-9 w-1 rounded-full bg-sienna"></div>
+
+        <h2 class="font-heading text-3xl tracking-tight text-umber md:text-4xl">
+          Before You Go: What's Included
+        </h2>
+
+      </div>
+
+
+      <!-- WHAT'S INCLUDED -->
+      <div class="grid gap-3 sm:grid-cols-2">
+
+        <div class="flex gap-3 rounded-xl bg-paper p-4 shadow-soft">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-sienna" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="text-[0.94rem] leading-6 text-olive">One Thorough Read</span>
+        </div>
+
+        <div class="flex gap-3 rounded-xl bg-paper p-4 shadow-soft">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-sienna" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="text-[0.94rem] leading-6 text-olive">In-line Comments</span>
+        </div>
+
+        <div class="flex gap-3 rounded-xl bg-paper p-4 shadow-soft">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-sienna" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="text-[0.94rem] leading-6 text-olive">Reader Report (or the Reader Report Alternative; your questions, answered)</span>
+        </div>
+
+        <div class="flex gap-3 rounded-xl bg-paper p-4 shadow-soft">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-sienna" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="text-[0.94rem] leading-6 text-olive">Email Follow-up</span>
+        </div>
+
+        <div class="flex gap-3 rounded-xl bg-paper p-4 shadow-soft">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-sienna" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="text-[0.94rem] leading-6 text-olive">No AI, at any stage. Ever</span>
+        </div>
+
+        <div class="flex gap-3 rounded-xl bg-paper p-4 shadow-soft">
+          <svg class="mt-0.5 h-5 w-5 shrink-0 text-sienna" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="text-[0.94rem] leading-6 text-olive">One person, start to finish</span>
+        </div>
+
+      </div>
+
+
+      <div class="mt-7 text-center">
+
+        <p class="text-[1rem] leading-7 text-olive">
+          Curious what it's actually like to work together?
+          <a href="#" class="font-semibold text-sienna">Read what other authors have said →</a>
+        </p>
+
+      </div>
+
     </div>
 
-  <form id="Contact-form" method="POST" class="bg-paper rounded-xl shadow-soft p-6 md:p-10">
-  <div class="grid md:grid-cols-2 gap-6">
-    <!-- Name -->
-    <div class="flex flex-col">
-      <label for="name" class="mb-1 text-umber font-medium">What's your name?</label>
-      <input type="text" name="name" id="name" placeholder="Your name" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
-    </div>
-
-    <!-- Email -->
-    <div class="flex flex-col">
-      <label for="email" class="mb-1 text-umber font-medium">What's your email?</label>
-      <input type="email" name="email" id="email" placeholder="you@example.com" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
-    </div>
-
-    <!-- Genre -->
-    <div class="flex flex-col">
-      <label for="genre" class="mb-1 text-umber font-medium">What's your book's genre?</label>
-      <input type="text" name="genre" id="genre" placeholder="e.g. Grimdark Fantasy, Cozy Mystery" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40">
-    </div>
-
-    <!-- Word Count -->
-    <div class="flex flex-col">
-      <label for="wordcount" class="mb-1 text-umber font-medium">What's your book's word count?</label>
-      <input type="text" name="wordcount" id="wordcount" placeholder="e.g. 75,000" required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40" />
-    </div>
-
-    <!-- Interested In -->
-    <div class="flex flex-col md:col-span-2">
-      <label for="interest" class="mb-1 text-umber font-medium">What are you interested in?</label>
-      <select name="interest" id="interest" required class="rounded-lg border border-gold/20 p-3 text-olive text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-sienna/40">
-        <option value="" disabled selected>Select an option</option>
-        <option value="free-sample">Free 2000 Word Sample Critique</option>
-        <option value="manuscript-critique">Manuscript Critique</option>
-        <option value="beta-reading">Beta Reading</option>
-      </select>
-    </div>
-
-  <!-- Message -->
-  <div class="flex flex-col md:col-span-2">
-    <label for="message" class="mb-1 text-umber font-medium">Tell me about your book…</label>
-    <textarea name="message" id="message" rows="5" placeholder="Write a brief description or short synopsis of your story." required class="rounded-lg border border-gold/20 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"></textarea>
-    <p class="text-xs text-olive mt-2">💡 Feel free to add anything else you might want me to know.</p>
   </div>
+
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="scroll-mt-16 bg-paper py-12 md:py-16">
+
+  <div class="mx-auto max-w-5xl px-6">
+
+    <div class="mx-auto max-w-3xl">
+
+      <div class="mb-9 text-center">
+
+        <div class="mb-4 flex justify-center">
+          <div class="inline-flex items-center rounded-full border border-sienna/20 bg-sienna/10 px-5 py-2">
+            <span class="text-sm font-semibold uppercase tracking-wide text-sienna">
+              Questions
+            </span>
+          </div>
+        </div>
+
+        <h2 class="font-heading text-4xl text-umber md:text-5xl">
+          Frequently Asked Questions
+        </h2>
+
+      </div>
+
+      <!-- FAQ ITEMS -->
+      <div class="space-y-3">
+
+        <!-- 01 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>What's the difference between a manuscript analysis and a beta read?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            A beta read isn't as thorough or as comprehensive as a manuscript analysis, but it's an economical way to find out, in broad strokes, where your story works and where it doesn't, through a reader's eyes.
+          </p>
+
+        </details>
+
+
+        <!-- 02 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>Will a beta read replace a manuscript analysis?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            It depends. If you've already had an edit and want a beta read of your revised draft, it can. It can also work if you have a large team of beta readers and a system for combining their feedback into a coherent revision plan. Without knowing your specific circumstances, I can't promise it will.
+          </p>
+
+        </details>
+
+        <!-- 03 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>Will working with you get me published?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            No reader can promise that, and you should be skeptical of anyone who does.
+          </p>
+
+          <p class="mt-3 text-[0.96rem] leading-7 text-olive">
+            A beta read is a strong step towards strengthening your manuscript and giving it a better chance at whatever comes next.
+          </p>
+
+        </details>
+
+
+        <!-- 04 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>Will you edit or rewrite my manuscript?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            No. I don't line edit, copyedit, or rewrite. I simply tell you what I see. I also don't suggest ways to improve your manuscript.
+          </p>
+
+          <p class="mt-3 text-[0.96rem] leading-7 text-olive">
+            If a sentence-level issue is affecting clarity or the reading experience, I'll flag it. But flagging isn't fixing. To reiterate: rewriting, line/copy editing, and offering suggestions aren't part of the service.
+          </p>
+
+        </details>
+
+         <!-- 05 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>Do you offer sample reads for this service?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-3 text-[0.96rem] leading-7 text-olive">
+            I only offer sample reads for Manuscript Analysis. There are a number of reasons for this, but the one that encapsulates them all is that it is simply not necessary for a beta read.
+          </p>
+
+        </details>
+
+
+        <!-- 06 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>How long does the read take?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            Within 15 business days.
+          </p>
+
+          <p class="mt-3 text-[0.96rem] leading-7 text-olive">
+            If you have a specific deadline, let me know. I'll confirm whether I can accommodate it before you book.
+          </p>
+
+        </details>
+
+
+        <!-- 07 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>Do you use AI?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            No. Your manuscript is read and responded to by me, a real person, start to finish. I don't use AI to read, summarize, or generate any part of the feedback.
+          </p>
+
+        </details>
+
+
+        <!-- 08 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>Is my manuscript kept confidential?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            Yes. Your work is never shared, and is deleted from my personal devices after the follow-up period is over. I always work on contract and I'm happy to sign your own contract or NDA agreement on request.
+          </p>
+
+        </details>
+
+        
+        <!-- 09 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>What format do I send my manuscript in?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            Word (.docx) files or Google Docs, since both let me leave in-line comments right in the manuscript.
+          </p>
+
+        </details>
+
+           
+        <!-- 10 -->
+        <details class="group rounded-2xl border border-sienna/15 bg-parchment/70 p-5 sm:p-6">
+
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-semibold text-umber">
+            <span>What genres do you work with?</span>
+            <span class="text-xl text-sienna transition-transform group-open:rotate-45">+</span>
+          </summary>
+
+          <p class="mt-4 text-[0.96rem] leading-7 text-olive">
+            You can see the genres I work with  <a href="index.html#genres" class="font-semibold text-sienna">here</a>.
+          </p>
+          </p>
+
+        </details>
+
+
+      </div>
+
+    </div>
+
   </div>
 
-  <!-- Success/Error Messages -->
-  <div id="form-message" class="mt-4 text-center text-sm font-medium hidden"></div>
+</section>
 
-  <div class="mt-6 text-center">
-    <button type="submit" class="bg-sienna text-paper font-medium px-8 py-3 rounded-lg shadow-soft hover:bg-sienna/90 transition">
-      Send Message
-    </button>
-  </div>
-  </form>
+<!-- CONTACT -->
+<section id="contact" class="scroll-mt-16 bg-parchment py-12 md:py-16">
+
+  <div class="mx-auto max-w-5xl px-6">
+
+    <div class="mx-auto max-w-3xl">
+
+      <div class="mb-7 text-center">
+
+        <div class="mb-4 flex justify-center">
+          <div class="inline-flex items-center rounded-full border border-sienna/20 bg-sienna/10 px-5 py-2">
+            <span class="text-sm font-semibold uppercase tracking-wide text-sienna">
+              Get In Touch
+            </span>
+          </div>
+        </div>
+
+        <h2 class="font-heading text-3xl text-umber md:text-4xl">
+          Tell Me About Your Manuscript
+        </h2>
+
+        <p class="mt-2 text-lg text-olive">
+          I'll get back to you within 48 hours.
+        </p>
+
+      </div>
 
 
-    <script>
-      const form = document.getElementById('Contact-form');
-      const messageDiv = document.getElementById('form-message');
+      <!-- CONTACT FORM -->
+      <form
+        id="Contact-form"
+        method="POST"
+        class="rounded-3xl border border-sienna/15 bg-paper p-6 shadow-soft sm:p-8 md:p-10"
+      >
 
-      form.addEventListener('submit', function (e) {
-        e.preventDefault(); // prevents default submit
-        const formData = new FormData(form);
+        <div class="grid gap-5 md:grid-cols-2">
 
-        fetch('https://formspree.io/f/xzzawyoy', {
-          method: 'POST',
-          body: formData,
-          headers: { 'Accept': 'application/json' }
-        })
-          .then(response => response.json())
-          .then(data => {
-            if (data.ok || data.success !== false) {
-              messageDiv.textContent = "Thank you! Your message has been sent successfully. I will be in touch shortly.";
-              messageDiv.classList.remove('hidden', 'text-red-500');
-              messageDiv.classList.add('text-green-600');
-              form.reset();
-            } else {
-              throw new Error('Form submission failed');
-            }
+          <div class="flex flex-col">
+
+            <label for="name" class="mb-1.5 font-medium text-umber">
+              What's your name?
+            </label>
+
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Your name"
+              required
+              class="rounded-lg border border-gold/20 bg-parchment/40 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"
+            />
+
+          </div>
+
+
+          <div class="flex flex-col">
+
+            <label for="email" class="mb-1.5 font-medium text-umber">
+              What's your email?
+            </label>
+
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="you@example.com"
+              required
+              class="rounded-lg border border-gold/20 bg-parchment/40 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"
+            />
+
+          </div>
+
+
+          <div class="flex flex-col">
+
+            <label for="genre" class="mb-1.5 font-medium text-umber">
+              What's your book's genre?
+            </label>
+
+            <input
+              type="text"
+              name="genre"
+              id="genre"
+              placeholder="e.g. Fantasy, Mystery, Literary Fiction"
+              required
+              class="rounded-lg border border-gold/20 bg-parchment/40 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"
+            />
+
+          </div>
+
+
+          <div class="flex flex-col">
+
+            <label for="wordcount" class="mb-1.5 font-medium text-umber">
+              What's your book's word count?
+            </label>
+
+            <input
+              type="text"
+              name="wordcount"
+              id="wordcount"
+              placeholder="e.g. 75,000"
+              required
+              class="rounded-lg border border-gold/20 bg-parchment/40 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"
+            />
+
+          </div>
+
+
+          <div class="flex flex-col md:col-span-2">
+
+            <label for="interest" class="mb-1.5 font-medium text-umber">
+              What are you interested in?
+            </label>
+
+            <select
+              name="interest"
+              id="interest"
+              required
+              class="rounded-lg border border-gold/20 bg-parchment/40 p-3 text-olive text-sm focus:outline-none focus:ring-2 focus:ring-sienna/40 md:text-base"
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option value="free-sample">Free 2,000 Word Sample Edit - MS Analysis</option>
+              <option value="developmental-editing">Manuscript Analysis</option>
+              <option value="beta-reading">Beta Reading</option>
+            </select>
+
+          </div>
+
+
+          <div class="flex flex-col md:col-span-2">
+
+            <label for="message" class="mb-1.5 font-medium text-umber">
+              Tell me about your book…
+            </label>
+
+            <textarea
+              name="message"
+              id="message"
+              rows="5"
+              placeholder="Write a brief description or short synopsis of your story."
+              required
+              class="rounded-lg border border-gold/20 bg-parchment/40 p-3 text-olive focus:outline-none focus:ring-2 focus:ring-sienna/40"
+            ></textarea>
+
+            <p class="mt-2 text-xs text-olive">
+              Feel free to add anything else you might want me to know.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div id="form-message" class="mt-4 hidden text-center text-sm font-medium"></div>
+
+
+        <div class="mt-6 text-center">
+
+          <button
+            type="submit"
+            class="rounded-lg bg-sienna px-8 py-3 font-medium text-paper shadow-soft transition hover:bg-sienna/90"
+          >
+            Send Message
+          </button>
+
+        </div>
+
+      </form>
+
+
+      <!-- CONTACT FORM SCRIPT -->
+      <script>
+        const form = document.getElementById('Contact-form');
+        const messageDiv = document.getElementById('form-message');
+
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const formData = new FormData(form);
+
+          fetch('https://formspree.io/f/xzzawyoy', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
           })
-          .catch(error => {
-            messageDiv.textContent = "Oops! Something went wrong. Please try again.";
-            messageDiv.classList.remove('hidden', 'text-green-600');
-            messageDiv.classList.add('text-red-500');
-          });
-      });
+            .then(response => response.json())
+            .then(data => {
+              if (data.ok || data.success !== false) {
+                messageDiv.textContent = "Thank you! Your message has been sent successfully. I will be in touch shortly.";
+                messageDiv.classList.remove('hidden', 'text-red-500');
+                messageDiv.classList.add('text-green-600');
+                form.reset();
+              } else {
+                throw new Error('Form submission failed');
+              }
+            })
+            .catch(error => {
+              messageDiv.textContent = "Oops! Something went wrong. Please try again.";
+              messageDiv.classList.remove('hidden', 'text-green-600');
+              messageDiv.classList.add('text-red-500');
+            });
+        });
 
-    </script>
+        wordCountInput.addEventListener('input', calculatePrice);
+        wordCountInput.addEventListener('blur', calculatePrice);
+      </script>
+
+    </div>
+
+  </div>
+
 </section>
 
 </main>
@@ -801,14 +1704,267 @@
         <a href="blog.html" class="hover:text-rose transition">Blog</a>
         <a href="reviews.html" class="hover:text-rose transition">Reviews</a>
         <a href="contact.html" class="hover:text-rose transition">Contact</a>
-        <a href="policy.html" class="hover:text-rose transition">Policy</a>
+        <a href="policy.html" class="hover:text-rose transition">Policies</a>
       </nav>
-    <a class="mt-3 inline-block text-gold hover:text-rose text-sm" href="mailto:info.studiomarginalia@gmail.com">info.studiomarginalia@gmail.com</a>
+    <a class="mt-3 inline-block text-gold hover:text-rose text-sm" href="mailto:"></a>
     <p class="mt-4 text-xs text-gold/80">All manuscripts kept confidential • Working with authors worldwide</p>
   </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+<!-- CALCULATOR SCRIPT -->
+<script>
+
+  const wordCountInput =
+    document.getElementById('word-count-calculator');
+
+  const priceResult =
+    document.getElementById('price-result');
+
+  const priceLabel =
+    document.getElementById('price-label');
+
+  const priceTotal =
+    document.getElementById('price-total');
+
+  const priceBreakdown =
+    document.getElementById('price-breakdown');
+
+  const priceNote =
+    document.getElementById('price-note');
+
+  const calculatorError =
+    document.getElementById('calculator-error');
+
+
+  function calculatePrice() {
+
+    /*
+      Remove commas, spaces and other non-numeric characters.
+    */
+
+    const rawValue =
+      wordCountInput.value.replace(/[^\d]/g, '');
+
+    const wordCount =
+      parseInt(rawValue, 10);
+
+
+    /*
+      Empty / invalid input
+    */
+
+    if (!wordCount || wordCount < 1) {
+
+      priceResult.classList.add('hidden');
+
+      calculatorError.classList.remove('hidden');
+
+      return;
+
+    }
+
+
+    calculatorError.classList.add('hidden');
+
+
+    /*
+      Pricing:
+
+      Up to 70,000 words = $400
+
+      Every additional 5,000 words (partial blocks billed in full) = +$50
+
+      Any portion of an additional 5,000-word
+      block counts as a full block.
+
+      Above 120,000 words = Custom Quote
+    */
+
+
+    if (wordCount <= 70000) {
+
+      priceLabel.textContent =
+        wordCount.toLocaleString() + ' words';
+
+      priceTotal.textContent =
+        '$400';
+
+      priceBreakdown.innerHTML = `
+
+        <div class="space-y-3 text-sm">
+
+          <div class="flex justify-between gap-6">
+
+            <span class="text-olive">
+              Up to 70,000 words
+            </span>
+
+            <span class="font-semibold text-umber">
+              $400
+            </span>
+
+          </div>
+
+          <div class="border-t border-sienna/10 pt-3 flex justify-between gap-6">
+
+            <span class="font-semibold text-umber">
+              Estimated investment
+            </span>
+
+            <span class="font-semibold text-sienna">
+              $400
+            </span>
+
+          </div>
+
+        </div>
+
+      `;
+
+      priceNote.textContent =
+        'Your manuscript falls within the base pricing tier.';
+
+    }
+
+
+    else if (wordCount <= 120000) {
+
+      const additionalWords =
+        wordCount - 70000;
+
+      const additionalBlocks =
+        Math.ceil(additionalWords / 5000);
+
+      const additionalCost =
+        additionalBlocks * 50;
+
+      const price =
+        400 + additionalCost;
+
+
+      /*
+        Build a concise breakdown.
+      */
+
+      priceBreakdown.innerHTML = `
+
+        <div class="space-y-3 text-sm">
+
+          <div class="flex justify-between gap-6">
+
+            <span class="text-olive">
+              Up to 70,000 words
+            </span>
+
+            <span class="font-semibold text-umber">
+              $400
+            </span>
+
+          </div>
+
+          <div class="flex justify-between gap-6">
+
+            <span class="text-olive">
+              Additional ${additionalBlocks} × 5,000 words
+            </span>
+
+            <span class="font-semibold text-umber">
+              ${additionalBlocks} × $50
+            </span>
+
+          </div>
+
+          <div class="border-t border-sienna/10 pt-3 flex justify-between gap-6">
+
+            <span class="font-semibold text-umber">
+              Estimated investment
+            </span>
+
+            <span class="font-semibold text-sienna">
+              $${price.toLocaleString()}
+            </span>
+
+          </div>
+
+        </div>
+
+      `;
+
+
+      priceLabel.textContent =
+        wordCount.toLocaleString() + ' words';
+
+      priceTotal.textContent =
+        '$' + price.toLocaleString();
+
+      priceNote.textContent =
+        'Additional words are charged in 5,000-word blocks. Any portion of a block counts as a full block.';
+
+    }
+
+
+    else {
+
+      priceLabel.textContent =
+        wordCount.toLocaleString() + ' words';
+
+      priceTotal.textContent =
+        'Custom Quote';
+
+      priceBreakdown.innerHTML = `
+
+        <div class="text-center text-sm text-olive leading-6">
+
+          Manuscripts over 120,000 words are priced individually
+          based on length and complexity.
+
+        </div>
+
+      `;
+
+      priceNote.textContent =
+        'Get in touch and I’ll provide a personalised quote for your manuscript.';
+
+    }
+
+
+    priceResult.classList.remove('hidden');
+
+  }
+
+
+  /*
+    Calculate while typing.
+  */
+
+  wordCountInput.addEventListener(
+    'input',
+    calculatePrice
+  );
+
+
+  /*
+    Allow Enter to calculate as well.
+  */
+
+  wordCountInput.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (event.key === 'Enter') {
+
+        event.preventDefault();
+
+        calculatePrice();
+
+      }
+
+    }
+  );
+
+</script>
 
 <!-- Mobile nav script -->
 <script>
@@ -878,6 +2034,48 @@
   });
 
 })();
+</script>
+
+<!-- Receivables Accordion-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+
+    const toggle = document.getElementById("deliverables-toggle");
+    const content = document.getElementById("deliverables-content");
+    const arrow = document.getElementById("deliverables-arrow");
+
+    if (!toggle || !content || !arrow) {
+      return;
+    }
+
+    toggle.addEventListener("click", function () {
+
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+      toggle.setAttribute("aria-expanded", String(!isOpen));
+      content.setAttribute("aria-hidden", String(isOpen));
+
+      if (isOpen) {
+
+        // CLOSE
+        content.classList.remove("grid-rows-[1fr]");
+        content.classList.add("grid-rows-[0fr]");
+
+        arrow.classList.remove("rotate-180");
+
+      } else {
+
+        // OPEN
+        content.classList.remove("grid-rows-[0fr]");
+        content.classList.add("grid-rows-[1fr]");
+
+        arrow.classList.add("rotate-180");
+
+      }
+
+    });
+
+  });
 </script>
 
 </body>
